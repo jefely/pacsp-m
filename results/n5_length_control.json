@@ -1,0 +1,89 @@
+{
+  "audit": {
+    "poem": {
+      "human_bytes_mean": 110,
+      "machine_bytes_mean": 97,
+      "human_chars_mean": 38,
+      "machine_chars_mean": 35,
+      "byte_ratio": 1.1333,
+      "char_ratio": 1.0837
+    },
+    "lyrics": {
+      "human_bytes_mean": 1160,
+      "machine_bytes_mean": 99,
+      "human_chars_mean": 410,
+      "machine_chars_mean": 35,
+      "byte_ratio": 11.6424,
+      "char_ratio": 11.4928
+    },
+    "techdoc": {
+      "human_bytes_mean": 18329,
+      "machine_bytes_mean": 2313,
+      "human_chars_mean": 10280,
+      "machine_chars_mean": 1061,
+      "byte_ratio": 7.9223,
+      "char_ratio": 9.6848
+    },
+    "medicine": {
+      "human_bytes_mean": 427,
+      "machine_bytes_mean": 424,
+      "human_chars_mean": 146,
+      "machine_chars_mean": 150,
+      "byte_ratio": 1.0083,
+      "char_ratio": 0.9706
+    },
+    "openqa": {
+      "human_bytes_mean": 388,
+      "machine_bytes_mean": 414,
+      "human_chars_mean": 139,
+      "machine_chars_mean": 149,
+      "byte_ratio": 0.9365,
+      "char_ratio": 0.9335
+    }
+  },
+  "control": {
+    "poem": {
+      "target_chars": 40,
+      "orig_ratio": 0.8305,
+      "trimmed_ratio": 0.7804,
+      "human_bytes_after": 94,
+      "machine_bytes_after": 95
+    },
+    "lyrics": {
+      "target_chars": 40,
+      "orig_ratio": 0.8691,
+      "trimmed_ratio": 0.9292,
+      "human_bytes_after": 76,
+      "machine_bytes_after": 90
+    },
+    "techdoc": {
+      "target_chars": 1232,
+      "orig_ratio": 1.4426,
+      "trimmed_ratio": 1.4437,
+      "human_bytes_after": 2656,
+      "machine_bytes_after": 2230
+    },
+    "medicine": {
+      "target_chars": 141,
+      "orig_ratio": 0.9147,
+      "trimmed_ratio": 0.9065,
+      "human_bytes_after": 371,
+      "machine_bytes_after": 339
+    },
+    "openqa": {
+      "target_chars": 139,
+      "orig_ratio": 0.9358,
+      "trimmed_ratio": 0.9337,
+      "human_bytes_after": 353,
+      "machine_bytes_after": 322
+    }
+  },
+  "verdict": {
+    "below_1_original": 4,
+    "below_1_trimmed": 4,
+    "spread_original": 1.737,
+    "spread_trimmed": 1.8499,
+    "direction_flips": [],
+    "max_shift": 0.0692
+  }
+}

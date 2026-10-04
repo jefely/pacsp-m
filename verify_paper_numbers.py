@@ -266,6 +266,37 @@ def main():
                        f"{min(cvs):.6f}-{max(cvs):.6f}",
                        close(min(cvs), 0.0026, 0.05) and close(max(cvs), 0.0043, 0.05)))
 
+    # ---------------------------------------------------------------- §4.4 length
+    n5 = get("n5_length_control")
+    if n5:
+        aud = n5.get("audit", {})
+        for k, claim in (("lyrics", 11.64), ("techdoc", 7.92), ("poem", 1.13),
+                         ("medicine", 1.01), ("openqa", 0.94)):
+            v = aud.get(k, {}).get("byte_ratio")
+            if v is not None:
+                checks.append((f"§4.4 长度比 {k}", claim, v, close(claim, v, 0.02)))
+        ctrl = n5.get("control", {})
+        for k, claim in (("poem", 0.7804), ("lyrics", 0.9292), ("techdoc", 1.4437),
+                         ("medicine", 0.9065), ("openqa", 0.9337)):
+            v = ctrl.get(k, {}).get("trimmed_ratio")
+            if v is not None:
+                checks.append((f"§4.4 裁剪后比值 {k}", claim, v, close(claim, v, 0.02)))
+        for k, claim in (("poem", 0.940), ("lyrics", 1.069), ("techdoc", 1.001)):
+            v = ctrl.get(k, {}).get("trimmed_ratio")
+            o = ctrl.get(k, {}).get("orig_ratio")
+            if v and o:
+                checks.append((f"§4.4 裁剪后变化 {k}", claim, round(v / o, 3),
+                               close(claim, v / o, 0.02)))
+        vd = n5.get("verdict", {})
+        checks.append(("§4.4 方向一致 原始 4/5", 4, vd.get("below_1_original"),
+                       vd.get("below_1_original") == 4))
+        checks.append(("§4.4 方向一致 裁剪后 4/5", 4, vd.get("below_1_trimmed"),
+                       vd.get("below_1_trimmed") == 4))
+        checks.append(("§4.4 无配对翻转", [], vd.get("direction_flips"),
+                       vd.get("direction_flips") == []))
+        checks.append(("§4.4 最大偏移 6.9%", 0.069, vd.get("max_shift"),
+                       close(0.069, vd.get("max_shift"), 0.05)))
+
     # ---------------------------------------------------------------- report
     print(f"  doc: {DOC.name}  ({len(doc):,} 字符)")
     print(f"  results 文件: {len(results)}")
