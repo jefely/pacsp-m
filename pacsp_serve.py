@@ -232,7 +232,8 @@ def do_measure(path: str, frame: str, backend: str, boot: int) -> dict:
     rng = np.random.default_rng(0)
     with STATE["lock"]:
         if STATE["embedder"] is None:
-            STATE["embedder"] = T.Embedder(repo, backend=backend)
+            STATE["embedder"] = T.Embedder(repo, backend=backend,
+                                           onnx_dir=(Path(__file__).resolve().parent / "onnx"))
         emb = STATE["embedder"]
         E = emb.encode(texts)
         active = emb.active_backend
@@ -259,7 +260,8 @@ def do_compare(pa: str, pb: str, frame: str, backend: str, boot: int) -> dict:
     rng = np.random.default_rng(0)
     with STATE["lock"]:
         if STATE["embedder"] is None:
-            STATE["embedder"] = T.Embedder(repo, backend=backend)
+            STATE["embedder"] = T.Embedder(repo, backend=backend,
+                                           onnx_dir=(Path(__file__).resolve().parent / "onnx"))
         emb = STATE["embedder"]
         EA, EB = emb.encode(ta), emb.encode(tb)
         active = emb.active_backend

@@ -23,3 +23,5 @@ onnx/embcache/
 _ortgpu/
 # int8 变体已否决（docs/INT8-REJECTED.md），不入库
 onnx/*.int8_*.onnx
+# 便携包（可由 tools/build_bundle.py 重建，约 300 MB）
+dist/pacsp/
