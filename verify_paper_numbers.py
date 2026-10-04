@@ -228,6 +228,44 @@ def main():
                            round(max(vals) / min(vals), 2),
                            close(2.20, max(vals) / min(vals), 0.02)))
 
+    # ---------------------------------------------------------------- §2.4 sigma
+    n4 = get("n4_sigma_resolutions")
+    if n4:
+        ss = n4.get("sigma_sensitivity", {})
+        for mode, claim in (("A", 0.3682), ("B", 0.0808), ("C", 0.1928), ("D", 0.0070)):
+            v = ss.get(mode, {}).get("mean")
+            if v is not None:
+                checks.append((f"§2.4 路线 {mode} σ×1.6 均值", claim, v,
+                               close(claim, v, 0.02)))
+        os_ = n4.get("order_sensitivity", {})
+        zero = all(abs(os_.get(m, {}).get("mean_bias", 1)) < 1e-9 for m in "ABCD")
+        checks.append(("§2.4 四路线顺序偏差全为 0", True, zero, zero))
+        rt = n4.get("ratios", {})
+        for mode, dom, claim in (("A", "poem", 1.7018), ("B", "poem", 2.1276),
+                                 ("C", "poem", 2.7989), ("D", "poem", 0.9883),
+                                 ("C", "techdoc", 0.9096), ("D", "medicine", 0.9991)):
+            v = rt.get(mode, {}).get(dom)
+            if v is not None:
+                checks.append((f"§2.4 路线 {mode} {dom} 比值", claim, round(v, 4),
+                               close(claim, v, 0.02)))
+        # direction counts
+        for mode, below in (("A", 0), ("B", 0), ("C", 1), ("D", 5)):
+            r = rt.get(mode, {})
+            vals = [v for v in r.values() if v is not None]
+            n_below = sum(1 for v in vals if v < 1)
+            checks.append((f"§2.4 路线 {mode} 低于 1 的个数 {below}/5",
+                           below, n_below, n_below == below))
+
+    n4b = get("n4b_d_bootstrap")
+    if n4b:
+        excl = sum(1 for v in n4b.values() if v["excludes_1"])
+        checks.append(("§2.4 路线 D 区间排除 1 的个数 0/5", 0, excl, excl == 0))
+        cvs = [v[k] for v in n4b.values()
+               for k in ("boot_cv_human", "boot_cv_machine")]
+        checks.append(("§2.4 路线 D 自助法 CV 0.0026–0.0043", "0.0026-0.0043",
+                       f"{min(cvs):.6f}-{max(cvs):.6f}",
+                       close(min(cvs), 0.0026, 0.05) and close(max(cvs), 0.0043, 0.05)))
+
     # ---------------------------------------------------------------- report
     print(f"  doc: {DOC.name}  ({len(doc):,} 字符)")
     print(f"  results 文件: {len(results)}")

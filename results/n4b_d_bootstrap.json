@@ -1,0 +1,62 @@
+{
+  "poem": {
+    "d_human": 0.794298,
+    "d_machine": 0.803714,
+    "ratio": 0.988284,
+    "ci95": [
+      0.985829,
+      1.002876
+    ],
+    "excludes_1": false,
+    "boot_cv_human": 0.003227,
+    "boot_cv_machine": 0.003017
+  },
+  "lyrics": {
+    "d_human": 0.79549,
+    "d_machine": 0.802535,
+    "ratio": 0.991222,
+    "ci95": [
+      0.986903,
+      1.004164
+    ],
+    "excludes_1": false,
+    "boot_cv_human": 0.003471,
+    "boot_cv_machine": 0.002931
+  },
+  "techdoc": {
+    "d_human": 0.796909,
+    "d_machine": 0.798244,
+    "ratio": 0.998327,
+    "ci95": [
+      0.987895,
+      1.00806
+    ],
+    "excludes_1": false,
+    "boot_cv_human": 0.004347,
+    "boot_cv_machine": 0.00285
+  },
+  "medicine": {
+    "d_human": 0.809132,
+    "d_machine": 0.809857,
+    "ratio": 0.999105,
+    "ci95": [
+      0.992068,
+      1.007503
+    ],
+    "excludes_1": false,
+    "boot_cv_human": 0.002755,
+    "boot_cv_machine": 0.002706
+  },
+  "openqa": {
+    "d_human": 0.810886,
+    "d_machine": 0.812074,
+    "ratio": 0.998538,
+    "ci95": [
+      0.992329,
+      1.006888
+    ],
+    "excludes_1": false,
+    "boot_cv_human": 0.002758,
+    "boot_cv_machine": 0.002561
+  }
+}

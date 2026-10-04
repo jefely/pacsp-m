@@ -1,0 +1,82 @@
+{
+  "sigma_mults": [
+    0.5,
+    0.7,
+    1.0,
+    1.4,
+    2.0
+  ],
+  "sigma_sensitivity": {
+    "A": {
+      "mean": 0.3682,
+      "max": 0.4766
+    },
+    "B": {
+      "mean": 0.0808,
+      "max": 0.1129
+    },
+    "C": {
+      "mean": 0.1928,
+      "max": 0.2459
+    },
+    "D": {
+      "mean": 0.007,
+      "max": 0.0128
+    }
+  },
+  "order_sensitivity": {
+    "A": {
+      "mean_bias": 0.0,
+      "mean_cv": 0.0
+    },
+    "B": {
+      "mean_bias": 0.0,
+      "mean_cv": 0.0
+    },
+    "C": {
+      "mean_bias": 0.0,
+      "mean_cv": 0.0
+    },
+    "D": {
+      "mean_bias": 0.0,
+      "mean_cv": 0.0
+    }
+  },
+  "ratios": {
+    "A": {
+      "poem": 1.7018,
+      "lyrics": 1.4013,
+      "techdoc": 1.0356,
+      "medicine": 1.0188,
+      "openqa": 1.1031
+    },
+    "B": {
+      "poem": 2.1276,
+      "lyrics": 1.7941,
+      "techdoc": 1.0329,
+      "medicine": 1.0345,
+      "openqa": 1.1318
+    },
+    "C": {
+      "poem": 2.7989,
+      "lyrics": 2.0254,
+      "techdoc": 0.9096,
+      "medicine": 1.006,
+      "openqa": 1.1249
+    },
+    "D": {
+      "poem": 0.9883,
+      "lyrics": 0.9912,
+      "techdoc": 0.9983,
+      "medicine": 0.9991,
+      "openqa": 0.9985
+    }
+  },
+  "reference_mean_pair_dist": {
+    "poem": 0.8305,
+    "lyrics": 0.8691,
+    "techdoc": 1.4426,
+    "medicine": 0.9147,
+    "openqa": 0.9358
+  }
+}
