@@ -128,7 +128,10 @@ def main(argv=None) -> int:
         req = ["numpy", "onnxruntime", "transformers", "tokenizers",
                "huggingface_hub", "safetensors", "regex", "packaging",
                "pyyaml", "filelock", "tqdm", "typing_extensions", "requests",
-               "certifi", "charset_normalizer", "idna", "urllib3", "fsspec"]
+               "certifi", "charset_normalizer", "idna", "urllib3", "fsspec",
+               # pacsp_attest needs Ed25519 for L2. Omitting it produced a bundle where
+               # --check passed and attest would have failed at the signing step.
+               "cryptography", "cffi", "pycparser"]
         cmd = [sys.executable, "-m", "pip", "install", "--no-cache-dir",
                "--only-binary=:all:", "--disable-pip-version-check",
                "--no-warn-script-location", "--target", str(vendor)] + req
