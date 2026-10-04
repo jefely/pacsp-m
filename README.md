@@ -153,6 +153,7 @@ records_centroid/  脚本输出目录（每次运行重建，不入库）
 | `F4-F6-MECHANISM-AND-DECISION.md` | 机理检验与决策性对比 |
 | `F7-FINAL-RECOMMENDATION.md` | 区间估计与最终建议 |
 | `FRAMEWORK-REBUILD-ASSESSMENT.md` | **是否重建论文框架的评估**（含 N3 实验：μ 本地化不改善顺序敏感） |
+| `N4-SIGMA-RESOLUTIONS.md` | **σ 类参数的四条解决路线**：均可解，均丧失判别力（含一个反例） |
 
 ## 八、复现
 
