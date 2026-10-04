@@ -422,6 +422,51 @@ def main():
             if v is not None:
                 checks.append((f"§4.9 {k} 维度 {claim}", claim, v, v == claim))
 
+    # ---------------------------------------------------------------- §4.11 cross
+    n9 = get("n9_cross_relations")
+    if n9:
+        pr = n9.get("pairs", {})
+        for dom, fields in (
+                ("poem", {"cross_mean": 0.7648, "separation": 1.2773,
+                          "overlap_at_within_p95": 0.797}),
+                ("lyrics", {"cross_mean": 0.9936, "separation": 1.4516,
+                            "overlap_at_within_p95": 0.066}),
+                ("techdoc", {"cross_mean": 0.8987, "separation": 1.0230,
+                             "overlap_at_within_p95": 0.926}),
+                ("medicine", {"cross_mean": 1.1020, "separation": 1.0547,
+                              "overlap_at_within_p95": 0.811}),
+                ("openqa", {"cross_mean": 1.1918, "separation": 1.0301,
+                            "overlap_at_within_p95": 0.854})):
+            for k, claim in fields.items():
+                v = pr.get(dom, {}).get(k)
+                if v is not None:
+                    checks.append((f"§4.11 {dom} {k}", claim, v,
+                                   close(claim, v, 0.03)))
+        for dom, lo, hi in (("poem", 0.7612, 0.7686), ("lyrics", 0.9895, 0.9979),
+                            ("techdoc", 0.8900, 0.9076), ("medicine", 1.0953, 1.1086),
+                            ("openqa", 1.1854, 1.1981)):
+            ci = pr.get(dom, {}).get("cross_ci95")
+            if ci:
+                checks.append((f"§4.11 {dom} CI 下限", lo, ci[0], close(lo, ci[0], 0.03)))
+                checks.append((f"§4.11 {dom} CI 上限", hi, ci[1], close(hi, ci[1], 0.03)))
+        sm = n9.get("summary", {})
+        checks.append(("§4.11 分离度 > 1 的配对 5/5", 5, sm.get("n_sep_gt_1"),
+                       sm.get("n_sep_gt_1") == 5))
+        sr = sm.get("separation_range")
+        if sr:
+            checks.append(("§4.11 分离度范围 1.0230–1.4516",
+                           [1.023, 1.4516], sr,
+                           close(1.023, sr[0], 0.01) and close(1.4516, sr[1], 0.01)))
+        ov = sm.get("overlap_range")
+        if ov:
+            checks.append(("§4.11 重叠范围 0.066–0.926",
+                           [0.066, 0.926], ov,
+                           close(0.066, ov[0], 0.02) and close(0.926, ov[1], 0.02)))
+        r = sm.get("r_D_vs_style")
+        if r is not None:
+            checks.append(("§4.11 r(D, 风格) ≈ −0.0143", -0.0143, r,
+                           abs(r + 0.0143) < 0.01))
+
     # ---------------------------------------------------------------- report
     print(f"  doc: {DOC.name}  ({len(doc):,} 字符)")
     print(f"  results 文件: {len(results)}")
