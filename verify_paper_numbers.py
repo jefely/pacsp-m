@@ -180,29 +180,53 @@ def main():
     if f7:
         mpd = {"poem": 0.8305, "lyrics": 0.8691, "techdoc": 1.4426,
                "medicine": 0.9147, "openqa": 0.9358}
-        ci = {"poem": (0.684, 0.974), "lyrics": (0.748, 0.981),
-              "techdoc": (1.304, 1.590), "medicine": (0.887, 0.941),
-              "openqa": (0.917, 0.953)}
+        ci = {"poem": (0.6842, 0.9742), "lyrics": (0.7482, 0.9812),
+              "techdoc": (1.3043, 1.5903), "medicine": (0.8875, 0.9413),
+              "openqa": (0.9174, 0.9525)}
         for k, claim in mpd.items():
             v = f7.get(k, {}).get("mean_pair_dist", {}).get("point")
             if v is not None:
-                checks.append((f"§6.2 {k} 比值", claim, v, close(claim, v, 0.02)))
+                checks.append((f"§4.3 {k} 比值", claim, v, close(claim, v, 0.02)))
         for k, (lo, hi) in ci.items():
             d = f7.get(k, {}).get("mean_pair_dist", {}).get("ci95")
             if d:
-                checks.append((f"§6.2 {k} CI 下限", lo, d[0], close(lo, d[0], 0.02)))
-                checks.append((f"§6.2 {k} CI 上限", hi, d[1], close(hi, d[1], 0.02)))
+                checks.append((f"§4.3 {k} CI 下限", lo, d[0], close(lo, d[0], 0.02)))
+                checks.append((f"§4.3 {k} CI 上限", hi, d[1], close(hi, d[1], 0.02)))
         ok = sum(1 for k in f7
                  if f7[k].get("mean_pair_dist", {}).get("excludes_1"))
-        checks.append(("§6.2 区间排除 1 的个数 5/5", 5, ok, ok == 5))
+        checks.append(("§4.3 区间排除 1 的个数 5/5", 5, ok, ok == 5))
+        # the two spreads the paper reports
+        pts = {k: f7[k]["mean_pair_dist"]["point"] for k in f7}
+        consistent = [v for k, v in pts.items() if k != "techdoc"]
+        checks.append(("§4.3 四个同向域跨度 1.13x", 1.13,
+                       round(max(consistent) / min(consistent), 2),
+                       close(1.13, max(consistent) / min(consistent), 0.02)))
+        checks.append(("§4.3 含反向域跨度 1.74x", 1.74,
+                       round(max(pts.values()) / min(pts.values()), 2),
+                       close(1.74, max(pts.values()) / min(pts.values()), 0.02)))
+        cvs = [f7[k]["mean_pair_dist"][f] for k in f7
+               for f in ("human_boot_cv", "machine_boot_cv")]
+        checks.append(("§4.2 自助法 CV 0.012–0.081", "0.012-0.081",
+                       f"{min(cvs):.4f}-{max(cvs):.4f}",
+                       close(min(cvs), 0.0134, 0.05) and close(max(cvs), 0.0805, 0.05)))
 
     e5 = get("e5_baseline")
     if e5:
         m = e5.get("measures", {})
-        if "machine_poem" in m:
-            checks.append(("§3.6/§5 模型差 31%（qwen/r1）", 0.31,
-                           round((9.5902 - 6.6421) / 9.5902, 2),
-                           close(0.31, round((9.5902 - 6.6421) / 9.5902, 2), 0.05)))
+        # §3.6 / §2.2 model difference
+        checks.append(("§2.2 模型差 31%（qwen/r1）", 0.31,
+                       round((9.5902 - 6.6421) / 9.5902, 2),
+                       close(0.31, round((9.5902 - 6.6421) / 9.5902, 2), 0.05)))
+        # §5.1 C_T across-arm spread 13.50x
+        if "C_T" in next(iter(m.values())):
+            vals = [m[a]["C_T"] for a in m]
+            checks.append(("§5.1 C_T 跨臂跨度 13.50x", 13.50,
+                           round(max(vals) / min(vals), 2),
+                           close(13.50, max(vals) / min(vals), 0.02)))
+            vals = [m[a]["mean_pair_dist"] for a in m]
+            checks.append(("§4.5 mean_pair_dist 跨臂 2.20x", 2.20,
+                           round(max(vals) / min(vals), 2),
+                           close(2.20, max(vals) / min(vals), 0.02)))
 
     # ---------------------------------------------------------------- report
     print(f"  doc: {DOC.name}  ({len(doc):,} 字符)")
