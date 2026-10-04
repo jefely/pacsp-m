@@ -1,0 +1,44 @@
+{
+  "ratios": {
+    "bge-large": {
+      "poem": 0.8305,
+      "lyrics": 0.8691,
+      "techdoc": 0.9205,
+      "medicine": 0.9147,
+      "openqa": 0.9358
+    },
+    "bge-small": {
+      "poem": 0.8728,
+      "lyrics": 0.9038,
+      "techdoc": 0.8907,
+      "medicine": 0.9777,
+      "openqa": 0.9562
+    },
+    "text2vec": {
+      "poem": 0.9725,
+      "lyrics": 0.8309,
+      "techdoc": 1.01,
+      "medicine": 1.0048,
+      "openqa": 0.9634
+    }
+  },
+  "mean_abs_diff": {
+    "bge_large_vs_small": 0.038,
+    "bge_large_vs_text2vec": 0.0775,
+    "bge_small_vs_text2vec": 0.0652,
+    "within_family": 0.038,
+    "across_family": 0.0714,
+    "ratio": 1.8759
+  },
+  "mean_abs_dev_from_1": {
+    "bge-large": 0.1059,
+    "bge-small": 0.0798,
+    "text2vec": 0.0496
+  },
+  "text2vec_below_1": 3,
+  "text2vec_range": [
+    0.8309,
+    1.01
+  ],
+  "reading": "family-dependent, shrinking toward 1 rather than reversing"
+}

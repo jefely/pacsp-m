@@ -370,6 +370,58 @@ def main():
             checks.append(("§4.5 合并质心 SD 比 >1", True,
                            (pt.get("sd_ratio") or 0) > 1, (pt.get("sd_ratio") or 0) > 1))
 
+    # ---------------------------------------------------------------- §4.9 models
+    n8b = get("n8b_model_reading")
+    if n8b:
+        rr = n8b.get("ratios", {})
+        for model, dom, claim in (("bge-small", "poem", 0.8728),
+                                  ("bge-small", "lyrics", 0.9038),
+                                  ("bge-small", "techdoc", 0.8907),
+                                  ("bge-small", "medicine", 0.9777),
+                                  ("bge-small", "openqa", 0.9562),
+                                  ("text2vec", "poem", 0.9725),
+                                  ("text2vec", "techdoc", 1.0100),
+                                  ("text2vec", "medicine", 1.0048)):
+            v = rr.get(model, {}).get(dom)
+            if v is not None:
+                checks.append((f"§4.9 {model} {dom}", claim, v, close(claim, v, 0.02)))
+        md = n8b.get("mean_abs_diff", {})
+        for k, claim in (("bge_large_vs_small", 0.0380),
+                         ("bge_large_vs_text2vec", 0.0775),
+                         ("bge_small_vs_text2vec", 0.0652),
+                         ("within_family", 0.0380),
+                         ("across_family", 0.0714),
+                         ("ratio", 1.88)):
+            v = md.get(k)
+            if v is not None:
+                checks.append((f"§4.9 平均绝对差 {k}", claim, v, close(claim, v, 0.03)))
+        mdv = n8b.get("mean_abs_dev_from_1", {})
+        for k, claim in (("bge-large", 0.1059), ("bge-small", 0.0798),
+                         ("text2vec", 0.0496)):
+            v = mdv.get(k)
+            if v is not None:
+                checks.append((f"§4.9 平均|比值-1| {k}", claim, v, close(claim, v, 0.03)))
+        checks.append(("§4.9 text2vec 低于 1 的个数 3/5", 3,
+                       n8b.get("text2vec_below_1"), n8b.get("text2vec_below_1") == 3))
+        rng_ = n8b.get("text2vec_range")
+        checks.append(("§4.9 text2vec 比值范围 0.8309–1.0100",
+                       [0.8309, 1.0100], rng_,
+                       rng_ == [0.8309, 1.0100]))
+    n8 = get("n8_model_robustness")
+    if n8:
+        mo = n8.get("models", {})
+        for k, claim in (("bge-large-zh-v1.5", 5), ("bge-small-zh-v1.5", 5),
+                         ("text2vec-base-chinese", 3)):
+            v = mo.get(k, {}).get("below_1")
+            if v is not None:
+                checks.append((f"§4.9 {k} 低于 1 的个数", claim, v, v == claim))
+        dims = {"bge-large-zh-v1.5": 1024, "bge-small-zh-v1.5": 512,
+                "text2vec-base-chinese": 768}
+        for k, claim in dims.items():
+            v = mo.get(k, {}).get("dim")
+            if v is not None:
+                checks.append((f"§4.9 {k} 维度 {claim}", claim, v, v == claim))
+
     # ---------------------------------------------------------------- report
     print(f"  doc: {DOC.name}  ({len(doc):,} 字符)")
     print(f"  results 文件: {len(results)}")
