@@ -1,0 +1,30 @@
+{
+  "stats": {
+    "techdoc": {
+      "n": 31,
+      "D": 0.8422,
+      "chars_mean": 10280,
+      "bytes_mean": 18329
+    },
+    "machine_techdoc": {
+      "n": 31,
+      "D": 0.5838,
+      "chars_mean": 1061,
+      "bytes_mean": 2313
+    },
+    "machine_techdoc2": {
+      "n": 31,
+      "D": 0.9149,
+      "chars_mean": 1580,
+      "bytes_mean": 4146
+    }
+  },
+  "stamp": "20261005-042035",
+  "verdict": {
+    "ratio_original": 1.4426,
+    "ratio_topic_matched": 0.9205,
+    "reversal_survives": false,
+    "length_gap_original": 7.9243,
+    "length_gap_matched": 4.4209
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "filter": {
+    "kept": 31,
+    "dropped": 0,
+    "dropped_detail": []
+  },
+  "filtered": {
+    "D_human": 0.8422,
+    "D_all": 0.9149,
+    "D_filtered": 0.9149,
+    "ratio_all": 0.9205,
+    "ratio_filtered": 0.9205
+  },
+  "length_control": {
+    "target": 1476,
+    "D_human_trimmed": 0.8426,
+    "D_machine_trimmed": 0.9149,
+    "ratio_trimmed": 0.921
+  },
+  "verdict": {
+    "final_ratio": 0.921,
+    "reversal_survives": false,
+    "original_ratio": 1.4426,
+    "interpretation": "reversal gone"
+  }
+}
