@@ -125,7 +125,8 @@ class Embedder:
         try:
             self._impl = pacsp_backends.make_embedder(
                 chosen, self.model_id, onnx_dir=self.onnx_dir,
-                prefer_gpu=self.prefer_gpu)
+                prefer_gpu=self.prefer_gpu,
+                tokenizer_path=self.local_tokenizer_dir())
         except Exception as e:
             if chosen == "onnx" and self.backend == "auto":
                 print(f"  note: ONNX backend unavailable ({type(e).__name__}), "
@@ -135,6 +136,16 @@ class Embedder:
             else:
                 raise
         return self._impl
+
+    def local_tokenizer_dir(self):
+        """A bundled tokenizer directory, if one sits next to the tool.
+
+        The bundle ships the tokenizer files under model/, and transformers must be told to
+        read them from there: resolving the model id would need the network even though the
+        files are present.
+        """
+        d = Path(__file__).resolve().parent / "model"
+        return d if (d / "tokenizer.json").exists() else None
 
     @property
     def active_backend(self) -> str:

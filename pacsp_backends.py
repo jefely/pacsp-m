@@ -89,9 +89,11 @@ class OnnxEmbedder(BaseEmbedder):
 
     name = "onnx"
 
-    def __init__(self, onnx_path: Path, tokenizer_id: str, prefer_gpu: bool = True):
+    def __init__(self, onnx_path: Path, tokenizer_id: str, prefer_gpu: bool = True,
+                 tokenizer_path: Path | str | None = None):
         self.onnx_path = Path(onnx_path)
         self.tokenizer_id = tokenizer_id
+        self.tokenizer_path = Path(tokenizer_path) if tokenizer_path else None
         if not self.onnx_path.exists():
             raise SystemExit(
                 f"ONNX model not found: {self.onnx_path}\n"
@@ -99,7 +101,15 @@ class OnnxEmbedder(BaseEmbedder):
         self.dll_dir = _add_torch_cuda_dlls() if prefer_gpu else None
         import onnxruntime as ort
         from transformers import AutoTokenizer
-        self.tok = AutoTokenizer.from_pretrained(tokenizer_id)
+        # A local directory takes precedence. The bundle ships the tokenizer files, and
+        # without this transformers tries to resolve the model id over the network, which
+        # fails on an offline machine even though the files are right there.
+        if self.tokenizer_path and self.tokenizer_path.is_dir():
+            self.tok = AutoTokenizer.from_pretrained(str(self.tokenizer_path))
+            self.tokenizer_source = str(self.tokenizer_path)
+        else:
+            self.tok = AutoTokenizer.from_pretrained(tokenizer_id)
+            self.tokenizer_source = tokenizer_id
         so = ort.SessionOptions()
         so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
         avail = ort.get_available_providers()
@@ -127,15 +137,27 @@ class OnnxEmbedder(BaseEmbedder):
 
     def describe(self) -> dict:
         return {"backend": self.name, "model": str(self.onnx_path),
-                "providers": self.providers, "dll_dir": self.dll_dir}
+                "providers": self.providers, "dll_dir": self.dll_dir,
+                "tokenizer": self.tokenizer_source}
 
 
 def make_embedder(backend: str, model_id: str, onnx_path: Path | None = None,
-                  onnx_dir: Path | None = None,
-                  prefer_gpu: bool = True) -> BaseEmbedder:
-    """Choose a backend, falling back only when the preferred one cannot be built."""
+                  onnx_dir: Path | str | None = None,
+                  prefer_gpu: bool = True,
+                  tokenizer_path: Path | str | None = None) -> BaseEmbedder:
+    """Choose a backend, falling back only when the preferred one cannot be built.
+
+    onnx_dir accepts a string as well as a Path. A caller passing a string previously hit
+    "unsupported operand type(s) for /: 'str' and 'str'" from the path join below, which the
+    CLI never triggered because it passes a Path. Found by testing the bundle through a
+    library-style call rather than through the CLI.
+    """
     if backend == "onnx":
-        p = Path(onnx_path) if onnx_path else (
-            (onnx_dir or Path.cwd() / "onnx") / f"{DEFAULT_ONNX}.onnx")
-        return OnnxEmbedder(p, model_id, prefer_gpu=prefer_gpu)
+        if onnx_path:
+            p = Path(onnx_path)
+        else:
+            base = Path(onnx_dir) if onnx_dir else Path.cwd() / "onnx"
+            p = base / f"{DEFAULT_ONNX}.onnx"
+        return OnnxEmbedder(p, model_id, prefer_gpu=prefer_gpu,
+                            tokenizer_path=tokenizer_path)
     return SentenceTransformerEmbedder(model_id)
