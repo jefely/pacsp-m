@@ -13,3 +13,6 @@ __pycache__/
 # 临时
 *.tmp
 _omega_test/
+
+# 渲染预览为中间产物，交付物是 dist/*.docx 与 dist/*.pdf
+dist/preview/
