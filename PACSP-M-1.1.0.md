@@ -774,7 +774,7 @@ bootstrap CV: <值>（若 > 0.15，样本不足）
 
 ```
 PACSP-M/
-  PACSP-M-1.0.0.md          本文
+  PACSP-M-1.1.0.md          本文
   pacsp_core.py             测量核心（6 函数逐字复制自 PACSP-ID 的 pacsp_build.py）
   verify_core.py            核心一致性：10/10 冻结值 + 6 函数×3 语料逐位相同
   verify_results.py         可复现性：定稿快照 vs 本次运行的 SHA-256
