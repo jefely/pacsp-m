@@ -21,3 +21,5 @@ dist/preview/
 onnx/*.onnx
 onnx/embcache/
 _ortgpu/
+# int8 变体已否决（docs/INT8-REJECTED.md），不入库
+onnx/*.int8_*.onnx
