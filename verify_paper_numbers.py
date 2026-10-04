@@ -334,6 +334,42 @@ def main():
                        vda.get("reversal_survives"),
                        vda.get("reversal_survives") is True))
 
+    # ---------------------------------------------------------------- §4.5 pooling
+    n7b = get("n7b_budget_sweep")
+    if n7b:
+        for b in ("36", "80", "150", "300", "600"):
+            v = n7b.get(b)
+            if not v:
+                continue
+            checks.append((f"§4.5 预算 {b} 质心均值比 ≈1", 1.0,
+                           round(v["cent_mean_ratio"], 2),
+                           abs(v["cent_mean_ratio"] - 1) < 0.02))
+            checks.append((f"§4.5 预算 {b} 质心标准差比 >1", True,
+                           v["cent_sd_ratio"] > 1, v["cent_sd_ratio"] > 1))
+            checks.append((f"§4.5 预算 {b} 近邻标准差比 >1", True,
+                           v["nbr_sd_ratio"] > 1, v["nbr_sd_ratio"] > 1))
+        rb = n7b.get("_robustness", {})
+        checks.append(("§4.5 质心均值比范围 0.9996–1.0006",
+                       "0.9996-1.0006", rb.get("cent_mean_range"),
+                       rb.get("cent_mean_range") == [0.9996, 1.0006]))
+        checks.append(("§4.5 质心标准差比范围 2.2013–3.2374",
+                       "2.2013-3.2374", rb.get("cent_sd_range"),
+                       rb.get("cent_sd_range") == [2.2013, 3.2374]))
+        checks.append(("§4.5 均值比排除 1 的预算 0/5", 0,
+                       rb.get("budgets_with_mean_excl1"),
+                       rb.get("budgets_with_mean_excl1") == 0))
+        checks.append(("§4.5 两标准差比均排除 1 的预算 5/5", 5,
+                       rb.get("budgets_with_both_sd_excl1"),
+                       rb.get("budgets_with_both_sd_excl1") == 5))
+    n7 = get("n7_homogeneity")
+    if n7:
+        pt = n7.get("unadjusted", {}).get("pooled_centroid", {})
+        if pt:
+            checks.append(("§4.5 合并质心均值比 excl1=False",
+                           False, pt.get("mean_excl1"), pt.get("mean_excl1") is False))
+            checks.append(("§4.5 合并质心 SD 比 >1", True,
+                           (pt.get("sd_ratio") or 0) > 1, (pt.get("sd_ratio") or 0) > 1))
+
     # ---------------------------------------------------------------- report
     print(f"  doc: {DOC.name}  ({len(doc):,} 字符)")
     print(f"  results 文件: {len(results)}")
