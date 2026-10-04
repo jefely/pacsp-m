@@ -151,6 +151,7 @@ records_centroid/  脚本输出目录（每次运行重建，不入库）
 | `F1F2-SENSITIVITY-AND-INTERVALS.md` | 参数敏感性扫描与区间 |
 | `F4-F6-MECHANISM-AND-DECISION.md` | 机理检验与决策性对比 |
 | `F7-FINAL-RECOMMENDATION.md` | 区间估计与最终建议 |
+| `FRAMEWORK-REBUILD-ASSESSMENT.md` | **是否重建论文框架的评估**（含 N3 实验：μ 本地化不改善顺序敏感） |
 
 ## 八、复现
 
