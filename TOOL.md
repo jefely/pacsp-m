@@ -232,3 +232,28 @@ python tests/test_tool_matches_paper.py
 3. **风格比只用了字符二元组 Jaccard**，最朴素的指标；组内重叠低于 0.02 时数值不稳。
 4. **`text2vec-base-chinese` 未作为比较 frame 验证**（3/5 方向，效应收缩至约 1%）。
 5. **编码器的语言覆盖未验证**——已校准的三个都是中文。
+---
+
+## 十二、存证：让结果可被独立核验
+
+```bash
+# 测量并写出一份防篡改记录
+python pacsp_tool.py --backend onnx attest 我的语料/ --out 我的记录.pacsp
+
+# 验证
+python pacsp_tool.py verifyrecord 我的记录.pacsp --corpus 我的语料/
+
+# 若证明仍是 pending，稍后补齐 Bitcoin 锚
+python pacsp_tool.py verifyrecord 我的记录.pacsp --upgrade --save
+```
+
+**四层**：L1 分层内容哈希（改任何数字都会被发现）· L2 Ed25519 签名（公钥在记录内，
+自验证）· L3 三级 Merkle（语料与结果分别可核）· L4 OpenTimestamps（有区块即外部可验时间证明）。
+
+**它证明什么**：数字在此之后未被改动；有区块时还证明它们在该时刻之前已存在。
+
+**它不证明什么**：测量本身有效。那要靠输出里的闸门。
+
+**与 PACSP-ID 的记录格式不互通**（L1 折入的引用不同、公钥位置不同、L5 未实现）。
+记录用 `metadata.record_schema` 自描述；验证器遇到不认识的 schema 会**拒检并返回 2**，
+而不是把"格式不同"报成"被篡改"。详见 [`docs/ATTESTATION.md`](docs/ATTESTATION.md)。

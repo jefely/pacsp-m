@@ -616,7 +616,170 @@ def build_parser() -> argparse.ArgumentParser:
                    help="sampled pairs for the style measure (default 4000)")
     c.add_argument("--json", help="write the result as JSON")
     c.set_defaults(func=cmd_compare)
+
+    a = sub.add_parser("attest", help="measure and write a tamper-evident record")
+    a.add_argument("collection")
+    a.add_argument("collection_b", nargs="?", default=None,
+                   help="optional second collection, to record a comparison")
+    a.add_argument("--out", help="record path (default <collection>.pacsp)")
+    a.add_argument("--no-bitcoin", action="store_true",
+                   help="do not attempt the OpenTimestamps upgrade")
+    a.set_defaults(func=cmd_attest)
+
+    v = sub.add_parser("verifyrecord", help="check a .pacsp record")
+    v.add_argument("record")
+    v.add_argument("--corpus", help="corpus directory, to recheck the sample level")
+    v.add_argument("--upgrade", action="store_true",
+                   help="ask the calendars whether a pending proof can be completed")
+    v.add_argument("--save", action="store_true",
+                   help="write an upgraded record back to its path")
+    v.set_defaults(func=cmd_verifyrecord)
     return p
+
+
+def cmd_attest(args) -> int:
+    """Measure, then seal the result into a .pacsp record.
+
+    The record is built from the same statistics the other subcommands print, so what is
+    attested is what was reported. L4 is attempted but never required: a pending timestamp is
+    recorded as pending, and only block heights read back out of the proof count as an anchor.
+    """
+    import pacsp_attest
+    repo = resolve_frame(args)[0]
+    emb = Embedder(repo, backend=args.backend, onnx_dir=args.onnx_dir,
+                   prefer_gpu=not args.no_gpu)
+    rng = np.random.default_rng(args.seed)
+    workdir = Path(args.out).parent if args.out else Path.cwd()
+    workdir.mkdir(parents=True, exist_ok=True)
+
+    dirs = [Path(args.collection)]
+    stats = {}
+    if args.collection_b:
+        dirs.append(Path(args.collection_b))
+        ta, _ = load_texts(dirs[0])
+        tb, _ = load_texts(dirs[1])
+        EA, EB = emb.encode(ta), emb.encode(tb)
+        wA, wB = T_within(EA), T_within(EB)
+        X = T_cross(EA, EB)
+        ma = bootstrap_mean_ci(wA, args.bootstrap, rng)
+        mb = bootstrap_mean_ci(wB, args.bootstrap, rng)
+        pooled = np.concatenate([wA, wB])
+        stats = {
+            "kind": "compare",
+            "collections": [
+                {"name": dirs[0].name, "n": len(ta), "D": round(ma[0], 6),
+                 "ci95": [round(ma[1], 6), round(ma[2], 6)],
+                 "bootstrap_cv": round(ma[3], 6)},
+                {"name": dirs[1].name, "n": len(tb), "D": round(mb[0], 6),
+                 "ci95": [round(mb[1], 6), round(mb[2], 6)],
+                 "bootstrap_cv": round(mb[3], 6)}],
+            "ratio_within_D": round(ma[0] / mb[0], 6),
+            "cross_mean": round(float(X.mean()), 6),
+            "separation": round(float(X.mean() / pooled.mean()), 6),
+            "overlap_at_pooled_p95": round(
+                float((X < np.percentile(pooled, 95)).mean()), 6),
+        }
+    else:
+        ta, _ = load_texts(dirs[0])
+        E = emb.encode(ta)
+        w = T_within(E)
+        m = bootstrap_mean_ci(w, args.bootstrap, rng)
+        stats = {"kind": "measure", "collection": dirs[0].name, "n": len(ta),
+                 "D": round(m[0], 6), "ci95": [round(m[1], 6), round(m[2], 6)],
+                 "bootstrap_cv": round(m[3], 6), "n_distances": int(len(w))}
+
+    rec = pacsp_attest.build_record(
+        tool_version="1.1.0", frame=args.frame, backend=emb.active_backend,
+        corpus_dirs=dirs, stats=stats, workdir=workdir,
+        attempt_upgrade=not args.no_bitcoin)
+
+    out = Path(args.out) if args.out else dirs[0].with_suffix(".pacsp")
+    out.write_text(json.dumps(rec, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    print(f"\n  record      : {out}")
+    print(f"  frame       : {args.frame}  ({repo})")
+    print(f"  backend     : {emb.active_backend}")
+    for k in ("L1", "L2", "L3", "L4"):
+        f = rec["integrity"][k]
+        print(f"  {k}          : {f['status']}")
+    l1h = rec["integrity"]["L1"]["data"]["content_hash"]
+    l2d = rec["integrity"]["L2"]["data"]
+    l4d = rec["integrity"]["L4"]["data"]
+    print(f"\n  content hash: {l1h}")
+    print(f"  signed by   : key {l2d['public_key_id']} (Ed25519)")
+    print(f"  stamped     : {l4d['stamped_digest']}")
+    print(f"  anchor      : {l4d['timestamp_anchor']}")
+    if l4d.get("bitcoin_attestations"):
+        print(f"  blocks      : {l4d['bitcoin_attestations']}")
+    else:
+        print(f"  note        : {l4d.get('note')}")
+    print("\n  The record proves the numbers were not altered after this point.")
+    print("  With a Bitcoin block it also proves they existed by that time.")
+    print("  It does NOT prove the measurement itself is valid; for that see the gates.")
+    return 0
+
+
+def cmd_verifyrecord(args) -> int:
+    import pacsp_attest
+    p = Path(args.record)
+    rec = json.loads(p.read_text(encoding="utf-8"))
+    if args.upgrade:
+        changed, blocks, msg = pacsp_attest.upgrade_proof(rec, p.parent)
+        print(f"\n  upgrade: {msg}" + (f"  blocks {blocks}" if blocks else ""))
+        if changed and args.save:
+            p.write_text(json.dumps(rec, ensure_ascii=False, indent=2),
+                         encoding="utf-8")
+            print(f"  record rewritten with the anchor: {p}")
+        elif changed:
+            print("  (not saved; pass --save to write the anchor into the record)")
+    res = pacsp_attest.verify_record(rec, Path(args.corpus) if args.corpus else None,
+                                     p.parent)
+    print(f"\n  record : {p}")
+    print(f"  created: {rec.get('created_at')}")
+    print(f"  frame  : {(rec.get('metadata') or {}).get('frame')}")
+    if "_schema" in res:
+        print(f"\n  [skip] {res['_schema'][1]}")
+        print("\n  result: NOT CHECKED (foreign schema)")
+        return 2
+    fatal_bad = []
+    print()
+    for k in ("L1", "L2", "L3a", "L3b", "L3c", "L4"):
+        ok, msg = res.get(k, (None, "missing"))
+        tag = "ok  " if ok is True else ("PEND" if ok is None else "FAIL")
+        print(f"  [{tag}] {k:<4} {msg}")
+        if ok is False and k in ("L1", "L2", "L3a", "L3b", "L3c"):
+            fatal_bad.append(k)
+    verdict = "VERIFIED" if not fatal_bad else "FAILED"
+    print(f"\n  result: {verdict}"
+          + ("" if not fatal_bad else f"  (broken: {', '.join(fatal_bad)})"))
+    if res.get("L4", (None,))[0] is None:
+        print("  L4 is not an anchor yet; the proof holds pending attestations.")
+        print("  Re-run attest later, or run 'ots upgrade' on the .ots file.")
+    return 0 if not fatal_bad else 1
+
+
+def bootstrap_mean_ci(x, n_boot, rng, alpha=0.05):
+    idx = rng.integers(0, len(x), size=(n_boot, len(x)))
+    means = x[idx].mean(axis=1)
+    lo, hi = np.percentile(means, [100 * alpha / 2, 100 * (1 - alpha / 2)])
+    cv = float(means.std() / means.mean()) if means.mean() else float("inf")
+    return float(x.mean()), float(lo), float(hi), cv
+
+
+def T_within(E):
+    n = len(E)
+    iu = np.triu_indices(n, k=1)
+    return cross_sq(E, E)[iu]
+
+
+def T_cross(A, B):
+    return cross_sq(A, B).ravel()
+
+
+def cross_sq(A, B):
+    aa = np.sum(A * A, axis=1)[:, None]
+    bb = np.sum(B * B, axis=1)[None, :]
+    return np.sqrt(np.maximum(aa + bb - 2.0 * (A @ B.T), 0.0))
 
 
 def main(argv=None) -> int:
