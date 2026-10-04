@@ -1,4 +1,4 @@
-"""Check every number quoted in PACSP-M-1.0.0.md against the frozen results.
+"""Check every number quoted in PACSP-M-1.1.0.md against the frozen results.
 
 A paper whose figures cannot be traced to a result file is not reproducible, however
 carefully it is written. This parses the document for the specific values it asserts and
@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 M = Path(__file__).resolve().parent
-DOC = M / "PACSP-M-1.0.0.md"
+DOC = M / "PACSP-M-1.1.0.md"
 RES = M / "results"
 
 results = {}
