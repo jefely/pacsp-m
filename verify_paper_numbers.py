@@ -297,6 +297,43 @@ def main():
         checks.append(("§4.4 最大偏移 6.9%", 0.069, vd.get("max_shift"),
                        close(0.069, vd.get("max_shift"), 0.05)))
 
+    # ---------------------------------------------------------------- §4.5 H1
+    n6c = get("n6c_h1_hardened")
+    if n6c:
+        fl = n6c.get("filtered", {})
+        for k, claim in (("D_human", 0.8422), ("D_all", 0.9149),
+                         ("ratio_all", 0.9205), ("ratio_filtered", 0.9205)):
+            v = fl.get(k)
+            if v is not None:
+                checks.append((f"§4.5 {k}", claim, v, close(claim, v, 0.02)))
+        lc = n6c.get("length_control", {})
+        for k, claim in (("target", 1476), ("D_human_trimmed", 0.8426),
+                         ("D_machine_trimmed", 0.9149), ("ratio_trimmed", 0.9210)):
+            v = lc.get(k)
+            if v is not None:
+                checks.append((f"§4.5 长度控制 {k}", claim, v, close(claim, v, 0.02)))
+        vd = n6c.get("verdict", {})
+        checks.append(("§4.5 反转不再存活", False, vd.get("reversal_survives"),
+                       vd.get("reversal_survives") is False))
+    n6b = get("n6b_h1")
+    if n6b:
+        st = n6b.get("stats", {})
+        for arm, claim in (("techdoc", 0.8422), ("machine_techdoc", 0.5838),
+                           ("machine_techdoc2", 0.9149)):
+            v = st.get(arm, {}).get("D")
+            if v is not None:
+                checks.append((f"§4.5 三臂 {arm} D", claim, v, close(claim, v, 0.02)))
+    n6a = get("n6a_duplicates")
+    if n6a:
+        de = n6a.get("dedup_effect", {})
+        vda = n6a.get("verdict", {})
+        checks.append(("§4.5 去重后 techdoc D 0.8356", 0.8356,
+                       de.get("techdoc", {}).get("D_dedup"),
+                       close(0.8356, de.get("techdoc", {}).get("D_dedup"), 0.02)))
+        checks.append(("§4.5 去重后反转仍存活", True,
+                       vda.get("reversal_survives"),
+                       vda.get("reversal_survives") is True))
+
     # ---------------------------------------------------------------- report
     print(f"  doc: {DOC.name}  ({len(doc):,} 字符)")
     print(f"  results 文件: {len(results)}")

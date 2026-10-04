@@ -1,0 +1,84 @@
+{
+  "duplicates": {
+    "techdoc": {
+      "n": 31,
+      "exact_duplicate_extras": 1,
+      "near_dup_groups": 1,
+      "largest_group": 2
+    },
+    "machine_techdoc": {
+      "n": 31,
+      "exact_duplicate_extras": 0,
+      "near_dup_groups": 0,
+      "largest_group": 1
+    },
+    "poem": {
+      "n": 31,
+      "exact_duplicate_extras": 2,
+      "near_dup_groups": 2,
+      "largest_group": 2
+    },
+    "machine_poem": {
+      "n": 31,
+      "exact_duplicate_extras": 0,
+      "near_dup_groups": 0,
+      "largest_group": 1
+    },
+    "lyrics": {
+      "n": 31,
+      "exact_duplicate_extras": 0,
+      "near_dup_groups": 1,
+      "largest_group": 2
+    },
+    "machine_lyrics": {
+      "n": 31,
+      "exact_duplicate_extras": 0,
+      "near_dup_groups": 0,
+      "largest_group": 1
+    }
+  },
+  "dedup_effect": {
+    "techdoc": {
+      "D_all": 0.8422,
+      "D_dedup": 0.8356,
+      "change": 0.9922,
+      "n_dedup": 30
+    },
+    "machine_techdoc": {
+      "D_all": 0.5838,
+      "D_dedup": 0.5838,
+      "change": 1.0,
+      "n_dedup": 31
+    },
+    "poem": {
+      "D_all": 0.5434,
+      "D_dedup": 0.5576,
+      "change": 1.0261,
+      "n_dedup": 29
+    },
+    "machine_poem": {
+      "D_all": 0.6543,
+      "D_dedup": 0.6543,
+      "change": 1.0,
+      "n_dedup": 31
+    },
+    "lyrics": {
+      "D_all": 0.6365,
+      "D_dedup": 0.6426,
+      "change": 1.0097,
+      "n_dedup": 30
+    },
+    "machine_lyrics": {
+      "D_all": 0.7324,
+      "D_dedup": 0.7324,
+      "change": 1.0,
+      "n_dedup": 31
+    }
+  },
+  "verdict": {
+    "ratio_all": 1.4426,
+    "ratio_dedup": 1.4313,
+    "reversal_survives": true,
+    "shift": 0.0078
+  }
+}
