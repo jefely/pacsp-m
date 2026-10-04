@@ -13,7 +13,10 @@ import urllib.request
 from pathlib import Path
 
 REPO = Path(r"D:\myproject\PACSP-M")
-TOKEN = Path(r"D:\myproject\chrome-debug\_gh_token.txt").read_text(encoding="utf-8").strip()
+# Path from argv so this cannot drift from the step that wrote the token file.
+_tk = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(
+    r"D:\myproject\chrome-debug\_gh_token.txt")
+TOKEN = _tk.read_text(encoding="utf-8").strip()
 OWNER, NAME = "jefely", "pacsp-m"
 API = "https://api.github.com"
 

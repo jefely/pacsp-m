@@ -13,7 +13,10 @@ import urllib.request
 from pathlib import Path
 
 REPO = Path(r"D:\myproject\PACSP-M")
-TOKEN_FILE = Path(r"D:\myproject\chrome-debug\_gh_token.txt")
+# The token file path is taken from argv when given, so the read step and this step cannot
+# drift apart. A hard-coded path here broke a push once already.
+TOKEN_FILE = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(
+    r"D:\myproject\chrome-debug\_gh_token.txt")
 OWNER = "jefely"
 NAME = "pacsp-m"
 DESCRIPTION = ("PACSP-M 1.1.0: a measurement framework for cognitive deposition — "
