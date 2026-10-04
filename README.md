@@ -128,7 +128,7 @@
 ## 七、目录
 
 ```
-PACSP-M-1.0.0.md 论文：C_T 的测量效度（六项敏感性、三种替代表示、零参数基线）
+PACSP-M-1.0.0.md 主论文：认知沉积的可测框架（正面描述；附录 C 为与 PACSP-ID 的演变关系）
 README.md        本文件
 pacsp_core.py    测量核心（从 pacsp_build.py 逐字复制 6 个函数）
 verify_core.py   一致性验证：证明上面的复制没有改变数值
