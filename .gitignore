@@ -1,0 +1,15 @@
+# 脚本输出目录。每次运行都会重建，所以不入库。
+# 已经定稿的结果快照在 results/（文档中所有数字的来源）。
+records_centroid/
+
+# 模型权重缓存与 pip 安装（体积大、可重建）
+_hf_home/
+_pylibs/
+
+# Python
+__pycache__/
+*.pyc
+
+# 临时
+*.tmp
+_omega_test/

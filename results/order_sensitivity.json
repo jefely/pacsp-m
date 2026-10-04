@@ -1,0 +1,62 @@
+[
+  {
+    "arm": "poem",
+    "C_T_as_ordered": 1.895,
+    "shuffle_mean": 2.7812,
+    "shuffle_std": 0.134,
+    "shuffle_min": 2.3857,
+    "shuffle_max": 3.102,
+    "CV": 0.0482,
+    "as_ordered_percentile": 0.0
+  },
+  {
+    "arm": "machine_poem",
+    "C_T_as_ordered": 3.8271,
+    "shuffle_mean": 4.2686,
+    "shuffle_std": 0.0821,
+    "shuffle_min": 4.0349,
+    "shuffle_max": 4.4403,
+    "CV": 0.0192,
+    "as_ordered_percentile": 0.0
+  },
+  {
+    "arm": "lyrics",
+    "C_T_as_ordered": 2.1261,
+    "shuffle_mean": 4.3766,
+    "shuffle_std": 0.2012,
+    "shuffle_min": 3.7887,
+    "shuffle_max": 4.858,
+    "CV": 0.046,
+    "as_ordered_percentile": 0.0
+  },
+  {
+    "arm": "techdoc",
+    "C_T_as_ordered": 7.3982,
+    "shuffle_mean": 9.2429,
+    "shuffle_std": 0.2571,
+    "shuffle_min": 8.0398,
+    "shuffle_max": 9.8673,
+    "CV": 0.0278,
+    "as_ordered_percentile": 0.0
+  },
+  {
+    "arm": "hc3_human_medicine",
+    "C_T_as_ordered": 14.9678,
+    "shuffle_mean": 15.0413,
+    "shuffle_std": 0.2755,
+    "shuffle_min": 14.3957,
+    "shuffle_max": 15.7449,
+    "CV": 0.0183,
+    "as_ordered_percentile": 43.0
+  },
+  {
+    "arm": "hc3_ai_medicine",
+    "C_T_as_ordered": 19.3988,
+    "shuffle_mean": 19.593,
+    "shuffle_std": 0.3103,
+    "shuffle_min": 18.714,
+    "shuffle_max": 20.3197,
+    "CV": 0.0158,
+    "as_ordered_percentile": 28.5
+  }
+]

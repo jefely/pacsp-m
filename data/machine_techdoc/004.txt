@@ -1,0 +1,5 @@
+在Python工程化实践中，构建一个清晰、独立的开发环境是至关重要的一步。通过使用虚拟环境（Virtual Environment），可以确保不同项目的依赖项不会相互干扰，并且每个项目可以在特定版本的库环境中运行。首先，需要安装`virtualenv`或者`venv`模块以创建虚拟环境。例如，在命令行中输入`pip install virtualenv`或`python3 -m venv myproject_env`即可快速创建一个名为`myproject_env`的新环境。
+
+创建好虚拟环境后，激活它以便在其中运行代码和安装依赖项非常关键。不同操作系统下激活虚拟环境的命令有所不同，在Windows系统中使用`myproject_env\Scripts\activate`来激活；而在基于Unix或Linux的操作系统上，则用`. myproject_env/bin/activate`。当虚拟环境被正确激活后，提示符通常会显示当前环境的名字。
+
+此外，编写一个清晰完整的安装依赖脚本（如requirements.txt）对于团队成员来说非常重要。这样可以确保所有开发人员在不同的机器上都能以同样的方式设置相同的软件版本组合，从而实现项目的可复现部署和一致的运行结果。

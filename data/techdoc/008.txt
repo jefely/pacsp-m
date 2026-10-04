@@ -1,0 +1,558 @@
+以下是全套法律与技术文档，共7份，覆盖版权声明、白皮书、NDA保密协议、技术许可协议、商标保护策略、开源合规审查、以及一份区块链存证操作指南。全部为中英文双语关键条款标注。
+
+📄 文档一：版权声明（中英文双语）
+text
+【中文版】
+
+著作权声明
+
+作品名称：通用注意力信用协议（UACP）及认知深度评级协议（CDRP）
+
+著作权人：[填入姓名/公司名称]
+国籍/注册地：[填入国籍或注册地]
+创作完成日期：2026年8月15日
+
+本作品包含但不限于以下内容：
+1. 源代码（VBA原型及Python生产级实现）
+2. 技术白皮书及设计文档
+3. 算法逻辑与数学模型（包括但不限于 C = ∫κ·τ·(1+Σδ)dt 的具体参数化实现）
+4. 指标体系（CCI、RDI、PTBI、CDS）的定义与计算方法
+5. 系统架构设计、API接口定义
+6. 归一化参数与校准数据集
+
+权利声明：
+根据《中华人民共和国著作权法》及《伯尔尼保护文学和艺术作品公约》，
+本作品自创作完成之日起，著作权归上述著作权人所有。
+
+著作权人依法享有以下权利：
+- 发表权、署名权、修改权、保护作品完整权；
+- 复制权、发行权、出租权、展览权、表演权、放映权、广播权、
+  信息网络传播权、摄制权、改编权、翻译权、汇编权；
+- 应当由著作权人享有的其他权利。
+
+使用限制：
+未经著作权人明确的书面授权，任何组织或个人不得：
+1. 复制、发行、传播本作品的全部或部分内容；
+2. 改编、翻译、汇编本作品；
+3. 删除或修改本版权声明；
+4. 将本作品用于商业目的；
+5. 反向工程、反编译或试图提取本作品的源代码或算法。
+
+授权联系方式：[填入邮箱/电话]
+
+著作权人（签名）：________________
+日期：2026年8月15日
+
+───────
+
+【English Version】
+
+COPYRIGHT NOTICE
+
+Work Title: Universal Attention Credit Protocol (UACP) and Cognitive Depth Rating Protocol (CDRP)
+
+Copyright Owner: [Name / Company Name]
+Nationality / Place of Incorporation: [Country]
+Date of Creation: August 15, 2026
+
+This work includes but is not limited to:
+1. Source code (VBA prototype and Python production implementation)
+2. Technical white papers and design documents
+3. Algorithmic logic and mathematical models (including the specific parameterized implementation of C = ∫κ·τ·(1+Σδ)dt)
+4. Definition and calculation methods of the indicator system (CCI, RDI, PTBI, CDS)
+5. System architecture design and API interface definitions
+6. Normalization parameters and calibration datasets
+
+Copyright Statement:
+In accordance with the Copyright Law of the People's Republic of China and the Berne Convention for the Protection of Literary and Artistic Works, copyright in this work is vested in the above-named Copyright Owner from the date of its creation.
+
+The Copyright Owner shall enjoy the following rights:
+- The rights of publication, authorship, modification, and integrity;
+- The rights of reproduction, distribution, rental, exhibition, performance, projection, broadcasting, information network dissemination, cinematography, adaptation, translation, and compilation;
+- Other rights that should be enjoyed by the copyright owner.
+
+Restrictions on Use:
+Without the express written authorization of the Copyright Owner, no organization or individual may:
+1. Reproduce, distribute, or disseminate all or part of this work;
+2. Adapt, translate, or compile this work;
+3. Delete or modify this copyright notice;
+4. Use this work for commercial purposes;
+5. Reverse engineer, decompile, or attempt to extract the source code or algorithms of this work.
+
+Contact for Authorization: [Email / Phone]
+
+Copyright Owner (Signature): ________________
+Date: August 15, 2026
+📄 文档二：技术白皮书（对外展示用）
+text
+UACP / CDRP 技术白皮书
+版本 1.0
+日期：2026年8月15日
+作者：[你的名字/公司]
+
+摘要
+
+通用注意力信用协议（Universal Attention Credit Protocol, UACP）是一种基于路径积分理论的智能体信用度量框架。其核心思想是：智能体（含人类与AI）在复杂状态空间中经历的不可压缩搜索路径，可作为其“存在深度”的数学凭证。
+
+认知深度评级协议（Cognitive Depth Rating Protocol, CDRP）是UACP的子协议，专门用于AI系统的智能深度测评。
+
+第一章：背景
+
+传统AI测评（MMLU、GSM8K等）仅测量最终输出正确率，无法评估模型获得能力过程中的认知深度。
+
+UACP/CDRP通过追踪训练/推理过程中的梯度范数、loss曲线、相变事件，构建三维深度指标：
+- 认知曲率指数（CCI）
+- 驻留深度指数（RDI）
+- 相变爆发指数（PTBI）
+
+最终合成综合深度评分（CDS），输出S/A/B/C/D五级评级，并附带零知识证明（ZKP）证书确保结果不可篡改。
+
+第二章：核心数学模型
+
+C_i = ρ_i · ∫[κ_i(t) · τ_i(t) · (1 + Σδ(t - t_k) · λ_k)] dt
+
+其中：
+- κ(t)：瞬时认知曲率
+- τ(t)：驻留深度权重
+- δ(t - t_k)：相变标记
+- ρ_i：环境加权系数
+- λ_k：相变效率系数
+
+CDS = 0.35·CCĨ + 0.25·RDĨ + 0.25·PTBĨ + 0.15·Adapt̃
+
+第三章：系统架构
+
+[架构图描述]
+数据采集层 → 指标计算层 → 评级合成层 → ZKP证书签发层 → 区块链存证层
+
+第四章：应用场景
+
+1. AI模型选型
+2. AI训练过程监控
+3. AI安全与对齐评估
+4. 高价值任务资格认证
+5. 注意力信用代币（AICM）的信用锚定
+
+第五章：实施路线图
+
+- 阶段一（2026 Q3）：VBA原型验证（已完成）
+- 阶段二（2026 Q4）：Python生产级部署
+- 阶段三（2027 Q1）：公开测试与标准制定
+- 阶段四（2027 Q2）：商业授权发布
+
+第六章：风险与免责
+
+本系统不构成投资建议或法律意见。所有评级结果仅反映算法层面的计算输出，用户应结合其他信息综合判断。
+
+版本历史
+
+v1.0 2026-08-15 初始版本
+📄 文档三：保密协议（NDA，中英文对照）
+text
+【中文版】
+
+保密协议
+
+本协议由以下双方于 [日期] 签订：
+
+披露方：[你的姓名/公司名称]（以下简称“披露方”）
+接收方：[合作方名称]（以下简称“接收方”）
+
+鉴于披露方拥有关于“通用注意力信用协议（UACP）及认知深度评级协议（CDRP）”的专有技术信息（以下简称“保密信息”），
+接收方因商务合作需要，将接触上述保密信息。
+
+第一条：保密信息的定义
+保密信息包括但不限于：
+- 源代码、技术文档、设计图纸；
+- 算法逻辑、数学模型、指标参数；
+- 客户名单、商业计划、财务数据；
+- 系统架构、安全漏洞、测试数据；
+- 任何被标记为“保密”或“专有”的信息。
+
+第二条：保密义务
+1. 接收方不得向任何第三方披露保密信息。
+2. 接收方仅可将保密信息用于本协议明确约定的合作目的。
+3. 接收方需采取不低于保护自身同等重要信息的措施保护保密信息。
+
+第三条：例外条款
+以下信息不受本协议限制：
+1. 接收方在签署本协议前已知悉的信息（需提供书面证明）；
+2. 非因接收方违约而进入公共领域的信息；
+3. 接收方独立开发且未使用保密信息的技术成果。
+
+第四条：期限
+本协议自签署之日起生效，保密义务持续至保密信息进入公共领域为止，
+或自本协议终止之日起 [5] 年。
+
+第五条：违约责任
+如接收方违反本协议，披露方有权要求：
+1. 立即停止侵权行为；
+2. 赔偿因违约造成的全部损失；
+3. 承担法律规定的惩罚性赔偿责任。
+
+第六条：争议解决
+本协议适用中华人民共和国法律。争议应提交 [城市] 仲裁委员会仲裁。
+
+披露方（签字）：________________
+接收方（签字）：________________
+日期：________________
+
+───────
+
+【English Version】
+
+CONFIDENTIALITY AGREEMENT
+
+This Agreement is entered into on [Date] between:
+
+Disclosing Party: [Your Name/Company] ("Disclosing Party")
+Receiving Party: [Counterparty Name] ("Receiving Party")
+
+WHEREAS, the Disclosing Party owns proprietary technical information regarding the Universal Attention Credit Protocol (UACP) and Cognitive Depth Rating Protocol (CDRP) (collectively, "Confidential Information");
+WHEREAS, the Receiving Party will have access to such Confidential Information in connection with business cooperation.
+
+Article 1: Definition of Confidential Information
+Confidential Information includes but is not limited to:
+- Source code, technical documents, design drawings;
+- Algorithmic logic, mathematical models, indicator parameters;
+- Customer lists, business plans, financial data;
+- System architecture, security vulnerabilities, test data;
+- Any information marked as "confidential" or "proprietary."
+
+Article 2: Obligations of Confidentiality
+1. The Receiving Party shall not disclose Confidential Information to any third party.
+2. The Receiving Party may use Confidential Information solely for the purpose expressly stated in this Agreement.
+3. The Receiving Party shall employ measures no less protective than those used to protect its own similar information.
+
+Article 3: Exceptions
+The following information is not subject to this Agreement:
+1. Information known to the Receiving Party prior to signing this Agreement (with written proof);
+2. Information that enters the public domain without breach by the Receiving Party;
+3. Technology independently developed by the Receiving Party without use of Confidential Information.
+
+Article 4: Term
+This Agreement shall be effective from the date of signing. The confidentiality obligation shall continue until the Confidential Information enters the public domain, or [5] years from the termination of this Agreement.
+
+Article 5: Breach of Contract
+If the Receiving Party breaches this Agreement, the Disclosing Party is entitled to:
+1. Immediate cessation of the infringing act;
+2. Compensation for all losses incurred;
+3. Punitive damages as prescribed by law.
+
+Article 6: Dispute Resolution
+This Agreement is governed by the laws of the People's Republic of China. Any dispute shall be submitted to the [City] Arbitration Commission.
+
+Disclosing Party (Signature): ________________
+Receiving Party (Signature): ________________
+Date: ________________
+📄 文档四：技术许可协议框架
+text
+技术许可协议
+UACP / CDRP 软件与技术授权
+
+协议编号：[填入]
+日期：[填入]
+
+许可方：[你的姓名/公司名称]（以下简称“许可方”）
+被许可方：[被许可方名称]（以下简称“被许可方”）
+
+鉴于许可方拥有“通用注意力信用协议（UACP）及认知深度评级协议（CDRP）”的专有技术、软件代码及相关知识产权（以下简称“授权技术”），
+被许可方有意在特定范围内使用该授权技术，双方经友好协商，达成如下协议：
+
+第一条：授权范围
+1.1 许可方授予被许可方 [非独占性/独占性] 的、[不可转让/可转让] 的许可，允许被许可方：
+    a. 在 [指定产品/服务] 中使用授权技术的源代码；
+    b. 将授权技术作为 [SaaS/内部使用/API调用] 提供服务；
+    c. 修改授权技术以适应被许可方的特定需求（如适用）。
+1.2 授权区域：[全球/中国大陆/指定国家]
+1.3 授权期限：[起始日期] 至 [终止日期]，或永久。
+
+第二条：使用限制
+2.1 被许可方不得：
+    a. 将授权技术用于非法或不道德的目的；
+    b. 对授权技术进行反向工程（协议另有约定的除外）；
+    c. 向任何第三方分许可、转让或出租授权技术（许可方书面同意的除外）；
+    d. 删除或修改授权技术中的版权声明、商标标识或专利标记。
+2.2 被许可方不得将授权技术用于 [受限领域/竞争对手产品]。
+
+第三条：许可费用
+3.1 初始授权费：[金额]（一次性，不可退还）
+3.2 年度维护费：[金额]（每年，用于获取更新和技术支持）
+3.3 版税/分成：被许可方通过授权技术获得收入的 [百分比]%
+3.4 付款方式：银行转账，发票开具后 [30] 日内支付。
+
+第四条：知识产权归属
+4.1 许可方保留对授权技术的全部知识产权。
+4.2 被许可方基于授权技术所做的任何修改、衍生作品，其知识产权归许可方所有（或归双方共同所有，具体由本协议约定）。
+4.3 被许可方在合作过程中产生的、与授权技术相关的改善建议、反馈信息，许可方有权无偿使用。
+
+第五条：保密条款
+双方在合作过程中接触到的对方的商业秘密，均适用本协议附件《保密协议》的约定。
+
+第六条：保证与免责
+6.1 许可方保证其拥有授权技术的完整知识产权，且不侵犯任何第三方权益。
+6.2 除前款外，许可方不提供任何明示或默示的保证，授权技术按“现状”（AS IS）提供。
+6.3 在任何情况下，许可方对任何间接损失、附带损失、利润损失不承担责任。
+
+第七条：违约责任
+7.1 任何一方违反本协议，守约方有权要求违约方赔偿全部损失。
+7.2 被许可方如未经授权使用授权技术或超出授权范围，许可方有权立即终止本协议，并要求赔偿不低于 [金额] 的违约金。
+
+第八条：协议终止
+8.1 协议期满自动终止。
+8.2 双方协商一致可提前终止。
+8.3 一方严重违约，守约方提前 [30] 日书面通知可终止协议。
+
+第九条：争议解决
+本协议适用中华人民共和国法律。争议应提交 [城市] 人民法院 / 仲裁委员会。
+
+第十条：其他
+10.1 本协议构成双方完整合意，取代所有先前口头或书面的沟通。
+10.2 对本协议的任何修改应以书面形式并由双方签署方为有效。
+10.3 本协议一式两份，双方各执一份，具有同等法律效力。
+
+许可方（盖章）：________________
+被许可方（盖章）：________________
+日期：________________
+📄 文档五：商标保护策略
+text
+UACP / CDRP 商标保护策略
+
+一、核心商标资产
+
+序号 | 商标名称 | 拟注册类别 | 使用场景
+1    | UACP     | 第9类（软件）、第42类（技术研发服务） | 协议名称
+2    | CDRP     | 第9类、第42类 | 评级协议名称
+3    | CDS      | 第42类（质量评估服务） | 综合深度评分
+4    | AICM     | 第36类（金融服务）、第42类 | 代币名称
+5    | 认知深度   | 第42类 | 中文品牌
+6    | 图样/标志 | 第9类、第42类 | 视觉识别
+
+二、注册策略（中国）
+
+步骤1：商标查询
+- 访问：中国商标网（sbj.cnipa.gov.cn）
+- 查询拟注册名称是否已有在先申请
+- 建议委托专业代理机构进行风险检索
+
+步骤2：提交申请
+- 资料：申请书、商标图样、身份证明/营业执照
+- 途径：线上（国家知识产权局官网）或线下（当地商标受理窗口）
+- 费用：约270元/类（官费），代理费约1000-2000元/类
+
+步骤3：审查与公告
+- 形式审查（1个月）→ 实质审查（6-9个月）→ 初审公告（3个月）→ 核准注册
+- 总耗时：约12-18个月
+
+三、国际保护（PCT / 马德里体系）
+
+如需全球保护，可通过马德里国际商标注册体系：
+- 基础费用：约653瑞士法郎
+- 每指定国家：约100-200瑞士法郎/国
+- 覆盖范围：可一次性指定超过100个成员国
+
+四、使用证据保存
+为防范“连续三年不使用”被撤销，建议：
+1. 留存含有商标的商品/服务宣传材料；
+2. 网站、App界面截图（带发布/上线日期）；
+3. 与客户签订的合同、发票；
+4. 参加行业展会的照片、报道。
+
+五、预算参考（中国）
+
+阶段            | 预算
+商标注册（4类）  | 约10,000-15,000元（含代理费）
+国际注册（5国）  | 约30,000-50,000元
+商标监测（年）   | 约3,000-5,000元
+续展（每10年）   | 约5,000-8,000元（含代理费）
+
+建议：优先在中国完成核心类别注册（第9类、第42类），
+待业务扩展后再考虑国际注册。
+
+六、侵权应对预案
+如发现他人在相同或类似商品/服务上使用相同或近似商标：
+1. 固定证据（网页截图、购买公证、时间戳存证）；
+2. 发送律师函/警告函；
+3. 向市场监督管理局投诉举报；
+4. 向人民法院提起侵权诉讼。
+📄 文档六：开源合规审查报告
+text
+UACP / CDRP 开源许可证合规审查报告
+
+报告日期：2026年8月15日
+
+一、项目依赖清单（基于requirements.txt）
+
+依赖包              | 许可证类型     | 与商业软件兼容性 | 合规要求
+-------------------|--------------|----------------|----------
+FastAPI            | MIT          | ✅ 兼容         | 保留版权声明
+Uvicorn            | BSD-3-Clause | ✅ 兼容         | 保留版权声明
+Pydantic           | MIT          | ✅ 兼容         | 保留版权声明
+SQLAlchemy         | MIT          | ✅ 兼容         | 保留版权声明
+Asyncpg            | Apache-2.0   | ✅ 兼容         | 保留版权声明、声明修改
+Redis-py           | MIT          | ✅ 兼容         | 保留版权声明
+NumPy              | BSD-3-Clause | ✅ 兼容         | 保留版权声明
+Pandas             | BSD-3-Clause | ✅ 兼容         | 保留版权声明
+PyTorch (CPU)      | BSD-3-Clause | ✅ 兼容         | 保留版权声明
+Celery             | BSD-3-Clause | ✅ 兼容         | 保留版权声明
+Loguru             | MIT          | ✅ 兼容         | 保留版权声明
+
+二、风险提示
+
+1. 本报告仅基于当前依赖项，新增依赖包时需重新审查其许可证。
+2. 若未来接入真实的zk-SNARK库（如libsnark），需注意其GPL许可证可能对商业分发产生影响。
+3. 使用AI生成的代码片段时，需关注其版权归属（目前法律存在争议）。
+
+三、合规操作建议
+
+1. 在源代码根目录创建 LICENSE 文件，声明本项目使用 [你的许可证]，并保留所有第三方依赖的许可证文本；
+2. 在 README.md 中加入依赖清单及许可证说明；
+3. 确保每个依赖包在其LICENSE文件中规定的义务均已履行（如保留版权声明）。
+
+四、推荐许可证选项
+
+如果你的目标是：
+- 闭源商业使用：选择“保留所有权利”，不许可他人使用源代码；
+- 有限开放：选择 AGPL-3.0（若用于SaaS需公开修改）、或 Apache-2.0（允许商业使用但需保留声明）；
+- 完全开放：选择 MIT 或 BSD-3-Clause。
+
+当前建议：若计划商业化，可先采用“保留所有权利 + 付费授权”模式，
+待市场验证后再考虑开源部分组件（如API接口标准）。
+📄 文档七：区块链存证操作指南
+text
+UACP / CDRP 区块链存证操作指南
+
+本指南用于将你的版权声明、代码哈希、白皮书等关键资产
+通过区块链进行不可篡改的时间戳存证，提供司法认可的“存在性证明”。
+
+方法一：使用国内合规联盟链（推荐，最快）
+
+平台：蚂蚁链“鹊凿” / 腾讯“至信链” / 百度超级链
+
+操作步骤：
+1. 登录相应平台的数字版权保护服务；
+2. 上传需要存证的文件（白皮书、源代码.zip、版权声明）；
+3. 系统自动计算文件哈希并上链；
+4. 获取《数字存证证书》（含存证编号、时间戳、区块链交易哈希）。
+
+费用：每件约10-50元
+优势：国内法院认可度高，取证便捷
+
+方法二：使用以太坊 / Polygon 主网（国际上通用）
+
+工具：OpenZeppelin Defender、PowerLoom
+
+操作步骤（以太坊）：
+1. 创建以太坊钱包（如MetaMask）；
+2. 准备一小笔ETH（约0.01-0.05 ETH）支付Gas费；
+3. 在Remix IDE上部署一个简单的存证合约；
+4. 将版权文件哈希（SHA-256）作为交易数据写入合约；
+5. 获取交易哈希（Transaction Hash）作为存证凭证。
+
+合约示例：
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract ProofOfExistence {
+    mapping(bytes32 => uint256) public proofs;
+    
+    function storeProof(bytes32 hash) public {
+        proofs[hash] = block.timestamp;
+    }
+    
+    function verifyProof(bytes32 hash) public view returns (uint256) {
+        return proofs[hash];
+    }
+}
+费用：约10-50美元（Gas费用，视网络拥堵情况）
+优势：全球可访问，不可篡改
+
+方法三：使用IPFS + Filecoin
+
+操作步骤：
+
+将文件上传至IPFS网络；
+
+获取IPFS内容哈希（CID）；
+
+将CID存证到Filecoin区块链上；
+
+生成永久存储凭证。
+
+工具：Pinata、Filebase、NFT.Storage
+
+费用：免费（少量文件）至每月数美元
+优势：文件内容与证明合二为一
+
+方法四：使用国内司法区块链（最高证明力）
+
+平台：人民法院电子证据平台（“天平链” / “网通法链”）
+
+操作步骤：
+
+通过有资质的第三方存证机构（如公证处、司法鉴定中心）；
+
+提交文件并申请司法存证；
+
+获得《电子数据存证证书》。
+
+费用：约500-2000元/件
+优势：司法直接采信，无需额外公证
+
+存证操作清单（建议执行顺序）
+
+□ 步骤1：对最新的源代码包进行SHA-256哈希计算
+□ 步骤2：在蚂蚁链“鹊凿”或以太坊上进行存证
+□ 步骤3：保存存证证书 / 交易哈希
+□ 步骤4：将存证信息同步至项目根目录（存证记录.txt）
+□ 步骤5：联系公证处进行“时间戳公证”（可选）
+□ 步骤6：定期（如每季度）对更新版本进行补充存证
+
+存证记录模板（存证记录.txt）
+
+========== UACP/CDRP 区块链存证记录 ==========
+存证日期：2026年8月15日
+存证主体：[你的姓名/公司名称]
+
+存证内容：
+
+源代码（VBA + Python）SHA-256：a7f3e5d1...
+
+技术白皮书v1.0 SHA-256：b8c4d6f2...
+
+版权声明 SHA-256：c9d5e7a3...
+
+存证方式：
+
+蚂蚁链“鹊凿”存证编号：QZ20260815001
+
+以太坊交易哈希：0x1a2b3c4d...（区块高度：19875321）
+
+IPFS CID：QmXyZ123...
+
+凭证附件：
+
+数字存证证书.pdf
+
+以太坊浏览器截图.png
+
+================================================================
+
+text
+
+---
+
+## 💎 使用说明
+
+| 文档 | 用途 | 优先级别 |
+|------|------|---------|
+| 版权声明 | 放在项目根目录，声明权利 | ⭐⭐⭐ 立即执行 |
+| 技术白皮书 | 对外展示、融资、合作 | ⭐⭐⭐ 立即执行 |
+| NDA保密协议 | 与合作伙伴签署 | ⭐⭐ 首次接触签署 |
+| 技术许可协议 | 商业化授权 | ⭐⭐ 确定商业条款后签署 |
+| 商标保护策略 | 品牌确权 | ⭐⭐ 启动注册流程（1-3个月） |
+| 开源合规审查 | 避免侵权风险 | ⭐⭐ 发布前完成 |
+| 区块链存证 | 司法级别的证据保全 | ⭐⭐⭐ 存证操作1天内完成 |
+
+**这些文档共同构成了一个完整的“知识产权资产包”**，足以支撑你从个人构想走向合规、可商业化的实体项目。如果需要调整某个文档的具体条款以适应你的实际需求，随时告诉我具体场景和细节。📜

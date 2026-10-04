@@ -1,0 +1,47 @@
+在Python工程化的实践中，“依赖锁定”是一个至关重要的环节，它确保了项目的开发环境和生产环境能够保持一致性和稳定性。通过明确记录所有项目所必需的第三方库及其具体版本，我们可以在不同的环境中构建出功能完全相同的应用程序。
+
+### 为什么要进行依赖锁定
+
+当一个团队共同协作开发软件时，成员之间可能会使用不同版本的Python包或其相关依赖项。这可能导致在某些机器上运行成功而另一些地方却出现错误的现象。因此，明确指定每个项目的准确依赖关系能够帮助规避此类问题，并确保所有参与人员都在相同的环境中工作。
+
+### 使用 `requirements.txt` 和 `Pipfile`
+
+在PyPI（Python Package Index）中维护一个静态的文件来记录你的项目所需的软件包及其版本信息是很常见的做法之一。例如，可以创建一个名为 `requirements.txt` 的文件：
+
+```
+flask==1.0.2
+numpy>=1.16.5
+requests<=3.9.1
+```
+
+这种方式简洁明了，但对于大型项目的复杂依赖关系管理能力有限。
+
+对于复杂的项目或需要同时支持Python 2和Python 3的应用场景下，则推荐使用`Pipfile`。它不仅记录了软件包及其版本信息，还定义了环境的具体要求：
+
+```ini
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = pypi
+
+[requires]
+python_version = "3.7"
+
+[packages]
+flask = "*"
+numpy = "==1.20.*"
+requests = "<4.0.0"
+
+[dev-packages]
+pytest = "^5.3.5"
+```
+
+`Pipfile.lock` 是从 `Pipfile` 生成的，其中包含了所有准确版本的具体依赖关系。
+
+### 自动生成 `requirements.txt` 和 `Pipfile.lock`
+
+可以使用命令行工具如 `pip-compile` 来自动生成 `requirements.txt` 文件或者通过 `poetry install --locked` 命令来生成 `Pipfile.lock`。这些锁定文件确保了在任何环境下都能精确复现项目所需的依赖环境。
+
+### 小结
+
+无论是选择使用 `requirements.txt` 还是 `Pipfile`，进行有效的依赖锁定都是保证Python项目稳定性和一致性的重要步骤。通过明确记录和严格控制第三方库版本，在项目的开发、测试以及部署过程中能够减少许多潜在的问题。

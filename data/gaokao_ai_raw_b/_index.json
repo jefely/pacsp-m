@@ -1,0 +1,169 @@
+{
+  "arm": "gaokao_ai_raw_b",
+  "model": "deepseek-r1:14b",
+  "method": "streaming; text after </think> only",
+  "options": {
+    "temperature": 0.8,
+    "top_p": 0.9,
+    "num_predict": 6000,
+    "seed": "9000+index"
+  },
+  "note": "second candidate draft per prompt, for the selection task; the reader picks between this and data/gaokao_ai_raw",
+  "items": [
+    {
+      "index": 1,
+      "chars": 771,
+      "complete": true
+    },
+    {
+      "index": 2,
+      "chars": 789,
+      "complete": true
+    },
+    {
+      "index": 3,
+      "chars": 748,
+      "complete": true
+    },
+    {
+      "index": 4,
+      "chars": 903,
+      "complete": true
+    },
+    {
+      "index": 5,
+      "chars": 852,
+      "complete": true
+    },
+    {
+      "index": 6,
+      "chars": 672,
+      "complete": true
+    },
+    {
+      "index": 7,
+      "chars": 809,
+      "complete": true
+    },
+    {
+      "index": 8,
+      "chars": 715,
+      "complete": true
+    },
+    {
+      "index": 9,
+      "chars": 878,
+      "complete": true
+    },
+    {
+      "index": 10,
+      "chars": 788,
+      "complete": true
+    },
+    {
+      "index": 11,
+      "chars": 797,
+      "complete": true
+    },
+    {
+      "index": 12,
+      "chars": 794,
+      "complete": true
+    },
+    {
+      "index": 13,
+      "chars": 890,
+      "complete": true
+    },
+    {
+      "index": 14,
+      "chars": 863,
+      "complete": true
+    },
+    {
+      "index": 15,
+      "chars": 674,
+      "complete": true
+    },
+    {
+      "index": 16,
+      "chars": 839,
+      "complete": true
+    },
+    {
+      "index": 17,
+      "chars": 745,
+      "complete": true
+    },
+    {
+      "index": 18,
+      "chars": 817,
+      "complete": true
+    },
+    {
+      "index": 19,
+      "chars": 766,
+      "complete": true
+    },
+    {
+      "index": 20,
+      "chars": 753,
+      "complete": true
+    },
+    {
+      "index": 21,
+      "chars": 876,
+      "complete": true
+    },
+    {
+      "index": 22,
+      "chars": 809,
+      "complete": true
+    },
+    {
+      "index": 23,
+      "chars": 877,
+      "complete": true
+    },
+    {
+      "index": 24,
+      "chars": 906,
+      "complete": true
+    },
+    {
+      "index": 25,
+      "chars": 698,
+      "complete": true
+    },
+    {
+      "index": 26,
+      "chars": 765,
+      "complete": true
+    },
+    {
+      "index": 27,
+      "chars": 728,
+      "complete": true
+    },
+    {
+      "index": 28,
+      "chars": 687,
+      "complete": true
+    },
+    {
+      "index": 29,
+      "chars": 796,
+      "complete": true
+    },
+    {
+      "index": 30,
+      "chars": 744,
+      "complete": true
+    },
+    {
+      "index": 31,
+      "chars": 796,
+      "complete": true
+    }
+  ]
+}

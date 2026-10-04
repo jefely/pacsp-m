@@ -1,0 +1,136 @@
+{
+  "measures": {
+    "poem": {
+      "C_T": 1.895,
+      "mean_pair_dist": 0.5434,
+      "dist_cv": 0.3577,
+      "eff_rank": 7.36,
+      "knn_weight_sum": 32.6364,
+      "knn_spectral_gap": 0.346545
+    },
+    "machine_poem": {
+      "C_T": 3.8271,
+      "mean_pair_dist": 0.6543,
+      "dist_cv": 0.1077,
+      "eff_rank": 19.06,
+      "knn_weight_sum": 16.3551,
+      "knn_spectral_gap": 0.318233
+    },
+    "lyrics": {
+      "C_T": 2.1261,
+      "mean_pair_dist": 0.6365,
+      "dist_cv": 0.3261,
+      "eff_rank": 5.53,
+      "knn_weight_sum": 33.8029,
+      "knn_spectral_gap": 0.336526
+    },
+    "machine_lyrics": {
+      "C_T": 5.921,
+      "mean_pair_dist": 0.7324,
+      "dist_cv": 0.1151,
+      "eff_rank": 19.96,
+      "knn_weight_sum": 16.2953,
+      "knn_spectral_gap": 0.116346
+    },
+    "techdoc": {
+      "C_T": 7.3982,
+      "mean_pair_dist": 0.8422,
+      "dist_cv": 0.1587,
+      "eff_rank": 14.98,
+      "knn_weight_sum": 24.0303,
+      "knn_spectral_gap": 0.872693
+    },
+    "machine_techdoc": {
+      "C_T": 2.4662,
+      "mean_pair_dist": 0.5838,
+      "dist_cv": 0.2023,
+      "eff_rank": 11.2,
+      "knn_weight_sum": 22.2661,
+      "knn_spectral_gap": 0.3797
+    },
+    "hc3_human_medicine": {
+      "C_T": 14.9678,
+      "mean_pair_dist": 0.9982,
+      "dist_cv": 0.0875,
+      "eff_rank": 18.44,
+      "knn_weight_sum": 16.3566,
+      "knn_spectral_gap": 0.322015
+    },
+    "hc3_ai_medicine": {
+      "C_T": 19.3988,
+      "mean_pair_dist": 1.0913,
+      "dist_cv": 0.0761,
+      "eff_rank": 21.37,
+      "knn_weight_sum": 14.7725,
+      "knn_spectral_gap": 0.185707
+    },
+    "hc3_human_openqa": {
+      "C_T": 21.2274,
+      "mean_pair_dist": 1.1187,
+      "dist_cv": 0.0729,
+      "eff_rank": 20.58,
+      "knn_weight_sum": 13.8949,
+      "knn_spectral_gap": 0.055812
+    },
+    "hc3_ai_openqa": {
+      "C_T": 25.582,
+      "mean_pair_dist": 1.1954,
+      "dist_cv": 0.0539,
+      "eff_rank": 24.68,
+      "knn_weight_sum": 13.2283,
+      "knn_spectral_gap": 0.214472
+    }
+  },
+  "meta": {
+    "poem": {
+      "domain": "poem",
+      "source": "human-AI",
+      "n": 31
+    },
+    "machine_poem": {
+      "domain": "poem",
+      "source": "autonomous",
+      "n": 31
+    },
+    "lyrics": {
+      "domain": "lyrics",
+      "source": "human-AI",
+      "n": 31
+    },
+    "machine_lyrics": {
+      "domain": "lyrics",
+      "source": "autonomous",
+      "n": 31
+    },
+    "techdoc": {
+      "domain": "techdoc",
+      "source": "human-AI",
+      "n": 31
+    },
+    "machine_techdoc": {
+      "domain": "techdoc",
+      "source": "autonomous",
+      "n": 31
+    },
+    "hc3_human_medicine": {
+      "domain": "medicine",
+      "source": "human-only",
+      "n": 31
+    },
+    "hc3_ai_medicine": {
+      "domain": "medicine",
+      "source": "AI-raw",
+      "n": 31
+    },
+    "hc3_human_openqa": {
+      "domain": "openqa",
+      "source": "human-only",
+      "n": 31
+    },
+    "hc3_ai_openqa": {
+      "domain": "openqa",
+      "source": "AI-raw",
+      "n": 31
+    }
+  }
+}

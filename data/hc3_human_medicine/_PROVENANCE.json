@@ -1,0 +1,205 @@
+{
+  "source_dataset": "Hello-SimpleAI/HC3-Chinese",
+  "config": "medicine",
+  "license": "cc-by-sa-4.0",
+  "arms": [
+    "hc3_human_medicine",
+    "hc3_ai_medicine"
+  ],
+  "what_this_is": "Prompt-parallel authorship control. Each question carries one human answer and one ChatGPT answer, so topic and prompt are held constant while authorship varies. This is the strongest publicly available substitute for a same-source three-arm design.",
+  "what_this_is_not": "It has no middle arm. The paper's axis is whether human selection and curation was applied, and HC3's ChatGPT answers are raw generations with no curation step, while the human answers involve no model. So this contrasts human authorship against machine authorship, not curated against uncurated machine output.",
+  "length_matching": {
+    "method": "each answer cut to whole sentences near a common target",
+    "target_chars": 150,
+    "floor_chars": 100
+  },
+  "count": 31,
+  "items": [
+    {
+      "src_index": 1,
+      "question": "同房要注意哪些卫生 男朋友来看我，晚上开了房间，就迫不及待的要吃我，叫他去洗澡都不肯，没办法我们就那样做了一次，之后我就感觉阴道疼的很，每天下体有黄色的东西排出来，气味很难闻。想得到怎样的帮助:同房要注意哪些卫生？",
+      "human_chars": 142,
+      "ai_chars": 159
+    },
+    {
+      "src_index": 2,
+      "question": "小孩哮喘有什么症状？ 无",
+      "human_chars": 140,
+      "ai_chars": 162
+    },
+    {
+      "src_index": 3,
+      "question": "急性甲亢与甲亢的区别 我同事的嫂子患有急性甲亢，20天左右就治好了，我想问一下，我患有甲亢，也能在这么短的时间里治愈吗？另外急性甲亢与甲亢有什么区别啊",
+      "human_chars": 200,
+      "ai_chars": 161
+    },
+    {
+      "src_index": 4,
+      "question": "我这是前列腺还是肾有问题 婚前有过性交,经常,婚后房事时一次也就1分钟,有时一下就射了,但阴茎到是很硬,勃起很好.如果是接着做二次的话时间稍长一些,但勃起不是很好,有些软.",
+      "human_chars": 155,
+      "ai_chars": 145
+    },
+    {
+      "src_index": 5,
+      "question": "脑瘤这个病是怎么长出来的？ 我二十年前的时候出过车祸，然后得了脑震荡，不过治好了，但是这几天我自己觉着不对劲，就是头特别疼，而且是那种没任何理由的疼，我查了资料，恐怕是脑子里长了脑瘤。在乎怎样的帮助：脑瘤这个病是怎么长出的的？",
+      "human_chars": 133,
+      "ai_chars": 136
+    },
+    {
+      "src_index": 6,
+      "question": "红斑狼疮治好之后主要有哪些禁忌？ 我的三个月前之前得了红斑狼疮，当时症状好像还不是很严重，后来经过几个月治疗，现在已经快治好了，但不知道治好之后要注意什么。红斑狼疮治好之后要注意什么？我现在每天都很烦恼，不知道到底该怎么解决这个问题",
+      "human_chars": 113,
+      "ai_chars": 131
+    },
+    {
+      "src_index": 7,
+      "question": "放射性肠炎有什么危害？ 我前段时间在医院做了子宫切除手术，后来就老觉着恶心、干呕、拉肚子（有时候会拉出血便），去医院产检，说是什么放射性肠炎。我以前都没听说过这个病，现在心里特别不安。希望获得的帮助:放射性肠炎有什么危害？",
+      "human_chars": 135,
+      "ai_chars": 141
+    },
+    {
+      "src_index": 8,
+      "question": "子宫肥大大概价格多少？ 我去年结的婚，最近总是肚子小腹疼痛，尤其是来事那几天，很害怕影响生育，而且十分的怕冷，怕寒。请问子宫肥大大概价格多少？",
+      "human_chars": 135,
+      "ai_chars": 159
+    },
+    {
+      "src_index": 9,
+      "question": "软骨瘤怎么治疗？ 前段时间身体各种不舒服，去医院检查得知是肿瘤疾病，非常担心能活多久，请问软骨瘤怎么治疗？",
+      "human_chars": 121,
+      "ai_chars": 147
+    },
+    {
+      "src_index": 10,
+      "question": "怀孕检查有子宫肌瘤怎么治？ 女，55岁，婆婆常有下腹坠胀、腰背酸痛，也不知晓是怎么了，后来听朋友说可能是子宫肌瘤，想问怀孕检查有子宫肌瘤怎么治？",
+      "human_chars": 145,
+      "ai_chars": 151
+    },
+    {
+      "src_index": 11,
+      "question": "甲状腺结节3cm能消掉吗？ 我前两天发烧后咽痛，并且发觉喉咙双侧甲状腺肿大，去医院仔细检查被确诊是甲状腺结节3cm，我现在很难过，甲状腺结节3cm能消掉吗？这种情况需要有做手术吗？还是要喝药呢？",
+      "human_chars": 138,
+      "ai_chars": 157
+    },
+    {
+      "src_index": 12,
+      "question": "黑色素瘤手术前饮食方面怎么注意 男42岁，得病后，吃药也没有什么效果，还是不舒服，请问：黑色素瘤手术前饮食方面怎么注意？",
+      "human_chars": 125,
+      "ai_chars": 129
+    },
+    {
+      "src_index": 13,
+      "question": "中医能治疗输卵管积水吗 输卵管积水用中医治疗可以么，仔细检查出的输卵管积水有一段时间了，吃了一个多月的西药，效果不好，我们门口有个中医，据说效果不错，我想问下输卵管积水用中药治疗可以么，能治疗好么，需要怎样的帮助：中医能治疗输卵管积水么",
+      "human_chars": 135,
+      "ai_chars": 168
+    },
+    {
+      "src_index": 14,
+      "question": "婴儿血管瘤的治疗哪种方法好呢 我老婆刚刚生下我们的儿子，现在已经有13天的时间了，孩子出生后在脸上就长了一个血管瘤，由于这个原因孩子一直在医院住院，我想问一下，婴儿血管瘤的治疗方法哪种比较好？",
+      "human_chars": 140,
+      "ai_chars": 151
+    },
+    {
+      "src_index": 15,
+      "question": "怎样治疗LAD近中段浅表心肌桥 左冠状动脉主干、左前降支合主要分支、左旋支、右冠状动脉及其主要分支显示良好，LAD近中段被覆少许心肌纤维，局部管腔未见狭窄，LCX、RCA及其分支显示可，管壁未见钙化斑块及软斑块形成",
+      "human_chars": 132,
+      "ai_chars": 160
+    },
+    {
+      "src_index": 16,
+      "question": "男性早泄是由哪些原因所致的 今年25岁，最近半年，发现，性功能出现退化，同时，每次刚进去就射了，请问：男性早泄是由哪些原因所致的。",
+      "human_chars": 173,
+      "ai_chars": 132
+    },
+    {
+      "src_index": 17,
+      "question": "子宫息肉反复外带贫血如何治疗？ 女朋友一直有子宫息肉，在半年前因为情况严重，做了手术，但是最近这个月来总感觉腹部有些疼痛，月经一直好没法，而且总感觉浑身没力气，去仔细检查，医生说是子宫息肉又反反复复了，而且还外带着有些贫血，子宫息肉反反复复了外带贫血如何治疗？",
+      "human_chars": 141,
+      "ai_chars": 156
+    },
+    {
+      "src_index": 18,
+      "question": "高血压患者是否一定能吃羊肉 我最近总是感觉到头痛，去医院仔细检查大夫说我是高血压病，平时除了需要有多留意歇息意外还需要有留意饮食方面的调养，还需要有吃许多降压药，我想知道饮食方面的话，高血压能不能吃羊肉？",
+      "human_chars": 168,
+      "ai_chars": 161
+    },
+    {
+      "src_index": 19,
+      "question": "哪里可以查乙肝病毒定量？ 哪里可以查乙肝病毒定量",
+      "human_chars": 167,
+      "ai_chars": 137
+    },
+    {
+      "src_index": 20,
+      "question": "多动症的原因具体是什么？ 多动症的原因具体有哪些本来我是带孩子去医院检查牙齿的，没想到医生说孩子患有轻度的多动症，我很不理解，请问医生多动症的原因是什么啊？多动症的原因具体有哪些",
+      "human_chars": 186,
+      "ai_chars": 129
+    },
+    {
+      "src_index": 21,
+      "question": "脑瘫这个病能否根治有什么方法最简单最有效呢？ 脑瘫这个病能否根治有什么方法最简单最有效呢？",
+      "human_chars": 132,
+      "ai_chars": 157
+    },
+    {
+      "src_index": 22,
+      "question": "性爱时避孕套遗留女子体内要如何处理 本人下体特别痒，而且内衣上总是黄黄的，怎么回事？请问性爱时避孕套遗留女子体内要如何处理",
+      "human_chars": 116,
+      "ai_chars": 140
+    },
+    {
+      "src_index": 23,
+      "question": "吃完避孕药在同房会不会怀孕？ 我昨晚刚吃了避孕药之后就和老公同房了，您好医生，吃完避孕药在同房会不会怀孕？",
+      "human_chars": 130,
+      "ai_chars": 145
+    },
+    {
+      "src_index": 24,
+      "question": "4个月的宝宝头围40.5是偏小吗 本人下体特别痒，而且内衣上总是黄黄的，怎么回事？请问4个月的宝宝头围40.5是偏小吗",
+      "human_chars": 140,
+      "ai_chars": 152
+    },
+    {
+      "src_index": 25,
+      "question": "怎样能中风病人康复 我爸爸岁数大了，最近我发现他精神是不太好，而且爱忘记事情，头昏是他自己说的，说有时候走着走着就会有晕眩的感觉，我们家人也是很担心的，请问怎样能中风病人康复",
+      "human_chars": 147,
+      "ai_chars": 142
+    },
+    {
+      "src_index": 26,
+      "question": "一般克罗恩病这状况是什么样的 我们公司这段时间很是忙碌的，我们经常加班的，这段时间吃的也不好，总是出现肚子疼情况，而且拉粑粑会出现血丝情况，让我很害怕啊，很想知道这咋回事，请问克罗恩病一般会有什么样的症状啊？",
+      "human_chars": 163,
+      "ai_chars": 169
+    },
+    {
+      "src_index": 27,
+      "question": "怎么判断是否有肾衰竭 我上周在补课的时候，听见了老师讲肾衰竭的知识点，但是有点走神，所以没太听得清楚，所以您好怎么推测如何肾衰竭？",
+      "human_chars": 121,
+      "ai_chars": 165
+    },
+    {
+      "src_index": 28,
+      "question": "盆腔炎治疗比较好的医院有哪些？ 我从来没有得过任何妇科的病，所以我这段期间发觉下体，留有许多黄色的液体，而且味道很大时，我就到医院做了仔细检查。医生说我这是盆腔炎，我现在就想了解一下盆腔炎治疗较好的医院有哪些？",
+      "human_chars": 169,
+      "ai_chars": 152
+    },
+    {
+      "src_index": 29,
+      "question": "阴道炎白带黄色有关怎么治 阴道炎白带黄色化验、仔细检查结果：化念结果说是阴道炎曾经的治疗情况和效果：我去年在妇幼医院看了许多次没什么效果",
+      "human_chars": 176,
+      "ai_chars": 135
+    },
+    {
+      "src_index": 30,
+      "question": "皮肤癌怎样去进行解决疗效果会好些 全身多痣，且专心在长，右腿膝盖处有3-4个结痂的小块，经久不褪。中期皮肤癌如何治疗效果比较好？",
+      "human_chars": 155,
+      "ai_chars": 159
+    },
+    {
+      "src_index": 31,
+      "question": "请问肾下垂严重吗？ 朋友最近腰部有些不舒服，就去看了医生，医生给做了B超，说是肾下垂严重，建议朋友赶快已经开始治疗，我想替朋友进行咨询下，肾下垂严重吗？",
+      "human_chars": 123,
+      "ai_chars": 145
+    }
+  ]
+}

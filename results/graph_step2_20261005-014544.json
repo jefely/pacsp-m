@@ -1,0 +1,217 @@
+{
+  "poem": {
+    "raw": {
+      "norm_min": 1.0,
+      "norm_max": 1.0,
+      "median_dist": 0.5616,
+      "sigma": 0.2808,
+      "pairdist_cv": 0.3577,
+      "mean_norm_share": 0.9159,
+      "phi_sigma_sens": {
+        "0.6": 0.5049,
+        "0.8": 0.256,
+        "1.25": 0.3152,
+        "1.6": 0.7006
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.4333,
+        "1.6": 0.4478
+      }
+    },
+    "centred": {
+      "norm_min": 0.2242,
+      "norm_max": 0.7176,
+      "median_dist": 0.5623,
+      "sigma": 0.2812,
+      "pairdist_cv": 0.3543,
+      "mean_norm_share": 0.0,
+      "phi_sigma_sens": {
+        "0.6": 0.505,
+        "0.8": 0.2561,
+        "1.25": 0.3152,
+        "1.6": 0.7003
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.4331,
+        "1.6": 0.4472
+      }
+    },
+    "verdict": {
+      "phi_sens_raw_mean": 0.4442,
+      "phi_sens_centred_mean": 0.4442,
+      "improved": true
+    }
+  },
+  "lyrics": {
+    "raw": {
+      "norm_min": 1.0,
+      "norm_max": 1.0,
+      "median_dist": 0.641,
+      "sigma": 0.3205,
+      "pairdist_cv": 0.3261,
+      "mean_norm_share": 0.8849,
+      "phi_sigma_sens": {
+        "0.6": 0.5653,
+        "0.8": 0.2947,
+        "1.25": 0.3506,
+        "1.6": 0.7727
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.5109,
+        "1.6": 0.4569
+      }
+    },
+    "centred": {
+      "norm_min": 0.2746,
+      "norm_max": 0.7403,
+      "median_dist": 0.641,
+      "sigma": 0.3205,
+      "pairdist_cv": 0.3261,
+      "mean_norm_share": 0.0,
+      "phi_sigma_sens": {
+        "0.6": 0.5653,
+        "0.8": 0.2947,
+        "1.25": 0.3506,
+        "1.6": 0.7727
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.5109,
+        "1.6": 0.4569
+      }
+    },
+    "verdict": {
+      "phi_sens_raw_mean": 0.4958,
+      "phi_sens_centred_mean": 0.4958,
+      "improved": false
+    }
+  },
+  "techdoc": {
+    "raw": {
+      "norm_min": 1.0,
+      "norm_max": 1.0,
+      "median_dist": 0.8548,
+      "sigma": 0.4274,
+      "pairdist_cv": 0.1516,
+      "mean_norm_share": 0.8051,
+      "phi_sigma_sens": {
+        "0.6": 0.5952,
+        "0.8": 0.3669,
+        "1.25": 0.5185,
+        "1.6": 1.1593
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.7546,
+        "1.6": 1.0047
+      }
+    },
+    "centred": {
+      "norm_min": 0.4147,
+      "norm_max": 0.7536,
+      "median_dist": 0.8548,
+      "sigma": 0.4274,
+      "pairdist_cv": 0.1516,
+      "mean_norm_share": 0.0,
+      "phi_sigma_sens": {
+        "0.6": 0.5952,
+        "0.8": 0.3669,
+        "1.25": 0.5185,
+        "1.6": 1.1593
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.7546,
+        "1.6": 1.0047
+      }
+    },
+    "verdict": {
+      "phi_sens_raw_mean": 0.66,
+      "phi_sens_centred_mean": 0.66,
+      "improved": false
+    }
+  },
+  "machine_poem": {
+    "raw": {
+      "norm_min": 1.0,
+      "norm_max": 1.0,
+      "median_dist": 0.6548,
+      "sigma": 0.3274,
+      "pairdist_cv": 0.1077,
+      "mean_norm_share": 0.8891,
+      "phi_sigma_sens": {
+        "0.6": 0.6139,
+        "0.8": 0.3993,
+        "1.25": 0.5852,
+        "1.6": 1.3132
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.9156,
+        "1.6": 1.4457
+      }
+    },
+    "centred": {
+      "norm_min": 0.3717,
+      "norm_max": 0.5798,
+      "median_dist": 0.6548,
+      "sigma": 0.3274,
+      "pairdist_cv": 0.1077,
+      "mean_norm_share": 0.0,
+      "phi_sigma_sens": {
+        "0.6": 0.6139,
+        "0.8": 0.3993,
+        "1.25": 0.5852,
+        "1.6": 1.3132
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.9156,
+        "1.6": 1.4457
+      }
+    },
+    "verdict": {
+      "phi_sens_raw_mean": 0.7279,
+      "phi_sens_centred_mean": 0.7279,
+      "improved": false
+    }
+  },
+  "hc3_human_medicine": {
+    "raw": {
+      "norm_min": 1.0,
+      "norm_max": 1.0,
+      "median_dist": 1.0104,
+      "sigma": 0.5052,
+      "pairdist_cv": 0.0875,
+      "mean_norm_share": 0.717,
+      "phi_sigma_sens": {
+        "0.6": 0.6156,
+        "0.8": 0.4031,
+        "1.25": 0.5929,
+        "1.6": 1.3258
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.9086,
+        "1.6": 1.3682
+      }
+    },
+    "centred": {
+      "norm_min": 0.612,
+      "norm_max": 0.7975,
+      "median_dist": 1.0104,
+      "sigma": 0.5052,
+      "pairdist_cv": 0.0875,
+      "mean_norm_share": 0.0,
+      "phi_sigma_sens": {
+        "0.6": 0.6156,
+        "0.8": 0.4031,
+        "1.25": 0.5929,
+        "1.6": 1.3258
+      },
+      "graph_sigma_sens": {
+        "0.6": 0.9086,
+        "1.6": 1.3682
+      }
+    },
+    "verdict": {
+      "phi_sens_raw_mean": 0.7344,
+      "phi_sens_centred_mean": 0.7344,
+      "improved": false
+    }
+  }
+}

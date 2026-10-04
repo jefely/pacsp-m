@@ -1,0 +1,349 @@
+{
+  "purpose": "which draft the reader picks; the key maps candidate slots to models and must not be read before choosing",
+  "target_chars": 800,
+  "floor_chars": 600,
+  "count": 31,
+  "items": [
+    {
+      "index": 1,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 684,
+      "chars_2": 764,
+      "original_chars": {
+        "qwen": 693,
+        "r1": 771
+      }
+    },
+    {
+      "index": 2,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 779,
+      "chars_2": 781,
+      "original_chars": {
+        "qwen": 956,
+        "r1": 789
+      }
+    },
+    {
+      "index": 3,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 738,
+      "chars_2": 772,
+      "original_chars": {
+        "qwen": 997,
+        "r1": 748
+      }
+    },
+    {
+      "index": 4,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 781,
+      "chars_2": 794,
+      "original_chars": {
+        "qwen": 1183,
+        "r1": 903
+      }
+    },
+    {
+      "index": 5,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 776,
+      "chars_2": 770,
+      "original_chars": {
+        "qwen": 949,
+        "r1": 852
+      }
+    },
+    {
+      "index": 6,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 762,
+      "chars_2": 667,
+      "original_chars": {
+        "qwen": 880,
+        "r1": 672
+      }
+    },
+    {
+      "index": 7,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 799,
+      "chars_2": 745,
+      "original_chars": {
+        "qwen": 1204,
+        "r1": 809
+      }
+    },
+    {
+      "index": 8,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 773,
+      "chars_2": 705,
+      "original_chars": {
+        "qwen": 901,
+        "r1": 715
+      }
+    },
+    {
+      "index": 9,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 785,
+      "chars_2": 772,
+      "original_chars": {
+        "qwen": 890,
+        "r1": 878
+      }
+    },
+    {
+      "index": 10,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 769,
+      "chars_2": 778,
+      "original_chars": {
+        "qwen": 1153,
+        "r1": 788
+      }
+    },
+    {
+      "index": 11,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 759,
+      "chars_2": 792,
+      "original_chars": {
+        "qwen": 1158,
+        "r1": 797
+      }
+    },
+    {
+      "index": 12,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 797,
+      "chars_2": 789,
+      "original_chars": {
+        "qwen": 1056,
+        "r1": 794
+      }
+    },
+    {
+      "index": 13,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 794,
+      "chars_2": 791,
+      "original_chars": {
+        "qwen": 956,
+        "r1": 890
+      }
+    },
+    {
+      "index": 14,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 798,
+      "chars_2": 779,
+      "original_chars": {
+        "qwen": 959,
+        "r1": 863
+      }
+    },
+    {
+      "index": 15,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 664,
+      "chars_2": 716,
+      "original_chars": {
+        "qwen": 722,
+        "r1": 674
+      }
+    },
+    {
+      "index": 16,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 783,
+      "chars_2": 750,
+      "original_chars": {
+        "qwen": 834,
+        "r1": 839
+      }
+    },
+    {
+      "index": 17,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 786,
+      "chars_2": 735,
+      "original_chars": {
+        "qwen": 959,
+        "r1": 745
+      }
+    },
+    {
+      "index": 18,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 796,
+      "chars_2": 793,
+      "original_chars": {
+        "qwen": 890,
+        "r1": 817
+      }
+    },
+    {
+      "index": 19,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 773,
+      "chars_2": 756,
+      "original_chars": {
+        "qwen": 858,
+        "r1": 766
+      }
+    },
+    {
+      "index": 20,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 743,
+      "chars_2": 767,
+      "original_chars": {
+        "qwen": 813,
+        "r1": 753
+      }
+    },
+    {
+      "index": 21,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 785,
+      "chars_2": 789,
+      "original_chars": {
+        "qwen": 1018,
+        "r1": 876
+      }
+    },
+    {
+      "index": 22,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 799,
+      "chars_2": 763,
+      "original_chars": {
+        "qwen": 960,
+        "r1": 809
+      }
+    },
+    {
+      "index": 23,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 766,
+      "chars_2": 784,
+      "original_chars": {
+        "qwen": 972,
+        "r1": 877
+      }
+    },
+    {
+      "index": 24,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 765,
+      "chars_2": 777,
+      "original_chars": {
+        "qwen": 857,
+        "r1": 906
+      }
+    },
+    {
+      "index": 25,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 688,
+      "chars_2": 777,
+      "original_chars": {
+        "qwen": 1000,
+        "r1": 698
+      }
+    },
+    {
+      "index": 26,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 766,
+      "chars_2": 760,
+      "original_chars": {
+        "qwen": 771,
+        "r1": 765
+      }
+    },
+    {
+      "index": 27,
+      "candidate_1": "qwen",
+      "candidate_2": "r1",
+      "chars_1": 793,
+      "chars_2": 723,
+      "original_chars": {
+        "qwen": 846,
+        "r1": 728
+      }
+    },
+    {
+      "index": 28,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 677,
+      "chars_2": 794,
+      "original_chars": {
+        "qwen": 960,
+        "r1": 687
+      }
+    },
+    {
+      "index": 29,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 786,
+      "chars_2": 796,
+      "original_chars": {
+        "qwen": 939,
+        "r1": 796
+      }
+    },
+    {
+      "index": 30,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 739,
+      "chars_2": 788,
+      "original_chars": {
+        "qwen": 970,
+        "r1": 744
+      }
+    },
+    {
+      "index": 31,
+      "candidate_1": "r1",
+      "candidate_2": "qwen",
+      "chars_1": 786,
+      "chars_2": 791,
+      "original_chars": {
+        "qwen": 995,
+        "r1": 796
+      }
+    }
+  ]
+}

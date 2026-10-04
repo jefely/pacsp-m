@@ -1,0 +1,255 @@
+{
+  "source": "gaokao essay titles (public exam prompts)",
+  "model": "qwen2.5:7b",
+  "count": 31,
+  "items": [
+    {
+      "index": 1,
+      "file": "001.txt",
+      "year": 2015,
+      "paper": "全国卷I",
+      "prompt_chars": 98,
+      "ai_chars": 693
+    },
+    {
+      "index": 2,
+      "file": "002.txt",
+      "year": 2016,
+      "paper": "全国卷I",
+      "prompt_chars": 94,
+      "ai_chars": 956
+    },
+    {
+      "index": 3,
+      "file": "003.txt",
+      "year": 2017,
+      "paper": "全国卷I",
+      "prompt_chars": 121,
+      "ai_chars": 997
+    },
+    {
+      "index": 4,
+      "file": "004.txt",
+      "year": 2018,
+      "paper": "全国卷I",
+      "prompt_chars": 203,
+      "ai_chars": 1199
+    },
+    {
+      "index": 5,
+      "file": "005.txt",
+      "year": 2019,
+      "paper": "全国卷I",
+      "prompt_chars": 161,
+      "ai_chars": 949
+    },
+    {
+      "index": 6,
+      "file": "006.txt",
+      "year": 2020,
+      "paper": "全国卷I",
+      "prompt_chars": 215,
+      "ai_chars": 880
+    },
+    {
+      "index": 7,
+      "file": "007.txt",
+      "year": 2021,
+      "paper": "全国甲卷",
+      "prompt_chars": 159,
+      "ai_chars": 1217
+    },
+    {
+      "index": 8,
+      "file": "008.txt",
+      "year": 2021,
+      "paper": "全国乙卷",
+      "prompt_chars": 161,
+      "ai_chars": 901
+    },
+    {
+      "index": 9,
+      "file": "009.txt",
+      "year": 2022,
+      "paper": "全国甲卷",
+      "prompt_chars": 206,
+      "ai_chars": 890
+    },
+    {
+      "index": 10,
+      "file": "010.txt",
+      "year": 2022,
+      "paper": "全国乙卷",
+      "prompt_chars": 120,
+      "ai_chars": 1153
+    },
+    {
+      "index": 11,
+      "file": "011.txt",
+      "year": 2023,
+      "paper": "全国甲卷",
+      "prompt_chars": 54,
+      "ai_chars": 1158
+    },
+    {
+      "index": 12,
+      "file": "012.txt",
+      "year": 2023,
+      "paper": "全国乙卷",
+      "prompt_chars": 126,
+      "ai_chars": 1056
+    },
+    {
+      "index": 13,
+      "file": "013.txt",
+      "year": 2024,
+      "paper": "新课标I卷",
+      "prompt_chars": 72,
+      "ai_chars": 956
+    },
+    {
+      "index": 14,
+      "file": "014.txt",
+      "year": 2024,
+      "paper": "新课标II卷",
+      "prompt_chars": 126,
+      "ai_chars": 959
+    },
+    {
+      "index": 15,
+      "file": "015.txt",
+      "year": 2014,
+      "paper": "全国卷I",
+      "prompt_chars": 197,
+      "ai_chars": 722
+    },
+    {
+      "index": 16,
+      "file": "016.txt",
+      "year": 2013,
+      "paper": "全国卷I",
+      "prompt_chars": 136,
+      "ai_chars": 834
+    },
+    {
+      "index": 17,
+      "file": "017.txt",
+      "year": 2012,
+      "paper": "全国卷",
+      "prompt_chars": 194,
+      "ai_chars": 963
+    },
+    {
+      "index": 18,
+      "file": "018.txt",
+      "year": 2011,
+      "paper": "全国卷",
+      "prompt_chars": 112,
+      "ai_chars": 890
+    },
+    {
+      "index": 19,
+      "file": "019.txt",
+      "year": 2010,
+      "paper": "全国卷I",
+      "prompt_chars": 44,
+      "ai_chars": 858
+    },
+    {
+      "index": 20,
+      "file": "020.txt",
+      "year": 2009,
+      "paper": "全国卷I",
+      "prompt_chars": 131,
+      "ai_chars": 813
+    },
+    {
+      "index": 21,
+      "file": "021.txt",
+      "year": 2008,
+      "paper": "全国卷I",
+      "prompt_chars": 83,
+      "ai_chars": 1018
+    },
+    {
+      "index": 22,
+      "file": "022.txt",
+      "year": 2007,
+      "paper": "全国卷I",
+      "prompt_chars": 68,
+      "ai_chars": 960
+    },
+    {
+      "index": 23,
+      "file": "023.txt",
+      "year": 2006,
+      "paper": "全国卷I",
+      "prompt_chars": 160,
+      "ai_chars": 972
+    },
+    {
+      "index": 24,
+      "file": "024.txt",
+      "year": 2005,
+      "paper": "全国卷I",
+      "prompt_chars": 89,
+      "ai_chars": 861
+    },
+    {
+      "index": 25,
+      "file": "025.txt",
+      "year": 2004,
+      "paper": "全国卷I",
+      "prompt_chars": 73,
+      "ai_chars": 1000
+    },
+    {
+      "index": 26,
+      "file": "026.txt",
+      "year": 2003,
+      "paper": "全国卷",
+      "prompt_chars": 92,
+      "ai_chars": 771
+    },
+    {
+      "index": 27,
+      "file": "027.txt",
+      "year": 2002,
+      "paper": "全国卷",
+      "prompt_chars": 184,
+      "ai_chars": 846
+    },
+    {
+      "index": 28,
+      "file": "028.txt",
+      "year": 2001,
+      "paper": "全国卷",
+      "prompt_chars": 178,
+      "ai_chars": 960
+    },
+    {
+      "index": 29,
+      "file": "029.txt",
+      "year": 2000,
+      "paper": "全国卷",
+      "prompt_chars": 152,
+      "ai_chars": 939
+    },
+    {
+      "index": 30,
+      "file": "030.txt",
+      "year": 1999,
+      "paper": "全国卷",
+      "prompt_chars": 177,
+      "ai_chars": 970
+    },
+    {
+      "index": 31,
+      "file": "031.txt",
+      "year": 1998,
+      "paper": "全国卷",
+      "prompt_chars": 89,
+      "ai_chars": 995
+    }
+  ]
+}

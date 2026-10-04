@@ -1,0 +1,71 @@
+[
+  {
+    "dir": "data\\poem",
+    "files": 31,
+    "bytes_total": 3410,
+    "bytes_mean": 110,
+    "bytes_min": 36,
+    "bytes_max": 147,
+    "chars_mean": 38,
+    "C_T_Se": 1.895004,
+    "delta_mean": 0.397318,
+    "delta_std": 0.227728,
+    "mu_mean": 0.127179,
+    "mu_std": 0.074135,
+    "window": 5,
+    "model": "BAAI/bge-large-zh-v1.5",
+    "seconds": 11.2,
+    "C_T_ci95": [
+      0.920413,
+      3.26118
+    ],
+    "C_T_std_boot": 0.60633,
+    "bootstrap": 1500
+  },
+  {
+    "dir": "data\\machine_poem",
+    "files": 31,
+    "bytes_total": 3009,
+    "bytes_mean": 97,
+    "bytes_min": 74,
+    "bytes_max": 106,
+    "chars_mean": 35,
+    "C_T_Se": 3.82714,
+    "delta_mean": 0.618284,
+    "delta_std": 0.074077,
+    "mu_mean": 0.206557,
+    "mu_std": 0.01898,
+    "window": 5,
+    "model": "BAAI/bge-large-zh-v1.5",
+    "seconds": 10.6,
+    "C_T_ci95": [
+      3.576465,
+      4.172037
+    ],
+    "C_T_std_boot": 0.154305,
+    "bootstrap": 1500
+  },
+  {
+    "dir": "data\\techdoc",
+    "files": 31,
+    "bytes_total": 568206,
+    "bytes_mean": 18329,
+    "bytes_min": 3233,
+    "bytes_max": 60453,
+    "chars_mean": 10280,
+    "C_T_Se": 7.398207,
+    "delta_mean": 0.726552,
+    "delta_std": 0.212964,
+    "mu_mean": 0.335186,
+    "mu_std": 0.051253,
+    "window": 5,
+    "model": "BAAI/bge-large-zh-v1.5",
+    "seconds": 11.4,
+    "C_T_ci95": [
+      6.081165,
+      9.017207
+    ],
+    "C_T_std_boot": 0.753707,
+    "bootstrap": 1500
+  }
+]

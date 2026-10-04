@@ -1,0 +1,187 @@
+{
+  "vocab": 95,
+  "arms": {
+    "poem": {
+      "total_emotion_words": 27.0,
+      "words_per_item": 0.87,
+      "r_p0": 0.5224,
+      "r_p1": 0.2831,
+      "r_p2": 0.4262,
+      "r_p3": 0.4557,
+      "correlations": {
+        "0": 0.5224,
+        "1": 0.2831,
+        "2": 0.4262,
+        "3": 0.4557
+      }
+    },
+    "machine_poem": {
+      "total_emotion_words": 0.0,
+      "words_per_item": 0.0,
+      "r_p0": null,
+      "r_p1": null,
+      "r_p2": null,
+      "r_p3": null,
+      "correlations": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+      }
+    },
+    "lyrics": {
+      "total_emotion_words": 11.0,
+      "words_per_item": 0.35,
+      "r_p0": 0.3939,
+      "r_p1": 0.2364,
+      "r_p2": -0.0556,
+      "r_p3": 0.3541,
+      "correlations": {
+        "0": 0.3939,
+        "1": 0.2364,
+        "2": -0.0556,
+        "3": 0.3541
+      }
+    },
+    "machine_lyrics": {
+      "total_emotion_words": 7.0,
+      "words_per_item": 0.23,
+      "r_p0": -0.2464,
+      "r_p1": -0.1753,
+      "r_p2": 0.3111,
+      "r_p3": -0.1868,
+      "correlations": {
+        "0": -0.2464,
+        "1": -0.1753,
+        "2": 0.3111,
+        "3": -0.1868
+      }
+    },
+    "techdoc": {
+      "total_emotion_words": 314.0,
+      "words_per_item": 10.13,
+      "r_p0": -0.2442,
+      "correlations": {
+        "0": -0.2442
+      }
+    },
+    "hc3_human_medicine": {
+      "total_emotion_words": 5.0,
+      "words_per_item": 0.16,
+      "r_p0": -0.1084,
+      "r_p1": -0.0252,
+      "r_p2": -0.0028,
+      "r_p3": -0.0751,
+      "correlations": {
+        "0": -0.1084,
+        "1": -0.0252,
+        "2": -0.0028,
+        "3": -0.0751
+      }
+    },
+    "hc3_ai_medicine": {
+      "total_emotion_words": 3.0,
+      "words_per_item": 0.1,
+      "r_p0": 0.2331,
+      "r_p1": 0.0024,
+      "r_p2": 0.828,
+      "r_p3": 0.0127,
+      "correlations": {
+        "0": 0.2331,
+        "1": 0.0024,
+        "2": 0.828,
+        "3": 0.0127
+      }
+    },
+    "hc3_human_openqa": {
+      "total_emotion_words": 18.0,
+      "words_per_item": 0.58,
+      "r_p0": 0.4927,
+      "r_p1": 0.2618,
+      "r_p2": -0.1649,
+      "r_p3": 0.2774,
+      "correlations": {
+        "0": 0.4927,
+        "1": 0.2618,
+        "2": -0.1649,
+        "3": 0.2774
+      }
+    },
+    "hc3_ai_openqa": {
+      "total_emotion_words": 19.0,
+      "words_per_item": 0.61,
+      "r_p0": 0.249,
+      "r_p1": 0.199,
+      "r_p2": 0.7174,
+      "r_p3": 0.6919,
+      "correlations": {
+        "0": 0.249,
+        "1": 0.199,
+        "2": 0.7174,
+        "3": 0.6919
+      }
+    }
+  },
+  "pooled_correlation": {
+    "0": 0.1615,
+    "1": 0.1117,
+    "2": 0.2942,
+    "3": 0.2186
+  },
+  "shuffle_null": {
+    "poem": {
+      "top200_overlap": 142,
+      "top_share": 0.71,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    },
+    "machine_poem": {
+      "top200_overlap": 158,
+      "top_share": 0.79,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    },
+    "lyrics": {
+      "top200_overlap": 133,
+      "top_share": 0.665,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    },
+    "machine_lyrics": {
+      "top200_overlap": 158,
+      "top_share": 0.79,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    },
+    "techdoc": {
+      "top200_overlap": 123,
+      "top_share": 0.615,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    },
+    "hc3_human_medicine": {
+      "top200_overlap": 125,
+      "top_share": 0.625,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    },
+    "hc3_ai_medicine": {
+      "top200_overlap": 133,
+      "top_share": 0.665,
+      "row_sum_rel_err": 0.0005,
+      "col_sum_rel_err": 0.0
+    },
+    "hc3_human_openqa": {
+      "top200_overlap": 94,
+      "top_share": 0.47,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    },
+    "hc3_ai_openqa": {
+      "top200_overlap": 100,
+      "top_share": 0.5,
+      "row_sum_rel_err": 0.0,
+      "col_sum_rel_err": 0.0
+    }
+  }
+}

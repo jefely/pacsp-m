@@ -1,0 +1,112 @@
+[
+  {
+    "arm": "poem",
+    "T": 30,
+    "C_T": 1.895,
+    "max_dev_from_line": 0.3443,
+    "R2_linear": 0.75,
+    "increment_CV": 0.8991,
+    "concavity": "concave",
+    "half_mass_at": 13,
+    "half_mass_frac": 0.433
+  },
+  {
+    "arm": "machine_poem",
+    "T": 30,
+    "C_T": 3.8271,
+    "max_dev_from_line": 0.0461,
+    "R2_linear": 0.9882,
+    "increment_CV": 0.1632,
+    "concavity": "convex",
+    "half_mass_at": 17,
+    "half_mass_frac": 0.567
+  },
+  {
+    "arm": "lyrics",
+    "T": 30,
+    "C_T": 2.1261,
+    "max_dev_from_line": 0.2202,
+    "R2_linear": 0.8345,
+    "increment_CV": 0.7099,
+    "concavity": "concave",
+    "half_mass_at": 10,
+    "half_mass_frac": 0.333
+  },
+  {
+    "arm": "machine_lyrics",
+    "T": 30,
+    "C_T": 5.921,
+    "max_dev_from_line": 0.0353,
+    "R2_linear": 0.9952,
+    "increment_CV": 0.1341,
+    "concavity": "concave",
+    "half_mass_at": 17,
+    "half_mass_frac": 0.567
+  },
+  {
+    "arm": "techdoc",
+    "T": 30,
+    "C_T": 7.3982,
+    "max_dev_from_line": 0.1039,
+    "R2_linear": 0.9597,
+    "increment_CV": 0.3651,
+    "concavity": "convex",
+    "half_mass_at": 13,
+    "half_mass_frac": 0.433
+  },
+  {
+    "arm": "machine_techdoc",
+    "T": 30,
+    "C_T": 2.4662,
+    "max_dev_from_line": 0.0705,
+    "R2_linear": 0.9801,
+    "increment_CV": 0.2814,
+    "concavity": "convex",
+    "half_mass_at": 17,
+    "half_mass_frac": 0.567
+  },
+  {
+    "arm": "hc3_human_medicine",
+    "T": 30,
+    "C_T": 14.9678,
+    "max_dev_from_line": 0.0259,
+    "R2_linear": 0.9974,
+    "increment_CV": 0.1111,
+    "concavity": "convex",
+    "half_mass_at": 16,
+    "half_mass_frac": 0.533
+  },
+  {
+    "arm": "hc3_ai_medicine",
+    "T": 30,
+    "C_T": 19.3988,
+    "max_dev_from_line": 0.0179,
+    "R2_linear": 0.999,
+    "increment_CV": 0.1072,
+    "concavity": "concave",
+    "half_mass_at": 16,
+    "half_mass_frac": 0.533
+  },
+  {
+    "arm": "hc3_human_openqa",
+    "T": 30,
+    "C_T": 21.2274,
+    "max_dev_from_line": 0.0147,
+    "R2_linear": 0.999,
+    "increment_CV": 0.071,
+    "concavity": "convex",
+    "half_mass_at": 15,
+    "half_mass_frac": 0.5
+  },
+  {
+    "arm": "hc3_ai_openqa",
+    "T": 30,
+    "C_T": 25.582,
+    "max_dev_from_line": 0.0076,
+    "R2_linear": 0.9999,
+    "increment_CV": 0.06,
+    "concavity": "convex",
+    "half_mass_at": 16,
+    "half_mass_frac": 0.533
+  }
+]

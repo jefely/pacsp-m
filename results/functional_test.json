@@ -1,0 +1,132 @@
+{
+  "poem": {
+    "recovery_full_frame": {
+      "mean_err": 0.0,
+      "rel_err": 0.0,
+      "exact_hits": 31,
+      "T": 31
+    },
+    "recovery_random_codebook": {
+      "31": 0.271008,
+      "100": 0.091464,
+      "500": 0.0,
+      "2000": 0.0
+    },
+    "permutation": {
+      "phi_norm": 23.254,
+      "mean_delta_norm": 6.9918,
+      "relative": 0.300673,
+      "L11_as_ordered": 1191.9775,
+      "L11_spread_over_permutations": 0.0
+    },
+    "decomposition": {
+      "invariant_norm": 22.7181,
+      "order_norm": 49.6348,
+      "ratio": 2.184814
+    }
+  },
+  "lyrics": {
+    "recovery_full_frame": {
+      "mean_err": 0.0,
+      "rel_err": 0.0,
+      "exact_hits": 0,
+      "T": 31
+    },
+    "recovery_random_codebook": {
+      "31": 0.417006,
+      "100": 0.16541,
+      "500": 0.0,
+      "2000": 0.0
+    },
+    "permutation": {
+      "phi_norm": 21.8929,
+      "mean_delta_norm": 8.1537,
+      "relative": 0.372437,
+      "L11_as_ordered": 1207.525,
+      "L11_spread_over_permutations": 0.0
+    },
+    "decomposition": {
+      "invariant_norm": 21.1094,
+      "order_norm": 58.0449,
+      "ratio": 2.74971
+    }
+  },
+  "techdoc": {
+    "recovery_full_frame": {
+      "mean_err": 0.0,
+      "rel_err": 0.0,
+      "exact_hits": 0,
+      "T": 31
+    },
+    "recovery_random_codebook": {
+      "31": 0.569938,
+      "100": 0.313734,
+      "500": 0.0,
+      "2000": 0.0
+    },
+    "permutation": {
+      "phi_norm": 15.5179,
+      "mean_delta_norm": 6.7673,
+      "relative": 0.436097,
+      "L11_as_ordered": 884.9072,
+      "L11_spread_over_permutations": 0.0
+    },
+    "decomposition": {
+      "invariant_norm": 14.7699,
+      "order_norm": 47.5982,
+      "ratio": 3.222652
+    }
+  },
+  "hc3_human_medicine": {
+    "recovery_full_frame": {
+      "mean_err": 0.0,
+      "rel_err": 0.0,
+      "exact_hits": 0,
+      "T": 31
+    },
+    "recovery_random_codebook": {
+      "31": 0.699127,
+      "100": 0.293346,
+      "500": 0.0,
+      "2000": 0.0
+    },
+    "permutation": {
+      "phi_norm": 12.7629,
+      "mean_delta_norm": 7.1482,
+      "relative": 0.560077,
+      "L11_as_ordered": 763.8454,
+      "L11_spread_over_permutations": 0.0
+    },
+    "decomposition": {
+      "invariant_norm": 11.7372,
+      "order_norm": 50.1316,
+      "ratio": 4.271191
+    }
+  },
+  "hc3_ai_medicine": {
+    "recovery_full_frame": {
+      "mean_err": 0.0,
+      "rel_err": 0.0,
+      "exact_hits": 0,
+      "T": 31
+    },
+    "recovery_random_codebook": {
+      "31": 0.688981,
+      "100": 0.276816,
+      "500": 0.0,
+      "2000": 0.0
+    },
+    "permutation": {
+      "phi_norm": 11.5003,
+      "mean_delta_norm": 7.4039,
+      "relative": 0.643801,
+      "L11_as_ordered": 680.4951,
+      "L11_spread_over_permutations": 0.0
+    },
+    "decomposition": {
+      "invariant_norm": 10.2629,
+      "order_norm": 51.8948,
+      "ratio": 5.056554
+    }
+  }
+}
