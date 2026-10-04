@@ -21,6 +21,8 @@ python pacsp_tool.py compare 人类语料/ AI语料/ --name-a 人类 --name-b AI
 工具会把**不该做的解读**也在输出里挡住（`not-assignable`、`effect-below-floor`）。
 用法见 [`TOOL.md`](TOOL.md)。
 
+**第一次用请先看 [`docs/DELIVERY.md`](docs/DELIVERY.md)** —— 逐步执行清单，每条都带预期输出与排查表。
+
 ---
 
 ## 〇之二、独立性
