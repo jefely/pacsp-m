@@ -1,0 +1,66 @@
+{
+  "provider": "see output",
+  "pooling": "cls",
+  "normalize": true,
+  "maxdiff": 0.00011923909187316895,
+  "by_label": {
+    "cls": {
+      "maxdiff": 7.380569308996201,
+      "seconds": 0.14
+    },
+    "cls_norm": {
+      "maxdiff": 0.00011923909187316895,
+      "seconds": 0.05
+    },
+    "mean": {
+      "maxdiff": 6.073536723852158,
+      "seconds": 0.05
+    },
+    "mean_norm": {
+      "maxdiff": 0.24266010895371437,
+      "seconds": 0.05
+    },
+    "last": {
+      "maxdiff": 7.380577892065048,
+      "seconds": 0.05
+    },
+    "last_norm": {
+      "maxdiff": 0.00012743473052978516,
+      "seconds": 0.05
+    }
+  },
+  "ratios": [
+    {
+      "domain": "poem",
+      "paper": 0.8305,
+      "onnx": 0.830463,
+      "delta": -3.7e-05
+    },
+    {
+      "domain": "lyrics",
+      "paper": 0.8691,
+      "onnx": 0.869069,
+      "delta": -3.1e-05
+    },
+    {
+      "domain": "techdoc",
+      "paper": 0.9205,
+      "onnx": 0.920502,
+      "delta": 2e-06
+    },
+    {
+      "domain": "medicine",
+      "paper": 0.9147,
+      "onnx": 0.914679,
+      "delta": -2.1e-05
+    },
+    {
+      "domain": "openqa",
+      "paper": 0.9358,
+      "onnx": 0.935814,
+      "delta": 1.4e-05
+    }
+  ],
+  "verdict_ok": true,
+  "seconds": 14.7
+}
