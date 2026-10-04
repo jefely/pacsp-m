@@ -16,3 +16,8 @@ _omega_test/
 
 # 渲染预览为中间产物，交付物是 dist/*.docx 与 dist/*.pdf
 dist/preview/
+
+# ONNX 构建产物：图（1.2 GB）与 GPU 运行时可用 tools/export_onnx.py 重建
+onnx/*.onnx
+onnx/embcache/
+_ortgpu/

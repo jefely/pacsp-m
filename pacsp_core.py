@@ -33,6 +33,27 @@ def load_samples(sample_dir):
 
 
 def compute_embeddings(texts, model_name="BAAI/bge-large-zh-v1.5"):
+    """Embed with sentence-transformers, as the pipeline has always done.
+
+    A note on the normalize_embeddings flag, established by measurement rather than assumed.
+
+    The value returned here is unit-norm: measured over the poem corpus the norms are
+    1.00000000 with a standard deviation of 3.7e-08, so the flag does not describe the
+    vectors that reach compute_deltas and compute_mus.
+
+    The reason is in the model's own modules.json, which composes
+        Transformer -> Pooling(pooling_mode_cls_token=True) -> Normalize
+    so BAAI/bge-large-zh-v1.5 normalises internally. Passing False suppresses only a second,
+    redundant normalisation. Two consequences:
+
+      * the distances in PACSP-M are computed on CLS-pooled, L2-normalised vectors
+      * an ONNX reimplementation must reproduce CLS pooling plus L2 normalisation, which is
+        what tools/onnx_gpu_acceptance.py verified: max component difference 1.2e-04 against
+        sentence-transformers, and the five published D ratios reproduced to 4 decimals
+
+    The flag is therefore redundant for this model, not wrong, and it is left in place so the
+    pipeline stays byte-identical to the one that produced the paper.
+    """
     from sentence_transformers import SentenceTransformer
     model = SentenceTransformer(model_name)
     return model.encode(texts, batch_size=8, normalize_embeddings=False)

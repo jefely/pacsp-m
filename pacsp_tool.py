@@ -96,32 +96,60 @@ def load_texts(path: str | Path) -> tuple[list[str], list[str]]:
 # ---------------------------------------------------------------------------
 
 class Embedder:
-    """Caches the model and the vectors it has already produced for this process."""
+    """Caches the model and the vectors it has already produced for this process.
 
-    def __init__(self, model_id: str):
+    Two backends are available. sentence-transformers is the original path and needs torch,
+    about 5.4 GB; the ONNX backend needs onnxruntime instead, roughly 330 MB with the model.
+    They agree to four decimals on the published ratios, which is what
+    tools/onnx_gpu_acceptance.py checks, so the default is onnx when a graph is present and
+    sentence-transformers otherwise.
+    """
+
+    def __init__(self, model_id: str, backend: str = "auto",
+                 onnx_dir: str | Path | None = None, prefer_gpu: bool = True):
         self.model_id = model_id
-        self._model = None
-        self._cache: dict[tuple, np.ndarray] = {}
+        self.onnx_dir = Path(onnx_dir) if onnx_dir else Path(__file__).resolve().parent / "onnx"
+        self.backend = backend
+        self.prefer_gpu = prefer_gpu
+        self._impl = None
+        self._cache: dict = {}
 
     def _load(self):
-        if self._model is None:
-            try:
-                from sentence_transformers import SentenceTransformer
-            except ImportError as e:
-                raise SystemExit(
-                    "sentence-transformers is required. Install with:\n"
-                    "  pip install sentence-transformers\n"
-                    f"(import failed: {e})")
-            self._model = SentenceTransformer(self.model_id)
-        return self._model
+        if self._impl is not None:
+            return self._impl
+        import pacsp_backends
+        chosen = self.backend
+        if chosen == "auto":
+            graph = self.onnx_dir / "bge-large-zh-v1.5.onnx"
+            chosen = "onnx" if graph.exists() else "sentence-transformers"
+        try:
+            self._impl = pacsp_backends.make_embedder(
+                chosen, self.model_id, onnx_dir=self.onnx_dir,
+                prefer_gpu=self.prefer_gpu)
+        except Exception as e:
+            if chosen == "onnx" and self.backend == "auto":
+                print(f"  note: ONNX backend unavailable ({type(e).__name__}), "
+                      "falling back to sentence-transformers", file=sys.stderr)
+                self._impl = pacsp_backends.make_embedder(
+                    "sentence-transformers", self.model_id)
+            else:
+                raise
+        return self._impl
+
+    @property
+    def active_backend(self) -> str:
+        return self._load().name
+
+    def describe(self) -> dict:
+        return self._load().describe()
 
     def encode(self, texts: list[str]) -> np.ndarray:
-        key = (self.model_id, len(texts), hash("".join(texts[:3])), len(texts[0]) if texts else 0)
+        impl = self._load()
+        key = (impl.name, len(texts), len(texts[0]) if texts else 0,
+               hash(tuple(len(t) for t in texts)))
         if key in self._cache:
             return self._cache[key]
-        m = self._load()
-        E = m.encode(texts, batch_size=8, show_progress_bar=False)
-        E = np.asarray(E, dtype=np.float64)
+        E = impl.encode(texts)
         self._cache[key] = E
         return E
 
@@ -365,7 +393,8 @@ def _measure_core(E: np.ndarray, n_boot: int, rng: np.random.Generator) -> dict:
 
 def cmd_measure(args) -> int:
     repo, lang, dim, note = resolve_frame(args)
-    emb = Embedder(repo)
+    emb = Embedder(repo, backend=args.backend, onnx_dir=args.onnx_dir,
+                    prefer_gpu=not args.no_gpu)
     rng = np.random.default_rng(args.seed)
 
     texts, names = load_texts(args.collection)
@@ -407,7 +436,8 @@ def cmd_measure(args) -> int:
 
 def cmd_compare(args) -> int:
     repo, lang, dim, note = resolve_frame(args)
-    emb = Embedder(repo)
+    emb = Embedder(repo, backend=args.backend, onnx_dir=args.onnx_dir,
+                    prefer_gpu=not args.no_gpu)
     rng = np.random.default_rng(args.seed)
 
     ta, na = load_texts(args.collection_a)
@@ -540,6 +570,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--bootstrap", type=int, default=2000,
                    help="bootstrap resamples (default 2000)")
     p.add_argument("--seed", type=int, default=0, help="random seed (default 0)")
+    p.add_argument("--backend", default="auto",
+                   choices=["auto", "onnx", "sentence-transformers"],
+                   help="embedding backend; auto prefers onnx when a graph is present")
+    p.add_argument("--onnx-dir", default=None,
+                   help="directory holding bge-large-zh-v1.5.onnx")
+    p.add_argument("--no-gpu", action="store_true",
+                   help="do not look for torch's bundled CUDA libraries")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     f = sub.add_parser("frame", help="describe a frame and its validation status")
