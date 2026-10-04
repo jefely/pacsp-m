@@ -1,0 +1,23 @@
+{
+  "n": 31,
+  "D": 0.543351,
+  "ci95": [
+    0.526049,
+    0.56071
+  ],
+  "bootstrap_cv": 0.016509,
+  "n_distances": 465,
+  "frame": {
+    "name": "bge-large-zh",
+    "repository": "BAAI/bge-large-zh-v1.5",
+    "language": "zh",
+    "note": "checked: 5/5 direction, spread 1.13"
+  },
+  "gates": [
+    {
+      "id": "estimate-imprecise",
+      "fired": false,
+      "detail": "bootstrap CV 0.0165"
+    }
+  ]
+}

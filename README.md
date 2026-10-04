@@ -1,24 +1,41 @@
-# PACSP-M — 测量效度分析
+# PACSP-M — 认知沉积的可测框架
 
-**这是什么**：`PACSP-ID` 论文发表后，对其**核心度量效度**所做的审查与替代方案检验。
+**这是什么**：一个测量文本集合语义分散度的框架、它的效度条件、以及被实测否决的替代方案记录。
 **起始**：2026-10-05
-**上游**：`D:\myproject\PACSP-ID`（代码、数据、发布流水线、论文原档，已冻结）
+**上游**：`PACSP-ID`（代码、数据、发布流水线、论文原档，已冻结）
 **完整度**：**本文件夹独立可跑**——自带语料、自带测量核心、已通过一致性验证（见 §八）
+**仓库**：https://github.com/jefely/pacsp-m
 
 ---
 
-## 〇、独立性
+## 〇、先用工具
+
+```bash
+pip install numpy sentence-transformers
+
+python pacsp_tool.py frame --list                                  # 看已校准的参照系
+python pacsp_tool.py measure 我的语料/                              # 一组文本有多分散
+python pacsp_tool.py compare 人类语料/ AI语料/ --name-a 人类 --name-b AI
+```
+
+工具会把**不该做的解读**也在输出里挡住（`not-assignable`、`effect-below-floor`）。
+用法见 [`TOOL.md`](TOOL.md)。
+
+---
+
+## 〇之二、独立性
 
 本文件夹**不依赖** `PACSP-ID` 即可复现全部计算：
 
 | 需要的东西 | 本文件夹自带 | 说明 |
 |---|---|---|
-| 语料 | ✅ `data/`（1.2 MB，21 个语料） | 从上游完整复制 |
+| 语料 | ✅ `data/`（1.2 MB，22 个语料） | 从上游完整复制 |
 | 测量核心 | ✅ `pacsp_core.py` | 从 `pacsp_build.py` **逐字复制** 6 个函数 |
 | 一致性验证 | ✅ `verify_core.py` | **10/10 冻结值一致；6 函数 × 3 语料逐位相同** |
-| 探索脚本 | ✅ `exploration/`（27 个） | 已改为导入本地 `pacsp_core` |
-| 结果快照 | ✅ `results/`（19 个 JSON） | 文档中所有数字的来源 |
-| 模型权重 | ⚠️ 外部 | 缓存于 `PACSP-ID\_hf_home`（约 19 GB），见 §八 |
+| 探索脚本 | ✅ `exploration/`（30 个） | 已改为导入本地 `pacsp_core` |
+| 结果快照 | ✅ `results/`（32 个 JSON） | 文档中所有数字的来源 |
+| 命令行工具 | ✅ `pacsp_tool.py` + `tests/` | **复现论文数字的回归测试** |
+| 模型权重 | ⚠️ 外部 | 缓存于 `PACSP-M\_hf_home`（约 4 GB），见 §八 |
 
 **唯一的外部依赖是模型权重缓存**，因为它太大（19 GB）不适合复制。
 脚本通过 `HF_HOME` 环境变量定位它。
