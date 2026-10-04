@@ -1,0 +1,67 @@
+{
+  "provider_tested": "CPUExecutionProvider",
+  "note": "int8 operators have no CUDA kernel and fall back to CPU, measured about 20x slower than fp32 on CUDAExecutionProvider",
+  "rows": [
+    {
+      "variant": "fp32",
+      "mb": 1238.2,
+      "ratios": {
+        "poem": 0.83046,
+        "lyrics": 0.869062,
+        "techdoc": 0.920488,
+        "medicine": 0.914685,
+        "openqa": 0.9358
+      },
+      "worst": 4e-05,
+      "seconds": 135.03,
+      "accepted": true
+    },
+    {
+      "variant": "int8_perchannel",
+      "mb": 312.1,
+      "ratios": {
+        "poem": 0.839713,
+        "lyrics": 0.88187,
+        "techdoc": 0.92344,
+        "medicine": 0.914087,
+        "openqa": 0.933853
+      },
+      "worst": 0.01277,
+      "seconds": 64.98,
+      "accepted": false
+    },
+    {
+      "variant": "int8_plain",
+      "mb": 311.1,
+      "ratios": {
+        "poem": 0.836424,
+        "lyrics": 0.858005,
+        "techdoc": 0.921271,
+        "medicine": 0.919883,
+        "openqa": 0.935664
+      },
+      "worst": 0.011095,
+      "seconds": 64.49,
+      "accepted": false
+    },
+    {
+      "variant": "int8_reduced",
+      "mb": 311.1,
+      "ratios": {
+        "poem": 0.843261,
+        "lyrics": 0.936541,
+        "techdoc": 0.922904,
+        "medicine": 0.912771,
+        "openqa": 0.936813
+      },
+      "worst": 0.067441,
+      "seconds": 64.36,
+      "accepted": false
+    }
+  ],
+  "tolerance": 0.002,
+  "accepted": [
+    "fp32"
+  ],
+  "seconds": 333.3
+}
