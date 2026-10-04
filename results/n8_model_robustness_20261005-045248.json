@@ -1,0 +1,74 @@
+{
+  "models": {
+    "bge-large-zh-v1.5": {
+      "dim": 1024,
+      "repo": "BAAI/bge-large-zh-v1.5",
+      "ratios": {
+        "poem": 0.8305,
+        "lyrics": 0.8691,
+        "techdoc": 0.9205,
+        "medicine": 0.9147,
+        "openqa": 0.9358
+      },
+      "below_1": 5,
+      "n": 5,
+      "spread": 1.1268
+    },
+    "bge-small-zh-v1.5": {
+      "dim": 512,
+      "repo": "BAAI/bge-small-zh-v1.5",
+      "ratios": {
+        "poem": 0.8728,
+        "lyrics": 0.9038,
+        "techdoc": 0.8907,
+        "medicine": 0.9777,
+        "openqa": 0.9562
+      },
+      "below_1": 5,
+      "n": 5,
+      "spread": 1.1202
+    },
+    "text2vec-base-chinese": {
+      "dim": 768,
+      "repo": "shibing624/text2vec-base-chinese",
+      "ratios": {
+        "poem": 0.9725,
+        "lyrics": 0.8309,
+        "techdoc": 1.01,
+        "medicine": 1.0048,
+        "openqa": 0.9634
+      },
+      "below_1": 3,
+      "n": 5,
+      "spread": 1.2155
+    }
+  },
+  "pairs": {},
+  "verdict": {
+    "models_compared": [
+      "bge-large-zh-v1.5",
+      "bge-small-zh-v1.5",
+      "text2vec-base-chinese"
+    ],
+    "domains": [
+      "lyrics",
+      "medicine",
+      "openqa",
+      "poem",
+      "techdoc"
+    ],
+    "domains_direction_consistent": 3,
+    "total_domains": 5,
+    "all_consistent": false,
+    "below_1_by_model": {
+      "bge-large-zh-v1.5": 5,
+      "bge-small-zh-v1.5": 5,
+      "text2vec-base-chinese": 3
+    },
+    "spread_by_model": {
+      "bge-large-zh-v1.5": 1.1268,
+      "bge-small-zh-v1.5": 1.1202,
+      "text2vec-base-chinese": 1.2155
+    }
+  }
+}
