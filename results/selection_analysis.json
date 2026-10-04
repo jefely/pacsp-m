@@ -1,0 +1,116 @@
+{
+  "full_arm_ct": {
+    "qwen": 9.5902,
+    "r1": 6.6421
+  },
+  "chosen_model_counts": {
+    "r1": 9,
+    "qwen": 4
+  },
+  "decisions": [
+    {
+      "index": 1,
+      "pick": "B",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 764,
+      "chars_unchosen": 684
+    },
+    {
+      "index": 2,
+      "pick": "A",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 779,
+      "chars_unchosen": 781
+    },
+    {
+      "index": 3,
+      "pick": "A",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 738,
+      "chars_unchosen": 772
+    },
+    {
+      "index": 4,
+      "pick": "B",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 794,
+      "chars_unchosen": 781
+    },
+    {
+      "index": 5,
+      "pick": "A",
+      "chosen": "qwen",
+      "unchosen": "r1",
+      "chars_chosen": 776,
+      "chars_unchosen": 770
+    },
+    {
+      "index": 6,
+      "pick": "A",
+      "chosen": "qwen",
+      "unchosen": "r1",
+      "chars_chosen": 762,
+      "chars_unchosen": 667
+    },
+    {
+      "index": 7,
+      "pick": "A",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 799,
+      "chars_unchosen": 745
+    },
+    {
+      "index": 8,
+      "pick": "A",
+      "chosen": "qwen",
+      "unchosen": "r1",
+      "chars_chosen": 773,
+      "chars_unchosen": 705
+    },
+    {
+      "index": 9,
+      "pick": "A",
+      "chosen": "qwen",
+      "unchosen": "r1",
+      "chars_chosen": 785,
+      "chars_unchosen": 772
+    },
+    {
+      "index": 10,
+      "pick": "B",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 778,
+      "chars_unchosen": 769
+    },
+    {
+      "index": 11,
+      "pick": "B",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 792,
+      "chars_unchosen": 759
+    },
+    {
+      "index": 12,
+      "pick": "B",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 789,
+      "chars_unchosen": 797
+    },
+    {
+      "index": 13,
+      "pick": "B",
+      "chosen": "r1",
+      "unchosen": "qwen",
+      "chars_chosen": 791,
+      "chars_unchosen": 794
+    }
+  ]
+}

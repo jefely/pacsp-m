@@ -1,0 +1,121 @@
+{
+  "poem": {
+    "recovery_out_of_frame": {
+      "mean_err": 0.8783,
+      "relative_to_baseline": 1.0563
+    },
+    "orderings": {
+      "by_length": 0.0523,
+      "by_hash": 0.1392,
+      "random_shuffle": 0.1413
+    },
+    "sigma_sensitivity": {
+      "x0.6": 0.9672,
+      "x0.8": 0.669,
+      "x1.25": 1.0526,
+      "x1.6": 2.3956
+    }
+  },
+  "machine_poem": {
+    "recovery_out_of_frame": {
+      "mean_err": 0.9325,
+      "relative_to_baseline": 1.08
+    },
+    "orderings": {
+      "by_length": 0.0975,
+      "by_hash": 0.0987,
+      "random_shuffle": 0.1003
+    },
+    "sigma_sensitivity": {
+      "x0.6": 0.9733,
+      "x0.8": 0.6883,
+      "x1.25": 1.128,
+      "x1.6": 2.6058
+    }
+  },
+  "lyrics": {
+    "recovery_out_of_frame": {
+      "mean_err": 0.0,
+      "relative_to_baseline": 0.0
+    },
+    "orderings": {
+      "by_length": 0.2091,
+      "by_hash": 0.2867,
+      "random_shuffle": 0.2956
+    },
+    "sigma_sensitivity": {
+      "x0.6": 0.8316,
+      "x0.8": 0.5037,
+      "x1.25": 0.643,
+      "x1.6": 1.3565
+    }
+  },
+  "techdoc": {
+    "recovery_out_of_frame": {
+      "mean_err": 0.0,
+      "relative_to_baseline": 0.0
+    },
+    "orderings": {
+      "by_length": 0.275,
+      "by_hash": 0.3015,
+      "random_shuffle": 0.3103
+    },
+    "sigma_sensitivity": {
+      "x0.6": 0.9044,
+      "x0.8": 0.5824,
+      "x1.25": 0.8134,
+      "x1.6": 1.7724
+    }
+  },
+  "hc3_human_medicine": {
+    "recovery_out_of_frame": {
+      "mean_err": 0.8877,
+      "relative_to_baseline": 0.9781
+    },
+    "orderings": {
+      "by_length": 0.2302,
+      "by_hash": 0.2231,
+      "random_shuffle": 0.1957
+    },
+    "sigma_sensitivity": {
+      "x0.6": 0.9773,
+      "x0.8": 0.7077,
+      "x1.25": 1.2241,
+      "x1.6": 2.8897
+    }
+  },
+  "hc3_ai_medicine": {
+    "recovery_out_of_frame": {
+      "mean_err": 1.0355,
+      "relative_to_baseline": 1.0913
+    },
+    "orderings": {
+      "by_length": 0.1891,
+      "by_hash": 0.1857,
+      "random_shuffle": 0.17
+    },
+    "sigma_sensitivity": {
+      "x0.6": 0.984,
+      "x0.8": 0.7333,
+      "x1.25": 1.3456,
+      "x1.6": 3.2476
+    }
+  },
+  "hc3_human_openqa": {
+    "recovery_out_of_frame": {
+      "mean_err": 0.0,
+      "relative_to_baseline": 0.0
+    },
+    "orderings": {
+      "by_length": 0.4506,
+      "by_hash": 0.4605,
+      "random_shuffle": 0.4489
+    },
+    "sigma_sensitivity": {
+      "x0.6": 0.9218,
+      "x0.8": 0.6517,
+      "x1.25": 1.0667,
+      "x1.6": 2.4634
+    }
+  }
+}

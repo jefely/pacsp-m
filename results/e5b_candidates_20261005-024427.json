@@ -1,0 +1,80 @@
+{
+  "poem": {
+    "hierarchy_size": 455,
+    "node_volume": 1.458875,
+    "edge_volume": 0.070026,
+    "tree_depth": 6,
+    "hub_share": 0.7577,
+    "C_permutation_invariant": true,
+    "Y_row_sum_min": 0.065842,
+    "Y_row_sum_max": 0.264536,
+    "top_sink": "孤独",
+    "phi_frobenius": 4.1387,
+    "phi_sigma_sens_1.6": 0.8796
+  },
+  "machine_poem": {
+    "hierarchy_size": 314,
+    "node_volume": 4.227883,
+    "edge_volume": 0.139985,
+    "tree_depth": 4,
+    "hub_share": 0.9623,
+    "C_permutation_invariant": true,
+    "Y_row_sum_min": 0.077985,
+    "Y_row_sum_max": 0.535639,
+    "top_sink": "孤独",
+    "phi_frobenius": 3.9223,
+    "phi_sigma_sens_1.6": 0.9296
+  },
+  "lyrics": {
+    "hierarchy_size": 747,
+    "node_volume": 0.300018,
+    "edge_volume": 0.004651,
+    "tree_depth": 11,
+    "hub_share": 0.5857,
+    "C_permutation_invariant": true,
+    "Y_row_sum_min": 2e-06,
+    "Y_row_sum_max": 0.080872,
+    "top_sink": "悲伤",
+    "phi_frobenius": 5.43,
+    "phi_sigma_sens_1.6": 0.5886
+  },
+  "machine_lyrics": {
+    "hierarchy_size": 367,
+    "node_volume": 3.818677,
+    "edge_volume": 0.112171,
+    "tree_depth": 7,
+    "hub_share": 0.956,
+    "C_permutation_invariant": true,
+    "Y_row_sum_min": 0.046751,
+    "Y_row_sum_max": 0.751126,
+    "top_sink": "孤独",
+    "phi_frobenius": 3.8755,
+    "phi_sigma_sens_1.6": 0.9111
+  },
+  "techdoc": {
+    "hierarchy_size": 729,
+    "node_volume": 0.088766,
+    "edge_volume": 0.000672,
+    "tree_depth": 12,
+    "hub_share": 0.6337,
+    "C_permutation_invariant": true,
+    "Y_row_sum_min": 0.0,
+    "Y_row_sum_max": 0.036909,
+    "top_sink": "好奇",
+    "phi_frobenius": 4.1074,
+    "phi_sigma_sens_1.6": 0.8735
+  },
+  "hc3_ai_medicine": {
+    "hierarchy_size": 725,
+    "node_volume": 1.295506,
+    "edge_volume": 0.047349,
+    "tree_depth": 10,
+    "hub_share": 0.8512,
+    "C_permutation_invariant": true,
+    "Y_row_sum_min": 0.022534,
+    "Y_row_sum_max": 0.291523,
+    "top_sink": "担忧",
+    "phi_frobenius": 3.8807,
+    "phi_sigma_sens_1.6": 0.9514
+  }
+}

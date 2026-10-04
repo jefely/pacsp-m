@@ -1,0 +1,205 @@
+{
+  "source_dataset": "Hello-SimpleAI/HC3-Chinese",
+  "config": "open_qa",
+  "license": "cc-by-sa-4.0",
+  "arms": [
+    "hc3_human_openqa",
+    "hc3_ai_openqa"
+  ],
+  "what_this_is": "Prompt-parallel authorship control. Each question carries one human answer and one ChatGPT answer, so topic and prompt are held constant while authorship varies. This is the strongest publicly available substitute for a same-source three-arm design.",
+  "what_this_is_not": "It has no middle arm. The paper's axis is whether human selection and curation was applied, and HC3's ChatGPT answers are raw generations with no curation step, while the human answers involve no model. So this contrasts human authorship against machine authorship, not curated against uncurated machine output.",
+  "length_matching": {
+    "method": "each answer cut to whole sentences near a common target",
+    "target_chars": 150,
+    "floor_chars": 100
+  },
+  "count": 31,
+  "items": [
+    {
+      "src_index": 1,
+      "question": "最近脸上长了好多脂肪粒，这个该怎么破？ 记得前段时间你好像也有～",
+      "human_chars": 117,
+      "ai_chars": 174
+    },
+    {
+      "src_index": 2,
+      "question": "哈尔滨院附近的旅店多吗？价位大概是什么样的 哈尔滨金融学院附近的旅店多吗？价位大概是什么样的 ",
+      "human_chars": 157,
+      "ai_chars": 132
+    },
+    {
+      "src_index": 3,
+      "question": "怎样向中的女孩子说出第一句话？说什么？ 怎样向暗恋中的女孩子说出第一句话？说什么？ ",
+      "human_chars": 160,
+      "ai_chars": 153
+    },
+    {
+      "src_index": 4,
+      "question": "我想买一辆童车，请问什么牌子的好？济南的专卖童车的地方在那儿？ ",
+      "human_chars": 102,
+      "ai_chars": 140
+    },
+    {
+      "src_index": 5,
+      "question": "怎么把物品捐给和尚道士加声望，他们不理我 ",
+      "human_chars": 158,
+      "ai_chars": 132
+    },
+    {
+      "src_index": 6,
+      "question": "主要编程序，ps，画图，该买什么电脑 ",
+      "human_chars": 123,
+      "ai_chars": 104
+    },
+    {
+      "src_index": 7,
+      "question": "北海冰宫银狐苍狼有8个人组队刷的地方吗？怪多的. ",
+      "human_chars": 125,
+      "ai_chars": 160
+    },
+    {
+      "src_index": 8,
+      "question": "我想问一下后怀孕对胎儿有什么影想 急切的请教我想问一下酒后怀孕对胎儿有什么影想 ",
+      "human_chars": 136,
+      "ai_chars": 169
+    },
+    {
+      "src_index": 9,
+      "question": "我和女朋友做爱时间不长就早泄  怎么办",
+      "human_chars": 139,
+      "ai_chars": 143
+    },
+    {
+      "src_index": 10,
+      "question": "股改后发行的新股还有没有分流通盘和非流通盘? ",
+      "human_chars": 132,
+      "ai_chars": 161
+    },
+    {
+      "src_index": 11,
+      "question": "最近脚底板疼，请问谁有一些治脚疼？ 请问脚底板疼有何偏方最近脚底板疼，请问谁有一些偏方治脚疼？ ",
+      "human_chars": 138,
+      "ai_chars": 143
+    },
+    {
+      "src_index": 12,
+      "question": "16世纪以后，中国为什么没能产生近代根本原因 16世纪以后，中国为什么没能产生近代科学根本原因 ",
+      "human_chars": 174,
+      "ai_chars": 153
+    },
+    {
+      "src_index": 13,
+      "question": "物质的量浓度相同的磷酸和磷酸钠溶液中磷酸根离子的量浓度为什么不同 ",
+      "human_chars": 151,
+      "ai_chars": 123
+    },
+    {
+      "src_index": 14,
+      "question": "上过华尔街的进？有效果吗？能提高英语水平吗？ 上过华尔街英语的进？有效果吗？能提高英语水平吗？ ",
+      "human_chars": 109,
+      "ai_chars": 152
+    },
+    {
+      "src_index": 15,
+      "question": "血小板正高红细胞，白细胞正常，血小板高，请问有问题吗 ",
+      "human_chars": 169,
+      "ai_chars": 143
+    },
+    {
+      "src_index": 16,
+      "question": "请问青岛各区段的（８０平米以内）的租金如何？ 请问青岛各区段的商铺（８０平米以内）的租金如何？ ",
+      "human_chars": 152,
+      "ai_chars": 166
+    },
+    {
+      "src_index": 17,
+      "question": "减肚腩的办法，肚子上的妊辰纹怎么消除谁知道，告诉我呗，谢谢。 ",
+      "human_chars": 133,
+      "ai_chars": 153
+    },
+    {
+      "src_index": 18,
+      "question": "得了慢性浅表性胃炎伴胆汁反流，晚上的时候感觉好饿，可以吃宵夜吗？ ",
+      "human_chars": 198,
+      "ai_chars": 143
+    },
+    {
+      "src_index": 19,
+      "question": "想了解一下ix35，有没有专业一点的啊？ 想了解一下ix35，有没有专业一点的朋友啊？ ",
+      "human_chars": 164,
+      "ai_chars": 171
+    },
+    {
+      "src_index": 20,
+      "question": "求助蜗牛大哥蜗牛大哥，在战网上如何修改暗河，用什么修改器修改． ",
+      "human_chars": 100,
+      "ai_chars": 114
+    },
+    {
+      "src_index": 21,
+      "question": "什么是爱   怎样才算爱谁能告诉我？？？？？？",
+      "human_chars": 134,
+      "ai_chars": 160
+    },
+    {
+      "src_index": 22,
+      "question": "有哪些女人写给女人的离别诗？要唐诗宋词。一首也可以。 ",
+      "human_chars": 144,
+      "ai_chars": 151
+    },
+    {
+      "src_index": 23,
+      "question": "小孩不小心把一角钱吞进肚子里怎么办 ",
+      "human_chars": 107,
+      "ai_chars": 166
+    },
+    {
+      "src_index": 24,
+      "question": "早上起来痛是怎么回事啊？痛了一天了。 早上起来喉咙痛是怎么回事啊？痛了一天了。 ",
+      "human_chars": 132,
+      "ai_chars": 154
+    },
+    {
+      "src_index": 25,
+      "question": "冬天可以泡温泉吗？老婆五个月了！ 冬天孕妇可以泡温泉吗？老婆五个月了！ ",
+      "human_chars": 152,
+      "ai_chars": 143
+    },
+    {
+      "src_index": 26,
+      "question": "投资顾问是做什么的投资顾问是做什么的？面试会问什么？ ",
+      "human_chars": 129,
+      "ai_chars": 167
+    },
+    {
+      "src_index": 27,
+      "question": "为什么做梦后总想不起来做了什么? ",
+      "human_chars": 140,
+      "ai_chars": 123
+    },
+    {
+      "src_index": 28,
+      "question": "MEIZU（）无法识别usb设备怎么办 MEIZU（魅族）无法识别usb设备怎么办 ",
+      "human_chars": 123,
+      "ai_chars": 149
+    },
+    {
+      "src_index": 29,
+      "question": "飞这种水果怎么吃，绿色的　五个棱， 飞马　水果飞马这种水果怎么吃，绿色的　五个棱， ",
+      "human_chars": 152,
+      "ai_chars": 143
+    },
+    {
+      "src_index": 30,
+      "question": "宫崎骏十大经典动漫怎么样，哪个宝宝看过~ ",
+      "human_chars": 102,
+      "ai_chars": 159
+    },
+    {
+      "src_index": 31,
+      "question": "最近杜鹃花的叶子干得利害，每天都浇水还是不行。怎么办？ ",
+      "human_chars": 143,
+      "ai_chars": 159
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "chosen_model_counts": {
+    "r1": 9,
+    "qwen": 4
+  },
+  "count": 13,
+  "note": "both arms are machine-written, so a C_T difference between them comes from the selection step, not from authorship"
+}

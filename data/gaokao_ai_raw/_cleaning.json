@@ -1,0 +1,24 @@
+{
+  "reason": "the model decorated some essays with Markdown; every other PACSP arm is plain prose, so the decoration would add an orthographic difference confounded with authorship",
+  "method": "removed ** **, leading #, leading - and numbered-list markers",
+  "word_changes": "none",
+  "backup": "data/gaokao_ai_raw_preclean/",
+  "changed": [
+    {
+      "file": "004.txt",
+      "removed_chars": 16
+    },
+    {
+      "file": "007.txt",
+      "removed_chars": 13
+    },
+    {
+      "file": "017.txt",
+      "removed_chars": 4
+    },
+    {
+      "file": "024.txt",
+      "removed_chars": 4
+    }
+  ]
+}

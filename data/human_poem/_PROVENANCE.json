@@ -1,0 +1,258 @@
+{
+  "arm": "human_poem",
+  "status": "PROXY, NOT A VALID PURE-HUMAN CONTROL",
+  "source": "Tang dynasty jueju (quatrains), public domain",
+  "why_it_is_not_a_control": "This arm differs from the other arms in era, register, orthography and collection method at the same time as in human/AI involvement, so any C_T difference cannot be attributed to authorship. The paper's own measurements show between-domain differences (C_T 1.9 to 7.4) far exceed between-axis differences (7-21%), which is why a historical proxy cannot resolve the question. Use only as a domain-shift sensitivity probe.",
+  "count": 31,
+  "total_bytes": 2232,
+  "items": [
+    {
+      "file": "001.txt",
+      "title": "静夜思",
+      "author": "李白",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "002.txt",
+      "title": "春晓",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "003.txt",
+      "title": "登鹳雀楼",
+      "author": "王之涣",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "004.txt",
+      "title": "相思",
+      "author": "王维",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "005.txt",
+      "title": "鹿柴",
+      "author": "王维",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "006.txt",
+      "title": "竹里馆",
+      "author": "王维",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "007.txt",
+      "title": "送别",
+      "author": "王维",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "008.txt",
+      "title": "杂诗",
+      "author": "王维",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "009.txt",
+      "title": "怨情",
+      "author": "李白",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "010.txt",
+      "title": "八阵图",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "011.txt",
+      "title": "登乐游原",
+      "author": "李商隐",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "012.txt",
+      "title": "听筝",
+      "author": "李端",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "013.txt",
+      "title": "新嫁娘",
+      "author": "王建",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "014.txt",
+      "title": "玉台体",
+      "author": "权德舆",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "015.txt",
+      "title": "江雪",
+      "author": "柳宗元",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "016.txt",
+      "title": "行宫",
+      "author": "元稹",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "017.txt",
+      "title": "问刘十九",
+      "author": "白居易",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "018.txt",
+      "title": "何满子",
+      "author": "张祜",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "019.txt",
+      "title": "登鹳雀楼",
+      "author": "畅当",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "020.txt",
+      "title": "送灵澈",
+      "author": "刘长卿",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "021.txt",
+      "title": "弹琴",
+      "author": "刘长卿",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "022.txt",
+      "title": "送上人",
+      "author": "刘长卿",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "023.txt",
+      "title": "秋夜寄丘员外",
+      "author": "韦应物",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "024.txt",
+      "title": "江行无题",
+      "author": "钱起",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "025.txt",
+      "title": "寻隐者不遇",
+      "author": "贾岛",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "026.txt",
+      "title": "瀑布",
+      "author": "施肩吾",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "027.txt",
+      "title": "送兄",
+      "author": "七岁女",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "028.txt",
+      "title": "题袁氏别业",
+      "author": "贺知章",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "029.txt",
+      "title": "自君之出矣",
+      "author": "张九龄",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "030.txt",
+      "title": "秋日湖上",
+      "author": "薛莹",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    },
+    {
+      "file": "031.txt",
+      "title": "哥舒歌",
+      "author": "西鄙人",
+      "dynasty": "唐",
+      "chars": 24,
+      "bytes": 72
+    }
+  ]
+}

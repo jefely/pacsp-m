@@ -1,0 +1,123 @@
+{
+  "poem": {
+    "domain": "poem",
+    "n": 31,
+    "mean_pair_dist": {
+      "point": 0.8305,
+      "ci95": [
+        0.6842,
+        0.9742
+      ],
+      "excludes_1": true,
+      "human_point": 0.5434,
+      "machine_point": 0.6543,
+      "human_boot_cv": 0.0805,
+      "machine_boot_cv": 0.0237
+    },
+    "node_volume": {
+      "point": 0.3264,
+      "ci95": [
+        0.2512,
+        0.4249
+      ],
+      "excludes_1": true,
+      "human_item_cv": 0.5673,
+      "machine_item_cv": 0.5056
+    }
+  },
+  "lyrics": {
+    "domain": "lyrics",
+    "n": 31,
+    "mean_pair_dist": {
+      "point": 0.8691,
+      "ci95": [
+        0.7482,
+        0.9812
+      ],
+      "excludes_1": true,
+      "human_point": 0.6365,
+      "machine_point": 0.7324,
+      "human_boot_cv": 0.0626,
+      "machine_boot_cv": 0.0269
+    },
+    "node_volume": {
+      "point": 0.0579,
+      "ci95": [
+        0.0255,
+        0.1035
+      ],
+      "excludes_1": true,
+      "human_item_cv": 1.6344,
+      "machine_item_cv": 0.8807
+    }
+  },
+  "techdoc": {
+    "domain": "techdoc",
+    "n": 31,
+    "mean_pair_dist": {
+      "point": 1.4426,
+      "ci95": [
+        1.3043,
+        1.5903
+      ],
+      "excludes_1": true,
+      "human_point": 0.8422,
+      "machine_point": 0.5838,
+      "human_boot_cv": 0.0307,
+      "machine_boot_cv": 0.0427
+    },
+    "node_volume": null
+  },
+  "medicine": {
+    "domain": "medicine",
+    "n": 31,
+    "mean_pair_dist": {
+      "point": 0.9147,
+      "ci95": [
+        0.8875,
+        0.9413
+      ],
+      "excludes_1": true,
+      "human_point": 0.9982,
+      "machine_point": 1.0913,
+      "human_boot_cv": 0.0151,
+      "machine_boot_cv": 0.0154
+    },
+    "node_volume": {
+      "point": 0.194,
+      "ci95": [
+        0.1174,
+        0.31
+      ],
+      "excludes_1": true,
+      "human_item_cv": 1.0981,
+      "machine_item_cv": 0.8354
+    }
+  },
+  "openqa": {
+    "domain": "openqa",
+    "n": 31,
+    "mean_pair_dist": {
+      "point": 0.9358,
+      "ci95": [
+        0.9174,
+        0.9525
+      ],
+      "excludes_1": true,
+      "human_point": 1.1187,
+      "machine_point": 1.1954,
+      "human_boot_cv": 0.0134,
+      "machine_boot_cv": 0.0124
+    },
+    "node_volume": {
+      "point": 0.634,
+      "ci95": [
+        0.2717,
+        1.6688
+      ],
+      "excludes_1": false,
+      "human_item_cv": 1.4736,
+      "machine_item_cv": 1.9084
+    }
+  }
+}

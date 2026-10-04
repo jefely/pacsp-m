@@ -1,0 +1,148 @@
+{
+  "free_generation": {
+    "poem": {
+      "answers_sample": [
+        "孤独",
+        "孤独",
+        "感慨",
+        "哀伤",
+        "宁静",
+        "孤独",
+        "宁静",
+        "豪情"
+      ],
+      "hit_rate": 0.6452,
+      "long_or_empty": 0,
+      "mean_len": 2.0
+    },
+    "machine_poem": {
+      "answers_sample": [
+        "孤独",
+        "孤独",
+        "孤独",
+        "孤独",
+        "孤独",
+        "哀愁",
+        "思念",
+        "寂寥"
+      ],
+      "hit_rate": 0.7419,
+      "long_or_empty": 0,
+      "mean_len": 1.9
+    },
+    "lyrics": {
+      "answers_sample": [
+        "孤独",
+        "共鸣",
+        "共鸣",
+        "释然",
+        "共鸣",
+        "留白",
+        "迷茫",
+        "回忆"
+      ],
+      "hit_rate": 0.3548,
+      "long_or_empty": 0,
+      "mean_len": 2.0
+    },
+    "machine_lyrics": {
+      "answers_sample": [
+        "思念",
+        "温柔",
+        "愁",
+        "孤独",
+        "怀旧",
+        "离愁",
+        "离别",
+        "孤独"
+      ],
+      "hit_rate": 0.6129,
+      "long_or_empty": 0,
+      "mean_len": 1.97
+    },
+    "hc3_human_medicine": {
+      "answers_sample": [
+        "指导",
+        "不适",
+        "区分",
+        "担忧",
+        "复杂",
+        "无奈",
+        "恶化",
+        "客观"
+      ],
+      "hit_rate": 0.3548,
+      "long_or_empty": 0,
+      "mean_len": 2.03
+    },
+    "hc3_ai_medicine": {
+      "answers_sample": [
+        "建议",
+        "担忧",
+        "区分",
+        "建议",
+        "复杂",
+        "谨慎",
+        "警示",
+        "担忧"
+      ],
+      "hit_rate": 0.2258,
+      "long_or_empty": 0,
+      "mean_len": 2.16
+    },
+    "hc3_human_openqa": {
+      "answers_sample": [
+        "建议",
+        "信息量大",
+        "建议",
+        "谨慎",
+        "期待",
+        "满意",
+        "无奈",
+        "警示"
+      ],
+      "hit_rate": 0.3226,
+      "long_or_empty": 0,
+      "mean_len": 2.1
+    },
+    "hc3_ai_openqa": {
+      "answers_sample": [
+        "谨慎",
+        "信息提供",
+        "尊重",
+        "信息提供",
+        "尊重",
+        "建议",
+        "挑战",
+        "警示"
+      ],
+      "hit_rate": 0.1935,
+      "long_or_empty": 0,
+      "mean_len": 2.19
+    }
+  },
+  "f6b_ratios": {
+    "poem": 0.8697,
+    "lyrics": 0.5789,
+    "medicine": 1.5713,
+    "openqa": 1.6672
+  },
+  "f4_comparison": {
+    "poem": {
+      "mean_pair_dist_ratio": 0.8305,
+      "node_volume_ratio": 0.3264
+    },
+    "lyrics": {
+      "mean_pair_dist_ratio": 0.8691,
+      "node_volume_ratio": 0.0579
+    },
+    "medicine": {
+      "mean_pair_dist_ratio": 0.9147,
+      "node_volume_ratio": 0.194
+    },
+    "openqa": {
+      "mean_pair_dist_ratio": 0.9358,
+      "node_volume_ratio": 0.634
+    }
+  }
+}
