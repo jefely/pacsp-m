@@ -50,7 +50,7 @@ warnings.filterwarnings("ignore")
 HERE = Path(__file__).resolve().parent
 M = HERE.parent
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(M.parent / "pacsp-math-py"))
+sys.path.insert(0, str(M.parent / "toolkit" / "math"))
 
 from g1_rn_density import ARMS, CACHE, delta_of  # noqa: E402
 

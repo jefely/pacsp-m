@@ -3,7 +3,7 @@
 **日期**：2026-10-05
 **模块**：`pacsp_emotion.py`
 **验证**：`exploration/emotion_region_test.py` → `results/emotion_region.json`
-**上游方向**：`PACSP-收集/03-PACSP-情绪树` 对话的最终诉求（消息 56）——
+**上游方向**：`PACSP-collection/03-PACSP-情绪树` 对话的最终诉求（消息 56）——
 > 「根据文本内容，找到在情绪树结构中激活的动态区域。」
 
 ---

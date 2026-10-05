@@ -52,7 +52,7 @@ import numpy as np
 warnings.filterwarnings("ignore")
 M = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(M))
-sys.path.insert(0, str(M.parent / "pacsp-math-py"))
+sys.path.insert(0, str(M.parent / "toolkit" / "math"))
 import pacsp_core  # noqa: E402
 
 try:
