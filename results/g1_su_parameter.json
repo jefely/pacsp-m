@@ -1,0 +1,230 @@
+{
+  "poem": {
+    "median_nn_dist": 0.668,
+    "curve": [
+      {
+        "r_over_median": 0.0,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.25,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.5,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 1.0,
+        "singular_fraction": 0.5095
+      },
+      {
+        "r_over_median": 1.5,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 2.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 3.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 5.0,
+        "singular_fraction": 0.0
+      }
+    ],
+    "singular_at_r_eq_median": 0.5095
+  },
+  "machine_poem": {
+    "median_nn_dist": 0.6653,
+    "curve": [
+      {
+        "r_over_median": 0.0,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.25,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.5,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 1.0,
+        "singular_fraction": 0.5117
+      },
+      {
+        "r_over_median": 1.5,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 2.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 3.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 5.0,
+        "singular_fraction": 0.0
+      }
+    ],
+    "singular_at_r_eq_median": 0.5117
+  },
+  "lyrics": {
+    "median_nn_dist": 0.9061,
+    "curve": [
+      {
+        "r_over_median": 0.0,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.25,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.5,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 1.0,
+        "singular_fraction": 0.5709
+      },
+      {
+        "r_over_median": 1.5,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 2.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 3.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 5.0,
+        "singular_fraction": 0.0
+      }
+    ],
+    "singular_at_r_eq_median": 0.5709
+  },
+  "techdoc": {
+    "median_nn_dist": 0.9276,
+    "curve": [
+      {
+        "r_over_median": 0.0,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.25,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.5,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 1.0,
+        "singular_fraction": 0.4548
+      },
+      {
+        "r_over_median": 1.5,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 2.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 3.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 5.0,
+        "singular_fraction": 0.0
+      }
+    ],
+    "singular_at_r_eq_median": 0.4548
+  },
+  "hc3_human_medicine": {
+    "median_nn_dist": 0.7934,
+    "curve": [
+      {
+        "r_over_median": 0.0,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.25,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.5,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 1.0,
+        "singular_fraction": 0.4992
+      },
+      {
+        "r_over_median": 1.5,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 2.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 3.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 5.0,
+        "singular_fraction": 0.0
+      }
+    ],
+    "singular_at_r_eq_median": 0.4992
+  },
+  "hc3_ai_medicine": {
+    "median_nn_dist": 0.7898,
+    "curve": [
+      {
+        "r_over_median": 0.0,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.25,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 0.5,
+        "singular_fraction": 1.0
+      },
+      {
+        "r_over_median": 1.0,
+        "singular_fraction": 0.5008
+      },
+      {
+        "r_over_median": 1.5,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 2.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 3.0,
+        "singular_fraction": 0.0
+      },
+      {
+        "r_over_median": 5.0,
+        "singular_fraction": 0.0
+      }
+    ],
+    "singular_at_r_eq_median": 0.5008
+  }
+}

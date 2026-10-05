@@ -1,0 +1,32 @@
+{
+  "poem": {
+    "min": 0.5694,
+    "median": 0.668,
+    "max": 0.8237
+  },
+  "machine_poem": {
+    "min": 0.5836,
+    "median": 0.6653,
+    "max": 0.785
+  },
+  "lyrics": {
+    "min": 0.8306,
+    "median": 0.9061,
+    "max": 0.9685
+  },
+  "techdoc": {
+    "min": 0.8306,
+    "median": 0.9276,
+    "max": 1.005
+  },
+  "hc3_human_medicine": {
+    "min": 0.4473,
+    "median": 0.7934,
+    "max": 1.0492
+  },
+  "hc3_ai_medicine": {
+    "min": 0.4473,
+    "median": 0.7898,
+    "max": 1.092
+  }
+}

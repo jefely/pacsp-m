@@ -1,0 +1,74 @@
+[
+  {
+    "variant": "global",
+    "mean_abs_bias": 0.14046666666666666,
+    "spearman": 1.0,
+    "hc3_ratio": 1.2941,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "window",
+    "mean_abs_bias": 0.19178333333333333,
+    "spearman": 1.0,
+    "hc3_ratio": 1.2961,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "narrow",
+    "mean_abs_bias": 0.24606666666666666,
+    "spearman": 0.9429,
+    "hc3_ratio": 1.2799,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "adjacent",
+    "mean_abs_bias": 0.21744999999999995,
+    "spearman": 1.0,
+    "hc3_ratio": 1.2799,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "none",
+    "mean_abs_bias": 0.13993333333333333,
+    "spearman": 1.0,
+    "hc3_ratio": 1.0847,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "rn_uniform",
+    "mean_abs_bias": 0.20983333333333332,
+    "spearman": 0.9429,
+    "hc3_ratio": 1.1771,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "rn_iso",
+    "mean_abs_bias": 0.21053333333333332,
+    "spearman": 0.9429,
+    "hc3_ratio": 1.0767,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "rn_centroid",
+    "mean_abs_bias": 0.22021666666666664,
+    "spearman": 0.9429,
+    "hc3_ratio": 1.0748,
+    "stable_vs_none": false,
+    "keeps_order": true
+  },
+  {
+    "variant": "rn_selfnorm",
+    "mean_abs_bias": 0.09674999999999999,
+    "spearman": 0.9429,
+    "hc3_ratio": 1.0852,
+    "stable_vs_none": true,
+    "keeps_order": true
+  }
+]
