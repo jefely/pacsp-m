@@ -119,6 +119,9 @@ font-size:13px;display:flex;justify-content:space-between}
 code{font-family:ui-monospace,Consolas,monospace;background:#f2f3f6;padding:1px 5px;
 border-radius:4px;font-size:12.5px}
 .hidden{display:none}
+.v-ok{color:var(--ok);font-weight:650}
+.v-warn{color:var(--warn);font-weight:650}
+.v-bad{color:var(--bad);font-weight:650}
 </style></head><body>
 <header><h1>pacsp<span>语义分散度测量 · 本地运行 · 不上传任何文件</span></h1></header>
 <main>
@@ -216,7 +219,11 @@ function render(d){
       A.ci95[1].toFixed(4)+']</td><td class="n">['+B.ci95[0].toFixed(4)+', '+
       B.ci95[1].toFixed(4)+']</td></tr></table>';
     const r=c.ratio_within, iv=c.interval;
-    h+='<table><tr><th>集合间关系</th><th>值</th><th>95% 区间</th><th>解读</th></tr>';
+    h+='<table><tr><th>集合间关系</th><th>值</th><th>95% 区间</th>'
+      +'<th>解读</th></tr>';
+    h+='<tr><td colspan="4" style="background:#f4f5f8;font-size:12.5px">'
+      +'判定使用<b>可归类性</b>（留一最近质心，chance 0.5）；'
+      +'重叠占比与风格比<b>仅供参考</b>，不参与判定。</td></tr>';
     h+='<tr><td>D 比值（A ÷ B）</td><td class="n">'+r.value.toFixed(4)+
       '</td><td class="n">['+r.ci95[0].toFixed(4)+', '+r.ci95[1].toFixed(4)+
       ']</td><td>'+(r.ci95[0]>1||r.ci95[1]<1?'区间不含 1':'<b>区间含 1，方向不可主张</b>')+
@@ -226,12 +233,33 @@ function render(d){
       ']</td><td>共 '+iv.n_cross_distances+' 个距离</td></tr>';
     h+='<tr><td>分离度</td><td class="n">'+c.separation.value.toFixed(4)+
       '</td><td></td><td>交叉 ÷ 组内合并</td></tr>';
-    h+='<tr><td><b>重叠占比</b></td><td class="n"><b>'+c.overlap.value.toFixed(3)+
-      '</b></td><td></td><td>'+(c.overlap.value>0.5?'两组大量交错':'两组较分离')+
-      '（半径 '+c.overlap.radius.toFixed(3)+'）</td></tr>';
+    // The assignability row is the one that decides the verdict, so it is marked as such.
+    // The overlap row below it looks like it should decide, and used to; against held-out
+    // accuracy the rank correlation is -0.90, so reading overlap as assignability is close
+    // to reading it backwards.
+    if(c.assignability){
+      const a=c.assignability;
+      const acc=a.accuracy;
+      const accCls = acc>=0.8 ? 'v-ok' : (acc>=0.6 ? 'v-warn' : 'v-bad');
+      h+='<tr><td><b>可归类性 ← 判定依据</b></td><td class="n"><b class="'+
+        accCls+'">'+acc.toFixed(4)+'</b></td><td></td><td>'+
+        '留一最近质心，chance '+(a.chance_level||0.5)+'；'+
+        a.negative_margins+' / '+a.n+' 篇落在错侧</td></tr>';
+    }
+    h+='<tr><td>重叠占比</td><td class="n">'+c.overlap.value.toFixed(3)+
+      '</td><td></td><td>'+(c.overlap.value>0.5?'两组距离云大量共享':'两组距离云较分离')+
+      '（半径 '+c.overlap.radius.toFixed(3)+'）'+
+      '<b>—— 不是判据</b></td></tr>';
     if(c.style&&c.style.ratio!==null){h+='<tr><td>词汇风格比</td><td class="n">'+
       c.style.ratio.toFixed(4)+'</td><td></td><td>跨集合 ÷ 集合内，与 D 无关</td></tr>'}
     h+='</table>';
+    if(c.assignability){
+      const a=c.assignability, acc=a.accuracy;
+      h+='<div class="hint" style="margin:-8px 0 16px">'+
+        '判据是<b>可归类性</b>（'+acc.toFixed(4)+'），不是重叠占比（'+
+        c.overlap.value.toFixed(3)+'）。'+
+        '两者实测秩相关 <b>−0.90</b>，即近乎反向：重叠占比高<b>不代表</b>不可分类。</div>';
+    }
     const cls=c.verdict.startsWith('separable')?'sep':
       (c.verdict.startsWith('group-mean')?'mid':'none');
     h+='<div id="verdict" class="'+cls+'">判定：'+c.verdict+'</div>';

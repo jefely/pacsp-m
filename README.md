@@ -144,17 +144,36 @@ python pacsp_tool.py compare 人类语料/ AI语料/ --name-a 人类 --name-b AI
 
 〔另〕三个内容缺口仍在：纯人类对照组、Keci 模型出处、冲突的 α_i 数值。
 
+## 六之二、两个新增的"意识流"测度（2026-10-05）
+
+`D` 和 `C_T` 都是**语料级标量**。最新方向（`PACSP-收集/03-PACSP-情绪树` 消息 56）要求
+**在文档的"意识流"上、在情绪树结构上**定位沉积，而不是再算一个体量标量。本仓库新增两个模块：
+
+| 模块 | 测度 | 对象 | 文档 |
+|---|---|---|---|
+| `pacsp_stream.py` | `S_flow` / `S_recur` / `S_sed` | 单文档内部语义复现（顺序有关） | `docs/STREAM-OF-CONSCIOUSNESS-MEASURE.md`* |
+| `pacsp_emotion.py` | 情绪树动态区域定位（主导簇 + 轨迹 + 沉积浓度） | 文本 ↔ 情绪树结构的关系 | `docs/EMOTION-TREE-DYNAMIC-REGION.md` |
+
+**关键结论**：情绪树动态区域定位**可解释性良好**（手写片段正确落在对应簇）、**温度稳健**；
+人机对比方向一致，**3 配对 × 3 编码器 = 9/9 区间排除 1**（比值 0.65–0.95：机器输出把情绪沉积得更集中，人类更分散）。
+投影用嵌入相似度（**零探针、零词表子集**），绕开了此前实测的 826 倍探针主导问题。
+
+\* `S_sed` 在长度受控、仅有的长文档配对 `techdoc` 上，人类臂一致高于机器臂（比值 1.11–1.13，
+三编码器区间均排除 1）。
+
 ## 七、目录
 
 ```
 PACSP-M-1.1.0.md 主论文：认知沉积的可测框架（正面描述；附录 C 为与 PACSP-ID 的演变关系）
 README.md        本文件
 pacsp_core.py    测量核心（从 pacsp_build.py 逐字复制 6 个函数）
+pacsp_stream.py  单文档意识流沉积测度 S（S_flow/S_recur/S_sed）
+pacsp_emotion.py 情绪树动态区域定位（意识流沉积测度的最新方向）
 verify_core.py   一致性验证：证明上面的复制没有改变数值
 data/            21 个语料，1.2 MB（脚本的输入）
-docs/            15 份分析文档（按时间顺序，见下）
-exploration/     27 个探索脚本（导入本地 pacsp_core）
-results/         19 个结果 JSON（文档中所有数字的定稿来源）
+docs/            分析文档（按时间顺序，见下；新增两篇意识流测度文档）
+exploration/     探索脚本（导入本地 pacsp_core / pacsp_stream / pacsp_emotion）
+results/         结果 JSON（文档中所有数字的定稿来源）
 records_centroid/  脚本输出目录（每次运行重建，不入库）
 ```
 

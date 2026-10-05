@@ -1,0 +1,92 @@
+[
+  {
+    "pair": "poem/machine_poem",
+    "skeleton": "13-cluster",
+    "human": 0.1204,
+    "machine": 0.1443,
+    "ratio": 0.8345,
+    "ci_low": 0.778,
+    "ci_high": 0.8999,
+    "excludes_1": true
+  },
+  {
+    "pair": "poem/machine_poem",
+    "skeleton": "valence-3",
+    "human": 0.502,
+    "machine": 0.5408,
+    "ratio": 0.9282,
+    "ci_low": 0.8988,
+    "ci_high": 0.9599,
+    "excludes_1": true
+  },
+  {
+    "pair": "poem/machine_poem",
+    "skeleton": "valence-2",
+    "human": 1.0,
+    "machine": 1.0,
+    "ratio": 1.0,
+    "ci_low": 1.0,
+    "ci_high": 1.0,
+    "excludes_1": false
+  },
+  {
+    "pair": "lyrics/machine_lyrics",
+    "skeleton": "13-cluster",
+    "human": 0.1031,
+    "machine": 0.1438,
+    "ratio": 0.7167,
+    "ci_low": 0.6855,
+    "ci_high": 0.7487,
+    "excludes_1": true
+  },
+  {
+    "pair": "lyrics/machine_lyrics",
+    "skeleton": "valence-3",
+    "human": 0.4851,
+    "machine": 0.5265,
+    "ratio": 0.9214,
+    "ci_low": 0.8965,
+    "ci_high": 0.9459,
+    "excludes_1": true
+  },
+  {
+    "pair": "lyrics/machine_lyrics",
+    "skeleton": "valence-2",
+    "human": 1.0,
+    "machine": 1.0,
+    "ratio": 1.0,
+    "ci_low": 1.0,
+    "ci_high": 1.0,
+    "excludes_1": false
+  },
+  {
+    "pair": "techdoc/machine_techdoc2",
+    "skeleton": "13-cluster",
+    "human": 0.1041,
+    "machine": 0.1143,
+    "ratio": 0.9102,
+    "ci_low": 0.8771,
+    "ci_high": 0.9482,
+    "excludes_1": true
+  },
+  {
+    "pair": "techdoc/machine_techdoc2",
+    "skeleton": "valence-3",
+    "human": 0.4863,
+    "machine": 0.5182,
+    "ratio": 0.9385,
+    "ci_low": 0.9177,
+    "ci_high": 0.9583,
+    "excludes_1": true
+  },
+  {
+    "pair": "techdoc/machine_techdoc2",
+    "skeleton": "valence-2",
+    "human": 1.0,
+    "machine": 1.0,
+    "ratio": 1.0,
+    "ci_low": 1.0,
+    "ci_high": 1.0,
+    "excludes_1": false
+  }
+]
