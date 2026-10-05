@@ -21,6 +21,7 @@ import html
 import json
 import sys
 import threading
+import time
 import traceback
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -33,7 +34,40 @@ sys.path.insert(0, str(M))
 
 import pacsp_tool as T  # noqa: E402
 
-STATE: dict = {"embedder": None, "lock": threading.Lock(), "busy": False}
+STATE: dict = {"embedder": None, "lock": threading.Lock(), "busy": False,
+               "warm": False, "warm_seconds": None, "warm_error": None}
+
+
+def warm_up_async(frame: str | None = None, backend: str = "auto"):
+    """Load the model and encode one text before the first request arrives.
+
+    Timing a compare showed the model load is 5.67 s of a 7.5 s run, 76 percent, and it lands
+    entirely on the first request. Warming it in a background thread at startup moves that
+    cost off the user's first click, which is the difference between the interface feeling
+    slow and feeling immediate.
+    """
+    import pacsp_tool as T
+
+    def work():
+        t0 = time.time()
+        try:
+            with STATE["lock"]:
+                if STATE["embedder"] is None:
+                    key = frame or T.DEFAULT_FRAME
+                    repo = T.KNOWN_FRAMES.get(key, (key,))[0]
+                    STATE["embedder"] = T.Embedder(
+                        repo, backend=backend,
+                        onnx_dir=Path(__file__).resolve().parent / "onnx")
+                    STATE["embedder"].encode(["预热"])
+            STATE["warm"] = True
+        except Exception as e:
+            STATE["warm_error"] = f"{type(e).__name__}: {e}"
+        finally:
+            STATE["warm_seconds"] = round(time.time() - t0, 2)
+            print(f"  warm-up {STATE['warm_seconds']}s  ready={STATE['warm']}",
+                  flush=True)
+
+    threading.Thread(target=work, daemon=True).start()
 
 PAGE = """<!doctype html>
 <html lang="zh"><head><meta charset="utf-8">
@@ -120,11 +154,27 @@ border-radius:4px;font-size:12.5px}
       <button class="ghost" onclick="download()">导出 JSON</button></div>
   </div>
   <div id="msg"></div>
+<div id="status" class="hint">正在加载模型…</div>
   <div id="browse" class="browse hidden"></div>
   <div id="out"></div>
 </main>
 <script>
-let RESULT=null, BROWSE_TARGET=null;
+let RESULT=null, BROWSE_TARGET=null, READY=false;
+function poll(){
+  fetch('/api/status').then(r=>r.json()).then(d=>{
+    READY=!!d.ready;
+    const s=document.getElementById('status');
+    if(READY){ s.textContent='模型已就绪'+(d.backend?('（'+d.backend+'）'):'')
+      +(d.seconds?('  预热 '+d.seconds+'s'):''); s.style.color='#1a7f45';
+      document.getElementById('go').disabled=false; }
+    else if(d.error){ s.textContent='模型加载失败：'+d.error; s.style.color='#c02a2a';
+      document.getElementById('go').disabled=false; READY=true; }
+    else { s.textContent='正在加载模型…（首次约 6 秒；模型本身很大，之后各次测量约 2 秒）';
+      s.style.color='#b4590a'; document.getElementById('go').disabled=true;
+      setTimeout(poll, 700); }
+  }).catch(()=>setTimeout(poll,1000));
+}
+poll();
 function q(id){return document.getElementById(id)}
 function browse(target){
   BROWSE_TARGET=target;
@@ -353,6 +403,13 @@ class Handler(BaseHTTPRequestHandler):
         if u.path == "/":
             self._send(200, PAGE.encode("utf-8"), "text/html; charset=utf-8")
             return
+        if u.path == "/api/status":
+            self._json({"ready": bool(STATE.get("warm")),
+                        "seconds": STATE.get("warm_seconds"),
+                        "error": STATE.get("warm_error"),
+                        "backend": (STATE["embedder"].active_backend
+                                    if STATE.get("embedder") else None)})
+            return
         if u.path == "/api/list":
             q = urllib.parse.parse_qs(u.query)
             raw = (q.get("path") or [""])[0].strip()
@@ -418,11 +475,19 @@ def main(argv=None) -> int:
     ap.add_argument("--host", default="127.0.0.1",
                     help="loopback by default; do not expose this")
     ap.add_argument("--open", action="store_true", help="open a browser")
+    ap.add_argument("--backend", default="auto",
+                    choices=["auto", "onnx", "sentence-transformers"],
+                    help="embedding backend (default auto)")
+    ap.add_argument("--no-warm", action="store_true",
+                    help="skip loading the model until the first request")
     args = ap.parse_args(argv)
 
     url = f"http://{args.host}:{args.port}/"
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
     print(f"  pacsp serving at {url}")
+    print("  loading the model in the background; the first measurement waits for it")
+    if not args.no_warm:
+        warm_up_async(backend=args.backend)
     print(f"  bound to {args.host}: only this machine can reach it.")
     print(f"  frames: {', '.join(T.KNOWN_FRAMES)}")
     print("  Ctrl-C to stop.")
