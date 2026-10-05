@@ -1,0 +1,42 @@
+{
+  "window": {
+    "as_filed": 1.2961,
+    "shuf_mean": 1.304,
+    "shuf_sd": 0.0297,
+    "sd_over_mean": 0.0228,
+    "frac_above_1": 1.0,
+    "robust": true
+  },
+  "global": {
+    "as_filed": 1.2941,
+    "shuf_mean": 1.3049,
+    "shuf_sd": 0.0233,
+    "sd_over_mean": 0.0178,
+    "frac_above_1": 1.0,
+    "robust": true
+  },
+  "none": {
+    "as_filed": 1.0847,
+    "shuf_mean": 1.0945,
+    "shuf_sd": 0.0178,
+    "sd_over_mean": 0.0163,
+    "frac_above_1": 1.0,
+    "robust": true
+  },
+  "rn_uniform": {
+    "as_filed": 1.1771,
+    "shuf_mean": 1.1916,
+    "shuf_sd": 0.0364,
+    "sd_over_mean": 0.0306,
+    "frac_above_1": 1.0,
+    "robust": true
+  },
+  "rn_selfnorm": {
+    "as_filed": 1.0852,
+    "shuf_mean": 1.0919,
+    "shuf_sd": 0.0159,
+    "sd_over_mean": 0.0145,
+    "frac_above_1": 1.0,
+    "robust": true
+  }
+}
