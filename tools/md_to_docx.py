@@ -1,4 +1,7 @@
-"""Render PACSP-M-1.1.0.md to DOCX, preserving the document's structure.
+"""Render a PACSP-M paper markdown file to DOCX, preserving the document's structure.
+
+Usage:  python tools/md_to_docx.py [source.md] [out.docx]
+        (defaults: PACSP-M-1.2.0.md -> dist/<name>.docx)
 
 The source is hard-wrapped, which matters more than it looks. Inline emphasis frequently
 spans a line break (**text on one line, continued and closed on the next**), and a parser
@@ -26,8 +29,14 @@ from docx.oxml.ns import qn
 from docx.shared import Pt, RGBColor, Cm
 
 M = Path(__file__).resolve().parent.parent
-SRC = M / "PACSP-M-1.1.0.md"
-OUT = M / "dist" / "PACSP-M-1.1.0.docx"
+# Default to the current paper; allow overrides so an older version can still be
+# re-rendered without editing this file.
+#   python tools/md_to_docx.py [source.md] [out.docx]
+_src_arg = sys.argv[1] if len(sys.argv) > 1 else "PACSP-M-1.2.0.md"
+_out_arg = sys.argv[2] if len(sys.argv) > 2 else None
+SRC = Path(_src_arg) if Path(_src_arg).is_absolute() else M / _src_arg
+OUT = (Path(_out_arg) if _out_arg and Path(_out_arg).is_absolute()
+       else M / _out_arg) if _out_arg else M / "dist" / (SRC.stem + ".docx")
 
 LATIN = "Calibri"
 CJK = "微软雅黑"

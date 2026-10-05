@@ -3,6 +3,9 @@
 The DOCX showed a literal ** in the rendered text, which means either the source has an
 odd number of markers or the parser mis-split a span. This distinguishes the two: it
 reports lines with an odd marker count, and lines where markers survive parsing.
+
+Usage:  python tools/find_marker_issues.py [source.md]
+        (defaults to PACSP-M-1.2.0.md)
 """
 
 import re
@@ -10,12 +13,14 @@ import sys
 from pathlib import Path
 
 M = Path(__file__).resolve().parent.parent
-SRC = M / "PACSP-M-1.1.0.md"
+_src = sys.argv[1] if len(sys.argv) > 1 else "PACSP-M-1.2.0.md"
+SRC = Path(_src) if Path(_src).is_absolute() else M / _src
 INLINE = re.compile(r"(\*\*.+?\*\*|\*[^*\n]+?\*|`[^`]+`)")
 
 
 def main():
-    lines = SRC.read_text(encoding="utf-8").splitlines()
+    lines = SRC.read_text(encoding="utf-8-sig").splitlines()
+    print(f"  source: {SRC.name}  ({len(lines)} lines)")
     odd = []
     survives = []
     for i, L in enumerate(lines, 1):

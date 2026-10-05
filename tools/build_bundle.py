@@ -152,7 +152,7 @@ def main(argv=None) -> int:
     print("\n=== tool files ===")
     for name in ("pacsp_tool.py", "pacsp_core.py", "pacsp_backends.py",
                  "pacsp_serve.py", "pacsp_bootstrap.py", "README.md",
-                 "TOOL.md", "PACSP-M-1.1.0.md", "LICENSE"):
+                 "TOOL.md", "PACSP-M-1.2.0.md", "LICENSE"):
         src = M / name
         if src.exists():
             shutil.copy2(src, out / name)
