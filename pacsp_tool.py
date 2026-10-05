@@ -15,11 +15,13 @@ Commands
     frame     describe a frame and check it is usable for comparison
     compare   relations between two collections: interval, separation, overlap, style
     measure   within-collection dispersion
+    emotion   locate the emotion-tree region a collection activates (意识流沉积测度)
     selfcheck run the gates on a single collection
 
 Usage
     python pacsp_tool.py compare A/ B/ --name-a human --name-b machine
     python pacsp_tool.py measure A/ --json out.json
+    python pacsp_tool.py emotion A/ B/ --name-a human --name-b machine
     python pacsp_tool.py frame --list
 
 Every comparison prints the statistic, its interval, the gates that fired, and a verdict
@@ -156,8 +158,12 @@ class Embedder:
 
     def encode(self, texts: list[str]) -> np.ndarray:
         impl = self._load()
-        key = (impl.name, len(texts), len(texts[0]) if texts else 0,
-               hash(tuple(len(t) for t in texts)))
+        # The key must be content-based, not length-based. A length-based key collides
+        # when two different inputs have the same lengths (common for segment lists and
+        # the emotion lexicon), and would silently return one document's vectors for
+        # another. Found by the emotion subcommand, which embedded many same-length
+        # segments and read back stale vectors.
+        key = (impl.name, tuple(texts))
         if key in self._cache:
             return self._cache[key]
         E = impl.encode(texts)
@@ -622,6 +628,134 @@ def cmd_selfcheck(args) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Emotion-tree dynamic region (意识流沉积测度)
+# ---------------------------------------------------------------------------
+
+def _emotion_regions(texts, emb, temperature):
+    """Return (regions, concentrations) over a list of documents.
+
+    ``regions[i]`` is the ``document_region`` dict; ``concentrations[i]`` is the share of
+    sedimentation mass held by that document's dominant cluster.
+    """
+    from pacsp_emotion import document_region, tree_index, word_embeddings
+    words, cluster, valence = tree_index()
+    W = word_embeddings(emb.encode, words)
+    regions, concentrations = [], []
+    for t in texts:
+        r = document_region(t, emb.encode, W, temperature=temperature)
+        if r.get("n_segments", 0) > 0:
+            regions.append(r)
+            concentrations.append(r["sediment_concentration"])
+    return regions, concentrations, words
+
+
+def cmd_emotion(args) -> int:
+    """Locate the emotion-tree region each document activates.
+
+    This is the stream-of-consciousness sedimentation measure: the document's segment
+    sequence is projected onto a fixed emotion-tree skeleton, and the output is WHERE the
+    activation deposits (dominant cluster + trajectory + sedimentation concentration).
+
+    With one collection it localises; with two it also compares the sedimentation
+    concentration, following the same "interval must exclude 1" rule as ``compare``.
+    """
+    from collections import Counter
+
+    repo, lang, dim, note = resolve_frame(args)
+    emb = Embedder(repo, backend=args.backend, onnx_dir=args.onnx_dir,
+                   prefer_gpu=not args.no_gpu)
+    rng = np.random.default_rng(args.seed)
+
+    ta, na = load_texts(args.collection)
+    regions_a, conc_a, words = _emotion_regions(ta, emb, args.temperature)
+    if not conc_a:
+        print("  no document produced a usable stream (>=2 segments)", file=sys.stderr)
+        return 2
+
+    dom_a = Counter(r["dominant_cluster"] for r in regions_a)
+    mean_a, lo_a, hi_a, cv_a = bootstrap_mean_ci(
+        np.asarray(conc_a), args.bootstrap, rng)
+
+    out = {
+        "frame": {"name": args.frame, "repository": repo, "language": lang, "note": note},
+        "temperature": args.temperature,
+        "a": {"path": str(args.collection), "name": args.name_a, "n_docs": len(regions_a),
+              "mean_sediment_concentration": round(mean_a, 4),
+              "ci95": [round(lo_a, 4), round(hi_a, 4)],
+              "dominant_cluster_counts": dict(dom_a.most_common())},
+    }
+
+    if args.collection_b:
+        tb, nb = load_texts(args.collection_b)
+        regions_b, conc_b, _ = _emotion_regions(tb, emb, args.temperature)
+        if not conc_b:
+            print("  second collection produced no usable stream", file=sys.stderr)
+            return 2
+        dom_b = Counter(r["dominant_cluster"] for r in regions_b)
+        mean_b, lo_b, hi_b, cv_b = bootstrap_mean_ci(
+            np.asarray(conc_b), args.bootstrap, rng)
+
+        ratio_boot = []
+        for _ in range(args.bootstrap):
+            ia = rng.integers(0, len(conc_a), len(conc_a))
+            ib = rng.integers(0, len(conc_b), len(conc_b))
+            ra = np.asarray(conc_a)[ia].mean()
+            rb = np.asarray(conc_b)[ib].mean()
+            if rb > 0:
+                ratio_boot.append(ra / rb)
+        ratio_boot = np.asarray(ratio_boot)
+        ratio = {"point": float(mean_a / mean_b),
+                 "ci95": [float(np.percentile(ratio_boot, 2.5)),
+                          float(np.percentile(ratio_boot, 97.5))]}
+        lo, hi = ratio["ci95"]
+        excludes = (lo > 1) or (hi < 1)
+
+        out["b"] = {"path": str(args.collection_b), "name": args.name_b,
+                    "n_docs": len(regions_b),
+                    "mean_sediment_concentration": round(mean_b, 4),
+                    "ci95": [round(lo_b, 4), round(hi_b, 4)],
+                    "dominant_cluster_counts": dict(dom_b.most_common())}
+        out["ratio"] = {"value": round(ratio["point"], 4),
+                        "ci95": [round(lo, 4), round(hi, 4)]}
+
+        print(f"\n  frame            : {args.frame}  ({repo})")
+        print(f"  temperature      : {args.temperature}")
+        print(f"  {args.name_a:<16}: n={len(regions_a):<3} "
+              f"concentration={mean_a:.4f} CI[{lo_a:.4f}, {hi_a:.4f}]")
+        print(f"  {args.name_b:<16}: n={len(regions_b):<3} "
+              f"concentration={mean_b:.4f} CI[{lo_b:.4f}, {hi_b:.4f}]")
+        print(f"\n  concentration ratio ({args.name_a}/{args.name_b}) : "
+              f"{ratio['point']:.4f} CI[{lo:.4f}, {hi:.4f}]")
+        if excludes:
+            direction = "A more concentrated" if ratio["point"] > 1 else "B more concentrated"
+            print(f"  interval excludes 1 -> {direction}")
+        else:
+            print("  interval includes 1 -> no direction can be claimed")
+        print("\n  dominant clusters:")
+        print(f"    {args.name_a:<14} {dict(dom_a.most_common(5))}")
+        print(f"    {args.name_b:<14} {dict(dom_b.most_common(5))}")
+    else:
+        print(f"\n  frame            : {args.frame}  ({repo})")
+        print(f"  temperature      : {args.temperature}")
+        print(f"  collection       : {args.collection}  ({len(regions_a)} docs)")
+        print(f"  mean sediment concentration : {mean_a:.4f} "
+              f"CI[{lo_a:.4f}, {hi_a:.4f}]  CV {cv_a:.4f}")
+        print(f"  dominant clusters           : {dict(dom_a.most_common(8))}")
+        print("\n  top activated words per document (first 5):")
+        for r in regions_a[:5]:
+            print(f"    {r['dominant_cluster']:<4} {[w for w, _ in r['top_words']]}")
+
+    if args.json:
+        Path(args.json).write_text(json.dumps(out, ensure_ascii=False, indent=2),
+                                   encoding="utf-8")
+        print(f"\n  written {args.json}")
+
+    print("\n  The sedimentation concentration is a RELATION to the declared emotion-tree")
+    print("  skeleton, not a property of the text alone. See docs/EMOTION-TREE-DYNAMIC-REGION.md.")
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # Entry
 # ---------------------------------------------------------------------------
 
@@ -672,6 +806,19 @@ def build_parser() -> argparse.ArgumentParser:
                    help="sampled pairs for the style measure (default 4000)")
     c.add_argument("--json", help="write the result as JSON")
     c.set_defaults(func=cmd_compare)
+
+    e = sub.add_parser("emotion", help="locate the emotion-tree region a collection "
+                                      "activates (stream-of-consciousness sedimentation)")
+    e.add_argument("collection")
+    e.add_argument("collection_b", nargs="?", default=None,
+                   help="optional second collection, to compare sedimentation "
+                        "concentration")
+    e.add_argument("--name-a", default="A")
+    e.add_argument("--name-b", default="B")
+    e.add_argument("--temperature", type=float, default=0.1,
+                   help="softmax temperature for the activation projection (default 0.1)")
+    e.add_argument("--json", help="write the result as JSON")
+    e.set_defaults(func=cmd_emotion)
 
     a = sub.add_parser("attest", help="measure and write a tamper-evident record")
     a.add_argument("collection")

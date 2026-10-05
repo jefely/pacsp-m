@@ -1,0 +1,150 @@
+{
+  "model": "BAAI/bge-large-zh-v1.5",
+  "pairs": [
+    {
+      "arm_a": "poem",
+      "arm_b": "machine_poem",
+      "arm_a_summary": {
+        "files": 31,
+        "n_units": 93,
+        "docs_with_stream": 30,
+        "docs_too_short": 1,
+        "S_flow": 0.9379,
+        "S_recur": 0.9357,
+        "S_sed": 0.9977,
+        "perm_percentile_mean": 73.1
+      },
+      "arm_b_summary": {
+        "files": 31,
+        "n_units": 114,
+        "docs_with_stream": 31,
+        "docs_too_short": 0,
+        "S_flow": 0.993,
+        "S_recur": 0.9547,
+        "S_sed": 0.9623,
+        "perm_percentile_mean": 33.5
+      },
+      "ratio": {
+        "ratio": 1.0367018592349526,
+        "ci_low": 1.026350570683585,
+        "ci_high": 1.0482072298500837
+      }
+    },
+    {
+      "arm_a": "lyrics",
+      "arm_b": "machine_lyrics",
+      "arm_a_summary": {
+        "files": 31,
+        "n_units": 234,
+        "docs_with_stream": 31,
+        "docs_too_short": 0,
+        "S_flow": 0.9678,
+        "S_recur": 0.8922,
+        "S_sed": 0.9215,
+        "perm_percentile_mean": 33.2
+      },
+      "arm_b_summary": {
+        "files": 31,
+        "n_units": 107,
+        "docs_with_stream": 31,
+        "docs_too_short": 0,
+        "S_flow": 1.0201,
+        "S_recur": 0.9837,
+        "S_sed": 0.9651,
+        "perm_percentile_mean": 28.2
+      },
+      "ratio": {
+        "ratio": 0.9547904439165263,
+        "ci_low": 0.9274204202150337,
+        "ci_high": 0.9817038384250706
+      }
+    },
+    {
+      "arm_a": "techdoc",
+      "arm_b": "machine_techdoc2",
+      "arm_a_summary": {
+        "files": 31,
+        "n_units": 3708,
+        "docs_with_stream": 31,
+        "docs_too_short": 0,
+        "S_flow": 0.9795,
+        "S_recur": 0.7983,
+        "S_sed": 0.8149,
+        "perm_percentile_mean": 96.5
+      },
+      "arm_b_summary": {
+        "files": 31,
+        "n_units": 509,
+        "docs_with_stream": 31,
+        "docs_too_short": 0,
+        "S_flow": 0.896,
+        "S_recur": 0.7127,
+        "S_sed": 0.8071,
+        "perm_percentile_mean": 55.1
+      },
+      "ratio": {
+        "ratio": 1.009714124288861,
+        "ci_low": 0.9684161838240075,
+        "ci_high": 1.053224939246466
+      }
+    },
+    {
+      "arm_a": "hc3_human_medicine",
+      "arm_b": "hc3_ai_medicine",
+      "arm_a_summary": {
+        "files": 31,
+        "n_units": 92,
+        "docs_with_stream": 25,
+        "docs_too_short": 6,
+        "S_flow": 0.7908,
+        "S_recur": 0.7562,
+        "S_sed": 0.9615,
+        "perm_percentile_mean": 73.6
+      },
+      "arm_b_summary": {
+        "files": 31,
+        "n_units": 124,
+        "docs_with_stream": 31,
+        "docs_too_short": 0,
+        "S_flow": 0.8313,
+        "S_recur": 0.7823,
+        "S_sed": 0.945,
+        "perm_percentile_mean": 53.9
+      },
+      "ratio": {
+        "ratio": 1.0175194761306552,
+        "ci_low": 0.9808963973226535,
+        "ci_high": 1.0512048401003753
+      }
+    },
+    {
+      "arm_a": "hc3_human_openqa",
+      "arm_b": "hc3_ai_openqa",
+      "arm_a_summary": {
+        "files": 31,
+        "n_units": 110,
+        "docs_with_stream": 22,
+        "docs_too_short": 9,
+        "S_flow": 0.8671,
+        "S_recur": 0.8215,
+        "S_sed": 0.948,
+        "perm_percentile_mean": 57.1
+      },
+      "arm_b_summary": {
+        "files": 31,
+        "n_units": 127,
+        "docs_with_stream": 30,
+        "docs_too_short": 1,
+        "S_flow": 0.8098,
+        "S_recur": 0.7682,
+        "S_sed": 0.9517,
+        "perm_percentile_mean": 74.6
+      },
+      "ratio": {
+        "ratio": 0.9961064604723606,
+        "ci_low": 0.9642627545068116,
+        "ci_high": 1.0311907706788712
+      }
+    }
+  ]
+}

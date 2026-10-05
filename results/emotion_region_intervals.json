@@ -1,0 +1,29 @@
+[
+  {
+    "pair": "poem/machine_poem",
+    "human_concentration": 0.1204,
+    "machine_concentration": 0.1443,
+    "ratio": 0.8345,
+    "ci_low": 0.778,
+    "ci_high": 0.8999,
+    "ratio_cv": 0.0374
+  },
+  {
+    "pair": "lyrics/machine_lyrics",
+    "human_concentration": 0.1031,
+    "machine_concentration": 0.1438,
+    "ratio": 0.7167,
+    "ci_low": 0.6855,
+    "ci_high": 0.7487,
+    "ratio_cv": 0.0226
+  },
+  {
+    "pair": "techdoc/machine_techdoc2",
+    "human_concentration": 0.1041,
+    "machine_concentration": 0.1143,
+    "ratio": 0.9102,
+    "ci_low": 0.8771,
+    "ci_high": 0.9482,
+    "ratio_cv": 0.0199
+  }
+]

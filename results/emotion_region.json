@@ -1,0 +1,60 @@
+{
+  "poem": {
+    "n_docs": 31,
+    "dominant_cluster_counts": {
+      "孤独": 26,
+      "悲伤": 2,
+      "爱": 2,
+      "乐观": 1
+    },
+    "mean_sediment_concentration": 0.1204
+  },
+  "machine_poem": {
+    "n_docs": 31,
+    "dominant_cluster_counts": {
+      "悲伤": 17,
+      "孤独": 11,
+      "爱": 2,
+      "平静": 1
+    },
+    "mean_sediment_concentration": 0.1443
+  },
+  "lyrics": {
+    "n_docs": 31,
+    "dominant_cluster_counts": {
+      "悲伤": 19,
+      "恐惧": 8,
+      "孤独": 2,
+      "平静": 1,
+      "惊讶": 1
+    },
+    "mean_sediment_concentration": 0.1031
+  },
+  "machine_lyrics": {
+    "n_docs": 31,
+    "dominant_cluster_counts": {
+      "悲伤": 24,
+      "孤独": 6,
+      "爱": 1
+    },
+    "mean_sediment_concentration": 0.1438
+  },
+  "techdoc": {
+    "n_docs": 31,
+    "dominant_cluster_counts": {
+      "感激": 18,
+      "惊讶": 13
+    },
+    "mean_sediment_concentration": 0.1041
+  },
+  "machine_techdoc2": {
+    "n_docs": 31,
+    "dominant_cluster_counts": {
+      "感激": 20,
+      "惊讶": 9,
+      "恐惧": 1,
+      "激励": 1
+    },
+    "mean_sediment_concentration": 0.1143
+  }
+}

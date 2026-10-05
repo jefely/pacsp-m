@@ -1,0 +1,65 @@
+[
+  {
+    "model": "BAAI/bge-large-zh-v1.5",
+    "pair": "poem/machine_poem",
+    "ratio": 0.8345,
+    "ci_low": 0.778,
+    "ci_high": 0.8999
+  },
+  {
+    "model": "BAAI/bge-large-zh-v1.5",
+    "pair": "lyrics/machine_lyrics",
+    "ratio": 0.7167,
+    "ci_low": 0.6855,
+    "ci_high": 0.7487
+  },
+  {
+    "model": "BAAI/bge-large-zh-v1.5",
+    "pair": "techdoc/machine_techdoc2",
+    "ratio": 0.9102,
+    "ci_low": 0.8771,
+    "ci_high": 0.9482
+  },
+  {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "pair": "poem/machine_poem",
+    "ratio": 0.8022,
+    "ci_low": 0.7545,
+    "ci_high": 0.8554
+  },
+  {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "pair": "lyrics/machine_lyrics",
+    "ratio": 0.8158,
+    "ci_low": 0.7608,
+    "ci_high": 0.8671
+  },
+  {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "pair": "techdoc/machine_techdoc2",
+    "ratio": 0.9255,
+    "ci_low": 0.8934,
+    "ci_high": 0.9594
+  },
+  {
+    "model": "shibing624/text2vec-base-chinese",
+    "pair": "poem/machine_poem",
+    "ratio": 0.7886,
+    "ci_low": 0.7346,
+    "ci_high": 0.8528
+  },
+  {
+    "model": "shibing624/text2vec-base-chinese",
+    "pair": "lyrics/machine_lyrics",
+    "ratio": 0.6521,
+    "ci_low": 0.6071,
+    "ci_high": 0.6972
+  },
+  {
+    "model": "shibing624/text2vec-base-chinese",
+    "pair": "techdoc/machine_techdoc2",
+    "ratio": 0.9518,
+    "ci_low": 0.9252,
+    "ci_high": 0.979
+  }
+]

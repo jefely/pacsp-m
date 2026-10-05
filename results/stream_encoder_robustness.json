@@ -1,0 +1,26 @@
+[
+  {
+    "model": "BAAI/bge-large-zh-v1.5",
+    "S_sed_human": 0.9213,
+    "S_sed_machine": 0.812,
+    "ratio": 1.1346,
+    "ci_low": 1.0975,
+    "ci_high": 1.1749
+  },
+  {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "S_sed_human": 0.9213,
+    "S_sed_machine": 0.825,
+    "ratio": 1.1168,
+    "ci_low": 1.0777,
+    "ci_high": 1.1595
+  },
+  {
+    "model": "shibing624/text2vec-base-chinese",
+    "S_sed_human": 0.8936,
+    "S_sed_machine": 0.8028,
+    "ratio": 1.1132,
+    "ci_low": 1.0759,
+    "ci_high": 1.1565
+  }
+]
