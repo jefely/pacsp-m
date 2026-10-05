@@ -106,23 +106,55 @@ def main():
     wA, wB = T.within_distances(EA), T.within_distances(EB)
     X = T.cross_distances(EA, EB)
     pooled = np.concatenate([wA, wB])
-    ov = float((X < pooled.mean() * 1.0).mean())  # arbitrary, only to drive the gate
     ov_hi = float((X < np.percentile(pooled, 95)).mean())
+
+    # The assignability gate keys on held-out nearest-centroid accuracy, not on the overlap
+    # share. Overlap was measured against accuracy across the five pairs at Spearman -0.90 and
+    # gating on it produced four wrong verdicts out of five, so the assertions below are the
+    # ones that matter: a genuinely separable pair must not fire the gate, and a genuinely
+    # inseparable one must.
+    acc = T.loo_assignability(EA, EB)
     g = T.gates_for_compare(len(ta), len(tb), {"cv": 0.01},
-                            {"point": 0.9358, "ci95": [0.90, 0.97]}, ov_hi, True)
+                            {"point": 0.9358, "ci95": [0.90, 0.97]}, ov_hi, True,
+                            assign=acc)
     fired = {x.id for x in g if x.fired}
-    ok = "not-assignable" in fired
-    print(f"  [{'ok  ' if ok else 'FAIL'}] openqa fires not-assignable "
-          f"(overlap {ov_hi:.3f})")
+    ok = "not-assignable" not in fired
+    print(f"  [{'ok  ' if ok else 'FAIL'}] openqa accuracy {acc['accuracy']:.4f} "
+          f"(overlap {ov_hi:.3f}) -> not-assignable is NOT fired")
     if not ok:
-        FAILS.append("not-assignable gate for openqa")
+        FAILS.append("accuracy-based gate for openqa")
 
     v = T.verdict_from(g, 1.03, ov_hi)
-    ok2 = v.startswith("group-mean-differs-only")
-    print(f"  [{'ok  ' if ok2 else 'FAIL'}] verdict is group-mean-differs-only")
+    ok2 = v.startswith("separable")
+    print(f"  [{'ok  ' if ok2 else 'FAIL'}] verdict is separable")
     print(f"         got: {v}")
     if not ok2:
         FAILS.append("verdict for openqa")
+
+    # the converse: two heavily overlapping clouds must fire the gate
+    rng2 = np.random.default_rng(3)
+    a = rng2.normal(0.0, 1.0, (40, 16))
+    b = rng2.normal(0.05, 1.0, (40, 16))
+    acc_low = T.loo_assignability(a, b)
+    g_low = T.gates_for_compare(40, 40, {"cv": 0.01},
+                                {"point": 1.02, "ci95": [1.005, 1.035]},
+                                0.9, True, assign=acc_low)
+    fired_low = {x.id for x in g_low if x.fired}
+    ok_low = "not-assignable" in fired_low
+    print(f"  [{'ok  ' if ok_low else 'FAIL'}] overlapping synthetic clouds "
+          f"accuracy {acc_low['accuracy']:.3f} -> not-assignable fires")
+    if not ok_low:
+        FAILS.append("gate does not fire on genuinely inseparable data")
+
+    # and the gate must say so rather than guess when accuracy was not measured
+    g_na = T.gates_for_compare(40, 40, {"cv": 0.01},
+                               {"point": 1.02, "ci95": [1.005, 1.035]}, 0.9, True)
+    na_gate = next((x for x in g_na if x.id == "assignability"), None)
+    ok_na = na_gate is not None and "not measured" in na_gate.detail
+    print(f"  [{'ok  ' if ok_na else 'FAIL'}] without accuracy the gate declines to "
+          f"read overlap as assignability")
+    if not ok_na:
+        FAILS.append("missing-accuracy gate")
 
     # the tiny-effect case from section 6.3: interval excludes 1 and effect is ~1 percent
     g2 = T.gates_for_compare(31, 31, {"cv": 0.003},

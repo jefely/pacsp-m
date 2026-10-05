@@ -277,9 +277,52 @@ class Gate:
     detail: str
 
 
+def loo_assignability(EA, EB) -> dict:
+    """Leave-one-out nearest-centroid accuracy between two collections.
+
+    This answers the question the word assignable actually poses: can an item be placed on the
+    correct side? Each item is scored against centroids computed without it, so the number is
+    held out rather than in-sample, and the chance baseline is 0.5.
+
+    It replaces an overlap threshold, which was wrong. The overlap share is a one-dimensional
+    summary of the cross-distance distribution, and measured against this accuracy across the
+    five pairs it runs at Spearman -0.90, so it is close to an inverse proxy. Gating on it
+    produced four wrong verdicts out of five: poem said not assignable at overlap 0.797 while
+    accuracy was 0.984, techdoc at 0.926 against 0.694, medicine at 0.811 against 0.919, and
+    openqa at 0.854 against 0.919.
+
+    Both are still reported. The overlap share describes how much the two distance clouds
+    share, which is real and useful, but it does not describe assignability.
+    """
+    A, B = np.asarray(EA, dtype=np.float64), np.asarray(EB, dtype=np.float64)
+    ca, cb = A.mean(0), B.mean(0)
+    na, nb = len(A), len(B)
+    correct = 0
+    margin = []
+    for i in range(na):
+        ca_i = (ca * na - A[i]) / max(na - 1, 1)
+        d_self = float(np.linalg.norm(A[i] - ca_i))
+        d_other = float(np.linalg.norm(A[i] - cb))
+        correct += int(d_self < d_other)
+        margin.append(d_other - d_self)
+    for j in range(nb):
+        cb_j = (cb * nb - B[j]) / max(nb - 1, 1)
+        d_self = float(np.linalg.norm(B[j] - cb_j))
+        d_other = float(np.linalg.norm(B[j] - ca))
+        correct += int(d_self < d_other)
+        margin.append(d_other - d_self)
+    n = na + nb
+    m = np.asarray(margin)
+    return {"accuracy": correct / n if n else float("nan"), "n": n,
+            "mean_margin": float(m.mean()) if n else float("nan"),
+            "margin_sd": float(m.std(ddof=1)) if n > 1 else float("nan"),
+            "negative_margins": int((m < 0).sum())}
+
+
 def gates_for_compare(n_a: int, n_b: int, sep: dict, ratio_ci: dict,
                       overlap: float, direction_ok: bool,
-                      style: dict | None = None) -> list[Gate]:
+                      style: dict | None = None,
+                      assign: dict | None = None) -> list[Gate]:
     g = []
 
     if min(n_a, n_b) < GATE_MIN_N:
@@ -314,14 +357,26 @@ def gates_for_compare(n_a: int, n_b: int, sep: dict, ratio_ci: dict,
                           f"|ratio - 1| = {abs(r - 1):.4f} < {GATE_EFFECT_FLOOR}: the "
                           "interval may exclude 1 while the effect is too small to act on"))
 
-    # the assignability gate: this is the one that stops over-reading a mean difference
-    if overlap > 0.5:
-        g.append(Gate("not-assignable", True,
-                      f"overlap share {overlap:.3f} > 0.5: the collections interpenetrate, "
-                      "so individual items cannot be assigned to a side from this statistic"))
+    # The assignability gate. It keys on held-out nearest-centroid accuracy, NOT on the
+    # overlap share. An earlier version used overlap > 0.5 and produced four wrong verdicts
+    # out of five: against accuracy, overlap runs at Spearman -0.90, so it is close to an
+    # inverse proxy and must not be read as evidence about assignability.
+    if assign is None:
+        g.append(Gate("assignability", None,
+                      f"overlap share {overlap:.3f} is reported, but assignability was "
+                      "not measured; do not read the overlap as if it were"))
     else:
-        g.append(Gate("not-assignable", False,
-                      f"overlap share {overlap:.3f}: some assignability possible"))
+        acc = assign["accuracy"]
+        if acc < 0.6:
+            g.append(Gate("not-assignable", True,
+                          f"held-out nearest-centroid accuracy {acc:.3f} is near the "
+                          f"0.5 chance level: single items cannot be assigned reliably "
+                          f"(overlap share {overlap:.3f})"))
+        else:
+            g.append(Gate("not-assignable", False,
+                          f"held-out nearest-centroid accuracy {acc:.3f} against a 0.5 "
+                          f"chance level: {assign['negative_margins']} of {assign['n']} "
+                          "items fall on the wrong side"))
 
     if not direction_ok:
         g.append(Gate("direction-inconsistent", True,
@@ -353,9 +408,9 @@ def verdict_from(gates: list[Gate], sep: float, overlap: float) -> str:
     if "interval-includes-1" in fired:
         return "no-detectable-difference: the collections are not distinguishable here"
     if "not-assignable" in fired:
-        return ("group-mean-differs-only: the mean dispersion differs, but the "
-                "collections interpenetrate so single items cannot be classified")
-    return "separable: mean differs and collections are largely disjoint"
+        return ("group-mean-differs-only: the means differ but held-out classification "
+                "is near chance, so single items cannot be assigned")
+    return ("separable: the means differ and held-out classification is well above chance")
 
 
 # ---------------------------------------------------------------------------
@@ -489,9 +544,10 @@ def cmd_compare(args) -> int:
     style = style_ratio(ta, tb, args.style_pairs, rng) if args.style else None
 
     direction_ok = (ratio["ci95"][1] < 1) or (ratio["ci95"][0] > 1)
+    assign = loo_assignability(EA, EB)
     gates = gates_for_compare(len(ta), len(tb),
                               {"cv": cross_cv}, ratio, overlap, direction_ok,
-                              style=style)
+                              style=style, assign=assign)
     verdict = verdict_from(gates, separation, overlap)
 
     out = {

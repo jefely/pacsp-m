@@ -291,10 +291,11 @@ def do_compare(pa: str, pb: str, frame: str, backend: str, boot: int) -> dict:
     # here ("value") silently produced an effect-unmeasurable gate on every comparison,
     # which an end-to-end test caught. The adapter is explicit now.
     direction_ok = ratio["ci95"][0] > 1 or ratio["ci95"][1] < 1
+    assign = T.loo_assignability(EA, EB)
     gates = T.gates_for_compare(
         len(ta), len(tb), {"cv": ccv},
         {"point": ratio["value"], "ci95": list(ratio["ci95"])},
-        overlap, direction_ok, style=style)
+        overlap, direction_ok, style=style, assign=assign)
     verdict = T.verdict_from(gates, sep, overlap)
     return {
         "collections": {
@@ -310,6 +311,11 @@ def do_compare(pa: str, pb: str, frame: str, backend: str, boot: int) -> dict:
                      "n_cross_distances": int(len(X))},
         "separation": {"value": round(sep, 6)},
         "overlap": {"value": round(overlap, 6), "radius": round(thr, 6)},
+        "assignability": {"accuracy": round(assign["accuracy"], 6),
+                           "n": assign["n"],
+                           "negative_margins": assign["negative_margins"],
+                           "chance_level": 0.5,
+                           "method": "leave-one-out nearest centroid"},
         "style": style,
         "gates": [{"id": g.id, "fired": g.fired, "detail": g.detail}
                   for g in gates],
