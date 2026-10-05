@@ -36,10 +36,11 @@ python pacsp_tool.py frame --list
     [ok] sample-too-small         n = 31 vs 31
     [ok] estimate-imprecise       bootstrap CV 0.0022
     [ok] interval-includes-1      ratio 0.8691 CI [0.7389, 0.9775]
-    [ok] not-assignable           overlap share 0.066: some assignability possible
+    [ok] not-assignable           held-out nearest-centroid accuracy 1.000 against
+                                  a 0.5 chance level: 0 of 62 items fall on the wrong side
     [ok] direction-inconsistent   within-collection ratios agree
 
-  VERDICT: separable: mean differs and collections are largely disjoint
+  VERDICT: separable: the means differ and held-out classification is well above chance
 ```
 
 ---
@@ -50,21 +51,56 @@ python pacsp_tool.py frame --list
 
 ### ① 阻止把"组均值不同"读成"两组可分"
 
-这是最重要的一条。论文 §4.11 的实测：
+这是最重要的一条。**而且它经历过一次修正——我自己先用错了指标。**
 
-| 配对 | `D` 比值 | 重叠占比 | 单篇可分吗 |
-|---|---|---|---|
-| poem | **0.8305**（最极端） | 0.797 | ❌ **否** |
-| lyrics | 0.8691 | **0.066** | ✅ **是** |
+### 曾经错在哪
 
-**`D` 比值最极端的那一对，两组分布大量交错。**
-
-工具遇到 `overlap > 0.5` 时会**打出 `not-assignable` 闸门**，并把结论限制为：
+早期版本用**重叠占比 > 0.5** 判定"单篇不可归类"。对 `poem` 它输出：
 
 ```
 VERDICT: group-mean-differs-only: the mean dispersion differs, but the
 collections interpenetrate so single items cannot be classified
 ```
+
+**这是错的。** 实测**留一最近质心分类正确率**（chance 0.5）：
+
+| 配对 | `D` 比值 | 重叠占比 | **留一分类** | 早期判定 | |
+|---|---|---|---|---|---|
+| poem | 0.8305 | 0.797 | **0.984** | not-assignable | ❌ **错** |
+| lyrics | 0.8691 | 0.066 | **1.000** | some assignability | ✅ 巧合 |
+| techdoc | 0.9205 | 0.926 | **0.694** | not-assignable | ❌ **错** |
+| medicine | 0.9147 | 0.811 | **0.919** | not-assignable | ❌ **错** |
+| openqa | 0.9358 | 0.854 | **0.919** | not-assignable | ❌ **错** |
+
+```
+Spearman(重叠占比, 留一分类) = −0.90
+```
+
+> **重叠占比与可分性近乎反向。用它当代理，五对中错了四对。**
+
+### 现在的判据
+
+工具报**两个量**，但**只用留一分类做判定**：
+
+```
+overlap        0.7971    ← 仍报告：两个距离云共享多少
+assignability  0.9839    ← 判据：留一最近质心，chance 0.5
+gates:
+  [ok] not-assignable   held-out nearest-centroid accuracy 0.984 against
+                        a 0.5 chance level: 1 of 62 items fall on the wrong side
+VERDICT: separable: the means differ and held-out classification is well above chance
+```
+
+**修正后的判定**：五对全部 `separable`（正确率 0.69–1.00）。
+
+**未测正确率时，闸门声明"not measured"，而不是退回旧判据**：
+
+```
+[assignability] overlap share 0.797 is reported, but assignability was not
+                measured; do not read the overlap as if it were
+```
+
+详见 [`docs/ASSIGNABILITY-METRIC-FIX.md`](docs/ASSIGNABILITY-METRIC-FIX.md)。
 
 ### ② 阻止把"区间排除 1"当作"效应可用"
 
@@ -97,7 +133,7 @@ collections interpenetrate so single items cannot be classified
 | `estimate-imprecise` | 自助法 CV > 0.15 | 估计不精确，不应比较语料 |
 | `interval-includes-1` | 比值区间含 1 | **不能主张方向** |
 | `effect-below-floor` | \|比值−1\| < 0.02 | 区间虽排除 1，但效应太小不可用 |
-| **`not-assignable`** | 重叠 > 0.5 | **不能主张单篇可归属** |
+| **`not-assignable`** | **留一分类正确率 < 0.6** | **不能主张单篇可归属**（旧版误用"重叠 > 0.5"） |
 | `direction-inconsistent` | 比值区间不排除 1 | 方向不一致 |
 | `style-unstable` | 组内词汇重叠 < 0.02 | 风格比数值不稳，不应作为数值报告 |
 
@@ -114,7 +150,8 @@ collections interpenetrate so single items cannot be classified
 |---|---|---|
 | **一（集合内）** | `D` + 区间 | 这一组文本有多分散 |
 | **二（集合间·均值）** | `interval` + `separation` | 两组的平均距离；**比 `D` 精确 1–5 倍** |
-| **三（集合间·可分）** | `overlap` | **判别力跨度 14 倍**（0.066–0.926） |
+| **三（集合间·可分）** | **`assignability`** | **留一分类正确率，chance 0.5** ← **判据** |
+| 参照量 | `overlap` | 距离云共享程度；**与可分性秩相关 −0.90，不可当判据** |
 | 附加 | `style` | 词汇重叠，**与 `D` 无关的独立维度**（`r = −0.014`） |
 
 **为什么层次二更精确**：它在 `n×m` 个交叉距离上平均（31×31 = **961** 个），
